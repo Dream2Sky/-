@@ -99,5 +99,15 @@ namespace com.dongfangyunwang.BLL
                 throw;
             }
         }
+
+        /// <summary>
+        /// 更新member  主要用来修改密码的
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns></returns>
+        public bool Update(Member member)
+        {
+            return _memberDAL.Update(member);
+        }
     }
 }

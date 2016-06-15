@@ -187,6 +187,7 @@
     <Compile Include="Models\AdditionalConditionModel.cs" />
     <Compile Include="Models\FollowModel.cs" />
     <Compile Include="Models\InformationModel.cs" />
+    <Compile Include="Models\PasswordModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +203,7 @@
     <Content Include="Views\Member\List.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Information\ImportInformationwithSpecificMember.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

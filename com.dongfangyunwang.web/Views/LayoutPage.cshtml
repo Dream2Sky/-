@@ -49,37 +49,36 @@
                     <li class="active">
                         <a href="/Home/Index">首页</a>
                     </li>
+                    <li>
+                        <a href="/Information/ImportInformationwithSpecificMember">数据</a>
+                    </li>
+                    <li>
+                        <a href="/Account/ResetPassword">账户</a>
+                    </li>
                 }
                 else
                 {
                     <li class="active">
                         <a href="/Admin/Index">首页</a>
                     </li>
-                }
-
-
-                @if (System.Web.HttpContext.Current.Session["admin"] != null)
-                {
                     <li>
                         <a href="/Follow/Items">跟进设置</a>
                     </li>
                     <li>
                         <a href="/Member/List">添加新用户</a>
                     </li>
-                }
-                @if (System.Web.HttpContext.Current.Session["admin"] != null)
-                {
                     <li>
                         <a href="/Information/ImportInformation">数据</a>
                     </li>
-                }
-                else
-                {
                     <li>
-                        <a href="/Information/ImportInformationwithSpecificMember">数据</a>
+                        <a href="/Account/ResetPassword">账户</a>
                     </li>
                 }
-
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/Account/Logout">退出登录</a>
+                </li>
             </ul>
         </div>
     </div>

@@ -16,5 +16,6 @@ namespace com.dongfangyunwang.IBLL
         IEnumerable<Member> GetAllMembers();
         bool IsExist(Member member);
         bool Add(Member member);
+        bool Update(Member member);
     }
 }
