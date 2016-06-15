@@ -21,6 +21,15 @@
         .container-add-followitem form {
             padding-left: 0px;
         }
+
+            .container-add-followitem form .form-group {
+                margin-top: 10px;
+                margin-bottom: 5px;
+            }
+
+                .container-add-followitem form .form-group input {
+                    width: 200px;
+                }
 </style>
 <label>
     用户列表
@@ -35,13 +44,16 @@
 </div>
 <hr />
 <label>添加新用户</label>
-<div class="navbar">
-    <div class="container container-add-followitem">
-        <form class="navbar-form navbar-left" method="post" action="/Member/Add">
-            <div class="form-group">
-                <input type="text" name="memberName" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-primary">添加</button>
-        </form>
-    </div>
+<div class="container container-add-followitem">
+    <form method="post" action="/Member/Add" id="member-form">
+        <div class="form-group">
+            <input type="text" name="memberName" class="form-control" required data-bv-notempty-message="用户名不能为空">
+        </div>
+        <button type="submit" class="btn btn-primary">添加</button>
+    </form>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#member-form').bootstrapValidator();
+    });
+</script>

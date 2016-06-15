@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrapValidator.min.css" rel="stylesheet" />
     <style>
         html body{
              font-family:'Microsoft YaHei';
@@ -56,21 +57,21 @@
                     <strong>登陆失败! </strong>@ViewBag.msg
                 </div>
             }
-            <form action="/Account/Login" method="post">
+            <form action="/Account/Login" method="post" id="login-form">
                 <div class="form-group">
                     <label for="input_account">用户名</label>
-                    <input type="text" class="form-control" id="input_account" name="account" placeholder="用户名">
+                    <input type="text" class="form-control" id="input_account" name="account" placeholder="用户名" required data-bv-notempty-message="用户名不能为空">
                 </div>
                 <div class="form-group">
                     <label for="input_password">密码</label>
-                    <input type="password" class="form-control" id="input_password" name="password" placeholder="密码">
+                    <input type="password" class="form-control" id="input_password" name="password" placeholder="密码" required data-bv-notempty-message="密码不能为空">
                 </div>
                 <div class="form-group">
                     <label class="radio-inline">
                         <input type="radio" name="isadmin" id="inlineRadio1" value="y"> 管理员
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="isadmin" id="inlineRadio2" value="n"> 普通用户
+                        <input type="radio" checked="checked" name="isadmin" id="inlineRadio2" value="n"> 普通用户
                     </label>
                 </div>
                 <div class="form-group">
@@ -84,5 +85,11 @@
     </div>
     <script src="~/Content/js/jquery.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/bootstrapValidator.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#login-form').bootstrapValidator();
+        });
+    </script>
 </body>
 </html>

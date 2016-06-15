@@ -19,6 +19,23 @@
     .container-add-followitem form{
         padding-left:0px;
     }
+    .container-add-followitem form .form-group{
+        margin-top:10px;
+        margin-bottom:5px;
+    }
+    .container-add-followitem form .form-group input{
+        width:200px;
+    }
+    /*input[name='followitem']{
+        float:left;
+    }
+    input[name='followitem'] span{
+        float:left;
+    }
+    button[type='submit']{
+        float:none;
+    }*/
+
 </style>
 <label>
     跟进项列表
@@ -33,13 +50,22 @@
 </div>
 <hr />
 <label>添加跟进项</label>
-<div class="navbar">
-    <div class="container container-add-followitem">
-        <form class="navbar-form navbar-left" method="post" action="/Follow/Add"> 
-            <div class="form-group">
-                <input type="text" name="followitem" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-primary">添加</button>
-        </form>
-    </div>
+<div class="container container-add-followitem">
+    <form method="post" action="/Follow/Add" id="follow-form">
+        <div class="form-group">
+            <input type="text" name="followitem" class="form-control" required data-bv-notempty-message="不能为空"><span id="error-message"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">添加</button>
+    </form>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#follow-form').bootstrapValidator({
+            fields: {
+                followitem: {
+                    container: '#error-message'
+                }
+            }
+        });
+    });
+</script>

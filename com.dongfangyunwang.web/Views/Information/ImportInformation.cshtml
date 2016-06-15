@@ -19,12 +19,12 @@
 
 <div class="alert alert-error div-single-data">
     <a class="close" data-dismiss="alert">×</a>
-    <strong>添加此数据项失败! </strong>请联系管理员
+    <strong>添加此条数据失败! </strong>请联系管理员
 </div>
 <label>
     数据单条录入
 </label>
-<form action="/Information/ImportData" method="post">
+<form action="/Information/ImportData" method="post" id="singleInformation-form">
     <table class="table">
         <tr>
             <td>
@@ -36,25 +36,34 @@
             <td>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">性别</span>
-                    <input type="text" class="form-control" placeholder="性别" name="sex" aria-describedby="basic-addon1">
+                    <select name="sex" class="form-control">
+                        <option selected="selected">男</option>
+                        <option>女</option>
+                    </select>
                 </div>
             </td>
             <td>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">年龄</span>
-                    <input type="text" class="form-control" placeholder="年龄" name="age" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="年龄" name="age" aria-describedby="basic-addon1" >
                 </div>
             </td>
             <td>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">婚否</span>
-                    <input type="text" class="form-control" placeholder="婚否" name="ismarry" aria-describedby="basic-addon1">
+                    <select name="ismarry" class="form-control">
+                        <option selected="selected">是</option>
+                        <option>否</option>
+                    </select>
                 </div>
             </td>
             <td>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">子女</span>
-                    <input type="text" class="form-control" placeholder="子女" name="children" aria-describedby="basic-addon1">
+                    <select name="children" class="form-control">
+                        <option selected="selected">有</option>
+                        <option>无</option>
+                    </select>
                 </div>
             </td>
         </tr>
@@ -100,7 +109,7 @@
             <td>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">QQ</span>
-                    <input type="text" class="form-control" placeholder="QQ" name="qq" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="QQ" name="qq" aria-describedby="basic-addon1" >
                 </div>
             </td>
             <td>
@@ -112,7 +121,7 @@
             <td>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">邮箱</span>
-                    <input type="text" class="form-control" placeholder="邮箱" name="email" aria-describedby="basic-addon1">
+                    <input type="email" class="form-control" placeholder="邮箱" name="email" aria-describedby="basic-addon1">
                 </div>
             </td>
         </tr>
@@ -120,13 +129,19 @@
             <td>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">是否有车</span>
-                    <input type="text" class="form-control" placeholder="是否有车" name="hascar" aria-describedby="basic-addon1">
+                    <select name="hascar" class="form-control">
+                        <option selected="selected">是</option>
+                        <option>否</option>
+                    </select>
                 </div>
             </td>
             <td>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">是否有房</span>
-                    <input type="text" class="form-control" placeholder="是否有房" name="hashouse" aria-describedby="basic-addon1">
+                    <select name="hashouse" class="form-control">
+                        <option selected="selected">是</option>
+                        <option>否</option>
+                    </select>
                 </div>
             </td>
         </tr>
@@ -175,46 +190,86 @@
     </div>
     <button class="btn btn-primary" type="button" onclick="UploadFile();">导入</button>
 </form>
-
+<script src="~/Content/js/bootstrapValidator.min.js"></script>
 <script>
     function AddInformation() {
-        var json = new Object();
-        json.customerName = $("input[name='customerName']").val();
-        json.sex = $("input[name='sex']").val();
-        json.age = $("input[name='age']").val();
-        json.ismarry = $("input[name='ismarry']").val();
-        json.children = $("input[name='children']").val();
-        json.address = $("input[name='address']").val();
-        json.industry = $("input[name='industry']").val();
-        json.occupation = $("input[name='occupation']").val();
-        json.income = $("input[name='income']").val();
-        json.hobby = $("input[name='hobby']").val();
-        json.phone = $("input[name='phone']").val();
-        json.qq = $("input[name='qq']").val();
-        json.webcat = $("input[name='webcat']").val();
-        json.email = $("input[name='email']").val();
-        json.hascar = $("input[name='hascar']").val();
-        json.hashouse = $("input[name='hashouse']").val();
 
-        var str = JSON.stringify(json);
-        $(".input-follow").each(function () {
-            str = str.replace("}", ",\"" + $(this).attr('name') + "\":" + "\"" + $(this).val() + "\"}");
-        });
+        var msg = "";
+        var customerName = $("input[name='customerName']").val();
+        var age = $("input[name='age']").val();
+        var income = $("input[name='income']").val();
+        if (customerName==null || customerName == "") {
+            msg += "客户名称不能为空\n";
+        }
 
-        console.log(str);
-        $.ajax({
-            url: "/Information/ImportData",
-            type: "POST",
-            data: str,
-            success: function (data) {
-                if (data == "True") {
-                    window.location.href = "/Admin/Index";
-                }
-                else {
-                    $('.div-single-data').addclass("alert-active");
+        if (age == null || age == "") {
+
+        }
+        else {
+            if (isNaN(age)) {
+                msg += "年龄必须是数字\n";
+            }
+            else {
+                if (!(age >= 0 && age <= 150)) {
+                    msg += "年龄超出合法范围 [0-150]";
                 }
             }
-        });
+        }
+        
+        if (income == "" || income == null) {
+
+        }
+        else {
+            if (isNaN(income)) {
+                msg += "收入必须是数字\n";
+            }
+            else {
+                if (income <0) {
+                    msg += "收入必须大于0";
+                }
+            }
+        }
+
+        if (msg != "") {
+            alert(msg);
+        }
+        else {
+            var json = new Object();
+            json.customerName = customerName;
+            json.sex = $("select[name='sex']").val();
+            json.age = age;
+            json.ismarry = $("select[name='ismarry']").val();
+            json.children = $("select[name='children']").val();
+            json.address = $("input[name='address']").val();
+            json.industry = $("input[name='industry']").val();
+            json.occupation = $("input[name='occupation']").val();
+            json.income = income;
+            json.hobby = $("input[name='hobby']").val();
+            json.phone = $("input[name='phone']").val();
+            json.qq = $("input[name='qq']").val();
+            json.webcat = $("input[name='webcat']").val();
+            json.email = $("input[name='email']").val();
+            json.hascar = $("select[name='hascar']").val();
+            json.hashouse = $("select[name='hashouse']").val();
+
+            var str = JSON.stringify(json);
+            $(".input-follow").each(function () {
+                str = str.replace("}", ",\"" + $(this).attr('name') + "\":" + "\"" + $(this).val() + "\"}");
+            });
+            $.ajax({
+                url: "/Information/ImportData",
+                type: "POST",
+                data: str,
+                success: function (data) {
+                    if (data == "True") {
+                        window.location.href = "/Admin/Index";
+                    }
+                    else {
+                        $('.div-single-data').addclass("alert-active");
+                    }
+                }
+            });
+        }
     }
     function UploadFile() {
         var formData = new FormData($("#form-data")[0]);
