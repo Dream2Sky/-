@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{359C634B-2D41-4ECF-8B07-4683998D66E3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>com.dongfangyunwang.BLL</RootNamespace>
+    <AssemblyName>com.dongfangyunwang.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FollowBLL.cs" />
+    <Compile Include="FollowRecordBLL.cs" />
+    <Compile Include="InformationBLL.cs" />
+    <Compile Include="MemberBLL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\LogHelper\LogHelper\LogHelper.csproj">
+      <Project>{e0abdbbb-fcb3-4cd5-8a61-e06af21844be}</Project>
+      <Name>LogHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\捷诚宝\com.jiechengbao.common\com.jiechengbao.common.csproj">
+      <Project>{8b193e36-a4f4-4504-87f2-32eb5c5c9352}</Project>
+      <Name>com.jiechengbao.common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\com.dongfangyunwang.entity\com.dongfangyunwang.entity.csproj">
+      <Project>{e1f7f2db-e52a-4b4d-ac48-7f68a223c67f}</Project>
+      <Name>com.dongfangyunwang.entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\com.dongfangyunwang.IBLL\com.dongfangyunwang.IBLL.csproj">
+      <Project>{d825e6f1-f902-461b-9e4e-380da10a46ca}</Project>
+      <Name>com.dongfangyunwang.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\com.dongfangyunwang.IDAL\com.dongfangyunwang.IDAL.csproj">
+      <Project>{ae8f3aa8-6632-4ee3-a5ad-f5775af285b8}</Project>
+      <Name>com.dongfangyunwang.IDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/LayoutPage.cshtml";
+}
+@using com.dongfangyunwang.entity
+<style>
+    .container-btn {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+        .container-btn button {
+            margin-right: 10px;
+        }
+
+    .container-add-followitem {
+        padding-left: 0px;
+    }
+
+        .container-add-followitem form {
+            padding-left: 0px;
+        }
+</style>
+<label>
+    用户列表
+</label>
+<div class="container-fluid container-btn">
+    <div class="row">
+        @foreach (var item in ViewData["MemberList"] as IEnumerable<Member>)
+        {
+            <button class="btn btn-default col-xs-2">@item.Account</button>
+        }
+    </div>
+</div>
+<hr />
+<label>添加新用户</label>
+<div class="navbar">
+    <div class="container container-add-followitem">
+        <form class="navbar-form navbar-left" method="post" action="/Member/Add">
+            <div class="form-group">
+                <input type="text" name="memberName" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">添加</button>
+        </form>
+    </div>
+</div>

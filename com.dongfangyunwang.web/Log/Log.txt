@@ -1,0 +1,631 @@
+6/7/2016 8:35:21 AM : 
+Object reference not set to an instance of an object.
+========================================================================
+6/7/2016 8:35:21 AM : 
+   at MySql.Data.MySqlClient.MySqlProviderServices.GetDbProviderManifestToken(DbConnection connection)
+   at System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   at MySql.Data.Entity.MySqlManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   at System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   at com.dongfangyunwang.DAL.MemberDAL.SelectByAccount(String account, Boolean isadmin) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\MemberDAL.cs:line 17
+========================================================================
+6/8/2016 8:06:06 PM : 
+The entity or complex type 'com.dongfangyunwang.entity.Information' cannot be constructed in a LINQ to Entities query.
+========================================================================
+6/8/2016 8:06:06 PM : 
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.CheckInitializerType(Type type)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MemberInitTranslator.TypedTranslate(ExpressionConverter parent, MemberInitExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input, DbExpressionBinding& binding)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SelectTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Convert()
+   at System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__a()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__9()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at com.dongfangyunwang.DAL.InformationDAL.SelectByAnythings(String conditions) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\InformationDAL.cs:line 39
+========================================================================
+6/8/2016 8:07:47 PM : 
+The entity or complex type 'com.dongfangyunwang.entity.Information' cannot be constructed in a LINQ to Entities query.
+========================================================================
+6/8/2016 8:07:47 PM : 
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.CheckInitializerType(Type type)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MemberInitTranslator.TypedTranslate(ExpressionConverter parent, MemberInitExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input, DbExpressionBinding& binding)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SelectTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Convert()
+   at System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__a()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__9()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at com.dongfangyunwang.DAL.InformationDAL.SelectByAnythings(String conditions) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\InformationDAL.cs:line 39
+========================================================================
+6/8/2016 8:10:06 PM : 
+The entity or complex type 'com.dongfangyunwang.entity.Information' cannot be constructed in a LINQ to Entities query.
+========================================================================
+6/8/2016 8:10:06 PM : 
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.CheckInitializerType(Type type)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MemberInitTranslator.TypedTranslate(ExpressionConverter parent, MemberInitExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input, DbExpressionBinding& binding)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SelectTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Convert()
+   at System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__a()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__9()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at com.dongfangyunwang.DAL.InformationDAL.SelectByAnythings(String conditions) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\InformationDAL.cs:line 39
+========================================================================
+6/9/2016 5:06:09 PM : 
+{"customerName":"进度付款了时间的","sex":"士","age":"112","ismarry":"放","children":"12","adderss":"阿斯顿发顺丰","industry":" 啊手动阀手动阀","occupation":"手动阀","income":"1235","hobby":"啊打发十分啊手动阀手动阀手动阀手动阀手动阀撒旦 ","phone":"12345687","qq":"12345975","webcat":"阿斯蒂芬","email":"123651655","hascar":"发","hashouse":"东"}
+========================================================================
+6/9/2016 5:09:36 PM : 
+{"customerName":"呵呵","sex":"呵呵","age":"呵呵","ismarry":"呵呵","children":"呵呵","adderss":"呵呵","industry":"呵呵","occupation":"呵呵","income":"呵呵","hobby":"呵呵","phone":"呵呵","qq":"呵呵","webcat":"呵呵","email":"呵呵","hascar":"呵呵","hashouse":"呵呵"}
+========================================================================
+6/9/2016 5:44:11 PM : 
+{"customerName":"","sex":"","age":"","ismarry":"","children":"","adderss":"","industry":"","occupation":"","income":"","hobby":"","phone":"","qq":"","webcat":"","email":"","hascar":"","hashouse":"","followList":["",""]}
+========================================================================
+6/9/2016 6:01:42 PM : 
+{"customerName":"","sex":"","age":"","ismarry":"","children":"","adderss":"","industry":"","occupation":"","income":"","hobby":"","phone":"","qq":"","webcat":"","email":"","hascar":"","hashouse":""}
+========================================================================
+6/12/2016 4:26:03 PM : 
+{"customerName":"dff","sex":"dff","age":"dff","ismarry":"dff","children":"dff","adderss":"dff","industry":"dff","occupation":"dff","income":"dff","hobby":"dff","phone":"dff","qq":"dff","webcat":"dff","email":"dff","hascar":"dff","hashouse":"dff"}
+========================================================================
+6/12/2016 4:29:17 PM : 
+{"customerName":"dsfd","sex":"dsfd","age":"dsfd","ismarry":"dsfd","children":"dsfd","adderss":"dsfd","industry":"dsfd","occupation":"dsfd","income":"dsfd","hobby":"dsfd","phone":"dsfd","qq":"dsfd","webcat":"dsfd","email":"dsfd","hascar":"dsfd","hashouse":"dsfd"}
+========================================================================
+6/12/2016 4:29:28 PM : 
+{"customerName":"dsfd","sex":"dsfd","age":"dsfd","ismarry":"dsfd","children":"dsfd","adderss":"dsfd","industry":"dsfd","occupation":"dsfd","income":"dsfd","hobby":"dsfd","phone":"dsfd","qq":"dsfd","webcat":"dsfd","email":"dsfd","hascar":"dsfd","hashouse":"dsfd"}
+========================================================================
+6/12/2016 4:35:13 PM : 
+{"customerName":"fgsdgs","sex":"fgsdgs","age":"fgsdgs","ismarry":"fgsdgs","children":"fgsdgs","adderss":"fgsdgs","industry":"fgsdgs","occupation":"fgsdgs","income":"fgsdgs","hobby":"fgsdgs","phone":"fgsdgs","qq":"fgsdgs","webcat":"fgsdgs","email":"fgsdgs","hascar":"fgsdgs","hashouse":"fgsdgs"}
+========================================================================
+6/12/2016 4:52:49 PM : 
+{"customerName":"sdfas","sex":"sdfas","age":"sdfas","ismarry":"sdfas","children":"sdfas","adderss":"sdfas","industry":"sdfas","occupation":"sdfas","income":"sdfas","hobby":"sdfas","phone":"sdfas","qq":"sdfas","webcat":"sdfas","email":"sdfas","hascar":"sdfas","hashouse":"sdfas"}
+========================================================================
+6/12/2016 4:54:50 PM : 
+{"customerName":"sdf","sex":"sdf","age":"sdf","ismarry":"sdf","children":"sdf","adderss":"sdf","industry":"sdf","occupation":"sdf","income":"sdf","hobby":"sdf","phone":"sdf","qq":"sdf","webcat":"sdf","email":"sdf","hascar":"sdf","hashouse":"sdf"}
+========================================================================
+6/12/2016 5:13:22 PM : 
+{"customerName":"sdf","sex":"sdf","age":"sdf","ismarry":"sdf","children":"sdf","adderss":"sdf","industry":"sdf","occupation":"sdf","income":"sdf","hobby":"sdf","phone":"sdf","qq":"sdf","webcat":"sdf","email":"sdf","hascar":"sdf","hashouse":"sdf","9c9b2c8b-f11d-4e1d-8c0b-0f34e6bb39d4":"sdf","064ae90b-005f-4262-aa94-7b13d00d780d":"sdf"}
+========================================================================
+6/12/2016 6:16:10 PM : 
+Unable to cast object of type 'Newtonsoft.Json.Linq.JObject' to type 'Newtonsoft.Json.Linq.JArray'.
+========================================================================
+6/12/2016 6:16:10 PM : 
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at com.dongfangyunwang.web.Controllers.InformationController.ImportData() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.web\Controllers\InformationController.cs:line 51
+========================================================================
+6/12/2016 6:28:38 PM : 
+Unable to cast object of type 'Newtonsoft.Json.Linq.JObject' to type 'Newtonsoft.Json.Linq.JArray'.
+========================================================================
+6/12/2016 6:28:38 PM : 
+   at com.dongfangyunwang.web.Controllers.InformationController.ImportData() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.web\Controllers\InformationController.cs:line 51
+========================================================================
+6/12/2016 6:29:18 PM : 
+Unable to cast object of type 'Newtonsoft.Json.Linq.JObject' to type 'Newtonsoft.Json.Linq.JArray'.
+========================================================================
+6/12/2016 6:29:19 PM : 
+   at com.dongfangyunwang.web.Controllers.InformationController.ImportData() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.web\Controllers\InformationController.cs:line 51
+========================================================================
+6/12/2016 6:32:57 PM : 
+Unable to cast object of type 'Newtonsoft.Json.Linq.JObject' to type 'Newtonsoft.Json.Linq.JArray'.
+========================================================================
+6/12/2016 6:32:58 PM : 
+   at com.dongfangyunwang.web.Controllers.InformationController.ImportData() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.web\Controllers\InformationController.cs:line 51
+========================================================================
+6/12/2016 8:03:22 PM : 
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+========================================================================
+6/12/2016 8:03:22 PM : 
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 111
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/12/2016 8:03:22 PM : 
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+========================================================================
+6/12/2016 8:03:22 PM : 
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 111
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/12/2016 8:17:34 PM : 
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+========================================================================
+6/12/2016 8:17:34 PM : 
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 111
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/12/2016 8:18:22 PM : 
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+========================================================================
+6/12/2016 8:18:22 PM : 
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 111
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/12/2016 8:23:43 PM : 
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+========================================================================
+6/12/2016 8:23:43 PM : 
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 111
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/12/2016 8:28:17 PM : 
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+========================================================================
+6/12/2016 8:28:17 PM : 
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 111
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:06:52 PM : 
+error:Duplicate entry '捏后啊-d1f2s-1215sdf-手动阀手动阀手动阀-手动阀手' for key 'Index_Information',
+========================================================================
+6/13/2016 3:06:52 PM : 
+error:Duplicate entry '捏后啊-d1f2s-1215sdf-手动阀手动阀手动阀-手动阀手' for key 'Index_Information',
+========================================================================
+6/13/2016 3:06:52 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:37:49 PM : 
+error:Duplicate entry '捏后啊-d1f2s-1215sdf-手动阀手动阀手动阀-手动阀手' for key 'Index_Information',
+========================================================================
+6/13/2016 3:37:49 PM : 
+error:Duplicate entry '捏后啊-d1f2s-1215sdf-手动阀手动阀手动阀-手动阀手' for key 'Index_Information',
+========================================================================
+6/13/2016 3:37:49 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:39:05 PM : 
+error:Duplicate entry '捏后啊-d1f2s-1215sdf-手动阀手动阀手动阀-手动阀手' for key 'Index_Information',
+========================================================================
+6/13/2016 3:39:05 PM : 
+error:Duplicate entry '捏后啊-d1f2s-1215sdf-手动阀手动阀手动阀-手动阀手' for key 'Index_Information',
+========================================================================
+6/13/2016 3:39:05 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:41:01 PM : 
+error:Duplicate entry '捏后啊-d1f2s-1215sdf-手动阀手动阀手动阀-手动阀手' for key 'Index_Information',
+========================================================================
+6/13/2016 3:41:01 PM : 
+error:Duplicate entry '捏后啊-d1f2s-1215sdf-手动阀手动阀手动阀-手动阀手' for key 'Index_Information',
+========================================================================
+6/13/2016 3:41:01 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:45:32 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:32 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:32 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:45:32 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:32 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:32 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:45:32 PM : 
+error:Duplicate entry '发的开始打飞机' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:32 PM : 
+error:Duplicate entry '发的开始打飞机' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:32 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:45:32 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:32 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:32 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:45:32 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:32 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:32 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:45:32 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:32 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:32 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:45:32 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:33 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:33 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:45:33 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:33 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:33 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:45:33 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:33 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:33 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:45:33 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:33 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:33 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:45:33 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:33 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:33 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/13/2016 3:45:33 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:33 PM : 
+error:Duplicate entry '士大夫加快速度' for key 'Index_Followvalue',
+========================================================================
+6/13/2016 3:45:33 PM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 124
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 46
+========================================================================
+6/14/2016 3:42:32 PM : 
+LINQ to Entities does not recognize the method 'Int32 Parse(System.String)' method, and this method cannot be translated into a store expression.
+========================================================================
+6/14/2016 3:42:32 PM : 
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.DefaultTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.BinaryTranslator.TypedTranslate(ExpressionConverter parent, BinaryExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input, DbExpressionBinding& binding)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SelectTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SelectTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Convert()
+   at System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__a()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__9()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at com.dongfangyunwang.DAL.InformationDAL.SelectByAnythings(String sex, String min_age, String max_age, String ismarried, String children, String min_income, String max_income, String hascar, String hashouse, String insertTime) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\InformationDAL.cs:line 207
+========================================================================
+6/14/2016 3:42:33 PM : 
+Object reference not set to an instance of an object.
+========================================================================
+6/14/2016 3:42:33 PM : 
+   at com.dongfangyunwang.BLL.InformationBLL.GetInformationByAnythings(String sex, String min_age, String max_age, String ismarried, String children, String min_income, String max_income, String hascar, String hashouse, String insertTime) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.BLL\InformationBLL.cs:line 101
+========================================================================
+6/14/2016 3:46:07 PM : 
+LINQ to Entities does not recognize the method 'Int32 Parse(System.String)' method, and this method cannot be translated into a store expression.
+========================================================================
+6/14/2016 3:46:07 PM : 
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.DefaultTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.BinaryTranslator.TypedTranslate(ExpressionConverter parent, BinaryExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input, DbExpressionBinding& binding)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SelectTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SelectTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Convert()
+   at System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__a()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__9()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at com.dongfangyunwang.DAL.InformationDAL.SelectByAnythings(String sex, String min_age, String max_age, String ismarried, String children, String min_income, String max_income, String hascar, String hashouse, String insertTime) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\InformationDAL.cs:line 207
+========================================================================
+6/14/2016 3:46:07 PM : 
+Object reference not set to an instance of an object.
+========================================================================
+6/14/2016 3:46:07 PM : 
+   at com.dongfangyunwang.BLL.InformationBLL.GetInformationByAnythings(String sex, String min_age, String max_age, String ismarried, String children, String min_income, String max_income, String hascar, String hashouse, String insertTime) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.BLL\InformationBLL.cs:line 101
+========================================================================
+6/14/2016 3:56:42 PM : 
+LINQ to Entities does not recognize the method 'Int32 Parse(System.String)' method, and this method cannot be translated into a store expression.
+========================================================================
+6/14/2016 3:56:42 PM : 
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.DefaultTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.BinaryTranslator.TypedTranslate(ExpressionConverter parent, BinaryExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input, DbExpressionBinding& binding)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SelectTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SelectTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Convert()
+   at System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__a()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__9()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at com.dongfangyunwang.DAL.InformationDAL.SelectByAnythings(String sex, String min_age, String max_age, String ismarried, String children, String min_income, String max_income, String hascar, String hashouse, String insertTime) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\InformationDAL.cs:line 207
+========================================================================
+6/14/2016 3:56:42 PM : 
+Object reference not set to an instance of an object.
+========================================================================
+6/14/2016 3:56:42 PM : 
+   at com.dongfangyunwang.BLL.InformationBLL.GetInformationByAnythings(String sex, String min_age, String max_age, String ismarried, String children, String min_income, String max_income, String hascar, String hashouse, String insertTime) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.BLL\InformationBLL.cs:line 101
+========================================================================
+6/14/2016 4:20:04 PM : 
+LINQ to Entities does not recognize the method 'Int32 Parse(System.String)' method, and this method cannot be translated into a store expression.
+========================================================================
+6/14/2016 4:20:04 PM : 
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.DefaultTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.BinaryTranslator.TypedTranslate(ExpressionConverter parent, BinaryExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input, DbExpressionBinding& binding)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SelectTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SelectTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Convert()
+   at System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__a()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__9()
+   at System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at com.dongfangyunwang.DAL.InformationDAL.SelectByAnythings(String sex, String min_age, String max_age, String ismarried, String children, String min_income, String max_income, String hascar, String hashouse, String insertTime) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\InformationDAL.cs:line 215
+========================================================================
+6/14/2016 4:20:04 PM : 
+Object reference not set to an instance of an object.
+========================================================================
+6/14/2016 4:20:04 PM : 
+   at com.dongfangyunwang.BLL.InformationBLL.GetInformationByAnythings(String sex, String min_age, String max_age, String ismarried, String children, String min_income, String max_income, String hascar, String hashouse, String insertTime) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.BLL\InformationBLL.cs:line 101
+========================================================================

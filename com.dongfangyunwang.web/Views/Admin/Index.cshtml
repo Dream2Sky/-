@@ -1,0 +1,243 @@
+﻿
+@{
+    ViewBag.Title = "东方云网 管理员首页";
+    Layout = "~/Views/LayoutPage.cshtml";
+}
+@using com.dongfangyunwang.web.Models
+
+
+<style>
+    .navbar-right li button {
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    .navbar-options .container {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+        .navbar-options .container .navbar-form {
+            padding-left: 0px;
+        }
+
+    .dl-horizontal {
+        width: 50px;
+    }
+
+    .navbar-condition .container {
+        padding: 0px;
+    }
+
+    .navbar-condition .form-group {
+        margin-right: 10px;
+    }
+
+    .div-agebox input, .div-incomebox input {
+        width: 50px;
+        height: 20px;
+    }
+
+    hr {
+        margin-top: 0px;
+    }
+
+    .form-datetime input {
+        width: 130px;
+    }
+
+    .form-group input {
+        border-color: #DDDDDD;
+        border-style: solid;
+        border-width: 1px;
+        font-size: 12px;
+    }
+
+        .form-group input[type="checkbox"] {
+            border-color: #DDDDDD;
+            border-style: solid;
+            border-width: 1px;
+        }
+</style>
+
+@* 条件搜索框 *@
+<div class="navbar navbar-options">
+    <div class="container">
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text" name="condition" class="form-control" placeholder="搜索">
+            </div>
+            <button type="button" class="btn btn-default" onclick="submitCodition();">搜索</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <button class="btn btn-default" onclick="javascript:window.location.href='/Admin/ExportData'">导出当前数据</button>
+            </li>
+        </ul>
+    </div>
+</div>
+@* 额外条件搜索 *@
+<div class="navbar navbar-condition">
+    <div class="container">
+        <form class="navbar-form">
+            <div class="form-group">
+                <label>性别</label>
+                <label>男</label>
+                <input type="checkbox" name="man" value="男" />
+                <label>女</label>
+                <input type="checkbox" name="woman" value="女" />
+            </div>
+            <div class="form-group div-agebox">
+                <label>年龄</label>
+                <input type="text" name="min_age" />~
+                <input type="text" name="max_age" />
+            </div>
+            <div class="form-group">
+                <label>已婚</label>
+                <input type="checkbox" name="married" value="是" />
+                <label>未婚</label>
+                <input type="checkbox" name="nomarried" value="否" />
+            </div>
+            <div class="form-group">
+                <label>子女</label>
+                <label>有</label>
+                <input type="checkbox" name="haschildren" value="有" />
+                <label>无</label>
+                <input type="checkbox" name="nochildren" value="无" />
+            </div>
+            <div class="form-group div-incomebox">
+                <label>年收入</label>
+                <input type="text" name="min_income" />~
+                <input type="text" name="max_income" />
+            </div>
+            <div class="form-group">
+                <label>有车</label>
+                <input type="checkbox" name="hascar" value="是" />
+                <label>无车</label>
+                <input type="checkbox" name="nocar" value="否" />
+            </div>
+            <div class="form-group">
+                <label>有房</label>
+                <input type="checkbox" name="hashouse" value="是" />
+                <label>无房</label>
+                <input type="checkbox" name="nohouse" value="否" />
+            </div>
+            <div class="form-group">
+                <div class="input-append date form-datetime">
+                    <label>时间</label>
+                    <input type="date" name="insertTime" />
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="form-control" type="button" onclick="submitAdditionalCondition();">搜索</button>
+            </div>
+        </form>
+    </div>
+</div>
+<hr />
+<div class="div-table">
+</div>
+
+<script>
+    //$(".form-datetime").datetimepicker({
+    //    format: "yyyy-mm-dd",
+    //    autoclose: true,
+    //    minView: "month",
+    //    maxView: "decade",
+    //    todayBtn: true
+    //});
+
+    function submitCodition() {
+        $.ajax({
+            url: "/Admin/Search",
+            type: "Get",
+            data: { condition: $("input[name='condition']").val() },
+            success: function (data) {
+                $('.div-table').html(data);
+            }
+        });
+    }
+    function submitAdditionalCondition() {
+        var sex = "";
+        var ismarried = "";
+        var children = "";
+        var hascar = "";
+        var hashouse = "";
+
+        // 获取性别
+        if (($("input[name='man']").is(':checked') && $("input[name='woman']").is(':checked')) || (!$("input[name='man']").is(':checked') && !$("input[name='woman']").is(':checked'))) {
+            sex = "";
+        }
+        else {
+            sex = $("input[name='man']").is(':checked') ? $("input[name='man']").val() : $("input[name='woman']").val();
+            console.log(sex);
+        }
+
+        // 获取婚否
+        if (($("input[name='married']").is(':checked') && $("input[name='nomarried']").is(':checked')) || (!$("input[name='married']").is(':checked') && !$("input[name='nomarried']").is(':checked'))) {
+            ismarried = "";
+        }
+        else {
+            ismarried = $("input[name='married']").is(':checked') ? $("input[name='married']").val() : $("input[name='nomarried']").val();
+            console.log(ismarried);
+        }
+
+        // 子女
+        if (($("input[name='haschildren']").is(':checked') && $("input[name='nochildren']").is(':checked')) || (!$("input[name='haschildren']").is(':checked') && !$("input[name='nochildren']").is(':checked'))) {
+            children = "";
+        }
+        else {
+            children = $("input[name='haschildren']").is(':checked') ? $("input[name='haschildren']").val() : $("input[name='nochildren']").val();
+            console.log(children);
+        }
+
+        // 是否有车
+        if (($("input[name='hascar']").is(':checked') && $("input[name='nocar']").is(':checked')) || (!$("input[name='hascar']").is(':checked') && !$("input[name='nocar']").is(':checked'))) {
+            hascar = "";
+        }
+        else {
+            hascar = $("input[name='hascar']").is(':checked') ? $("input[name='hascar']").val() : $("input[name='nocar']").val();
+        }
+
+        // 是否有房
+        if (($("input[name='hashouse']").is(':checked') && $("input[name='nohouse']").is(':checked')) || (!$("input[name='hashouse']").is(':checked') && !$("input[name='nohouse']").is(':checked'))) {
+            hashouse = "";
+        }
+        else {
+            hashouse = $("input[name='hashouse']").is(':checked') ? $("input[name='hashouse']").val() : $("input[name='nohouse']").val();
+        }
+        $.ajax({
+            url: "/Admin/Search",
+            type: "POST",
+            data: {
+                sex: sex,
+                min_age: $("input[name='min_age']").val(),
+                max_age: $("input[name='max_age']").val(),
+                ismarried: ismarried,
+                children: children,
+                hascar: hascar,
+                hashouse: hashouse,
+                min_Income: $("input[name='min_income']").val(),
+                max_Income: $("input[name='max_income']").val(),
+                insertTime: $("input[name='insertTime']").val()
+            },
+            success: function (data) {
+                $('.div-table').html(data);
+            },
+            error: function () {
+                alert("查询失败");
+            }
+
+        });
+    }
+    $(document).ready(function () {
+        $.ajax({
+            url: "/Admin/Search",
+            type: "GET",
+            data: { condition: "" },
+            success: function (data) {
+                $('.div-table').html(data);
+            }
+        });
+    })
+</script>
