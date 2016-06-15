@@ -203,6 +203,68 @@ namespace com.dongfangyunwang.BLL
         }
 
         /// <summary>
+        /// 带用户判断的额外条件查询
+        /// </summary>
+        /// <param name="memberAccount"></param>
+        /// <param name="sex"></param>
+        /// <param name="min_age"></param>
+        /// <param name="max_age"></param>
+        /// <param name="ismarried"></param>
+        /// <param name="children"></param>
+        /// <param name="min_income"></param>
+        /// <param name="max_income"></param>
+        /// <param name="hascar"></param>
+        /// <param name="hashouse"></param>
+        /// <param name="insertTime"></param>
+        /// <returns></returns>
+        public IEnumerable<Information> GetInformationByAnythingswithSpecificMember(string memberAccount, string sex, string min_age, string max_age, string ismarried, string children, string min_income, string max_income, string hascar, string hashouse, string insertTime)
+        {
+            Member member = new Member();
+            member = _memberDAL.SelectByAccount(memberAccount, false);
+
+            List<InformationNoEntity> entityList = new List<InformationNoEntity>();
+            entityList = _informationDAL.SelectByAnythingswithSpecificMember(member.Id, sex, min_age, max_age, ismarried, children, min_income, max_income, hascar, hashouse, insertTime);
+            List<Information> informationList = new List<Information>();
+
+            try
+            {
+                foreach (var item in entityList)
+                {
+                    Information info = new Information();
+                    info.Id = item.Id;
+                    info.Address = item.Address;
+                    info.Age = item.Age;
+                    info.Children = item.Children;
+                    info.CustomerName = item.CustomerName;
+                    info.Email = item.Email;
+                    info.HasCar = item.HasCar;
+                    info.HasHouse = item.HasHouse;
+                    info.Hobby = item.Hobby;
+                    info.Income = item.Income;
+                    info.Industry = item.Industry;
+                    info.InserTime = item.InserTime;
+                    info.IsMarry = item.IsMarry;
+                    info.MemberId = item.MemberId;
+                    info.Occupation = item.Occupation;
+                    info.Phone = item.Phone;
+                    info.QQ = item.QQ;
+                    info.Sex = item.Sex;
+                    info.WebCat = item.WebCat;
+
+                    informationList.Add(info);
+                }
+                return informationList;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log.Write(ex.Message);
+                LogHelper.Log.Write(ex.StackTrace);
+
+                return null;
+            }
+        }
+
+        /// <summary>
         /// 返回information 前count项
         /// </summary>
         /// <param name="count"></param>

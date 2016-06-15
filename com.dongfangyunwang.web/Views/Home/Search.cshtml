@@ -1,0 +1,89 @@
+﻿
+@using com.dongfangyunwang.web.Models
+<link href="~/Content/css/bootstrap-table-expandable.css" rel="stylesheet" />
+<script src="~/Content/js/bootstrap-table-expandable.js"></script>
+<table class="table table-striped table-hover table-expandable table-bordered">
+    <thead>
+        <tr>
+            <th>客户姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>婚否</th>
+            <th>子女</th>
+            <th>地址省市</th>
+            <th>所属行业</th>
+            <th>职业</th>
+            <th>年收入</th>
+            <th>爱好</th>
+            <th>是否有车</th>
+            <th>是否有房</th>
+        </tr>
+    </thead>
+    @* 表头顺序  "录入时间","收集员","客户姓名","性别","年龄","婚否","子女","电话","QQ","微信","邮箱","地址省市","所属行业","职业","年收入","爱好","是否有车","是否有房" *@
+    <tbody>
+        @if (ViewData["InformationList"] == null)
+        {
+        }
+        else
+        {
+            foreach (var item in ViewData["InformationList"] as List<InformationModel>)
+            {
+                <tr>
+                    <td><small>@item.CustomerName</small></td>
+                    <td><small>@item.Sex</small></td>
+                    <td><small>@item.Age</small></td>
+                    <td><small>@item.IsMarry</small></td>
+                    <td><small>@item.Children</small></td>
+                    <td><small>@item.Address</small></td>
+                    <td><small>@item.Industry</small></td>
+                    <td><small>@item.Occupation</small></td>
+                    <td><small>@item.Income</small></td>
+                    <td><small>@item.Hobby</small></td>
+                    <td><small>@item.HasCar</small></td>
+                    <td><small>@item.HasHouse</small></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <h5><strong>录入时间</strong></h5>
+                        <small>@item.InserTime</small>
+                    </td>
+                    <td colspan="2">
+                        <h5><strong>收集员</strong></h5>
+                        <small>@item.MemberAccount</small>
+                    </td>
+
+                    <td colspan="1">
+                        <h5><strong>客户电话</strong></h5>
+                        <small>@item.Phone</small>
+                    </td>
+                    <td colspan="1">
+                        <h5><strong>客户QQ</strong></h5>
+                        <small>@item.QQ</small>
+                    </td>
+                    <td colspan="1">
+                        <h5><strong>客户微信号</strong></h5>
+                        <small>@item.WebCat</small>
+                    </td>
+                    <td colspan="1">
+                        <h5><strong>客户邮箱</strong></h5>
+                        <small>@item.Email</small>
+                    </td>
+                    @for (int i = 0; i < (ViewData["TableHeaderItem"] as List<string>).Count; i++)
+                    {
+                        foreach (var fr in item.FollowList)
+                        {
+                            if (fr.FollowName == (ViewData["TableHeaderItem"] as List<string>)[i])
+                            {
+                                <td colspan="1">
+                                    <h5><strong>@fr.FollowName</strong></h5>
+                                    <small>@fr.FollowValue</small>
+                                </td>
+                            }
+                        }
+                    }
+                </tr>
+            }
+        }
+    </tbody>
+</table>

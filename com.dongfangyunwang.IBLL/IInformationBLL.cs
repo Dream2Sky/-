@@ -20,5 +20,7 @@ namespace com.dongfangyunwang.IBLL
         bool Add(Information info);
 
         IEnumerable<Information> GetInformationByAnythings(string sex, string min_age, string max_age, string ismarried ,string children, string min_income, string max_income, string hascar, string hashouse, string insertTime);
+
+        IEnumerable<Information> GetInformationByAnythingswithSpecificMember(string memberAccount, string sex, string min_age, string max_age, string ismarried, string children, string min_income, string max_income, string hascar, string hashouse, string insertTime);
     }
 }

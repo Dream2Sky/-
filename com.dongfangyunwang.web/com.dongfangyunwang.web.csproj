@@ -200,6 +200,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Follow\Items.cshtml" />
     <Content Include="Views\Member\List.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Information\ImportInformationwithSpecificMember.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

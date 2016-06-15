@@ -29,8 +29,9 @@
         .footer {
             text-align: center;
         }
-        .navbar{
-            margin-bottom:10px;
+
+        .navbar {
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -66,9 +67,19 @@
                         <a href="/Member/List">添加新用户</a>
                     </li>
                 }
-                <li>
-                    <a href="/Information/ImportInformation">数据</a>
-                </li>
+                @if (System.Web.HttpContext.Current.Session["admin"] != null)
+                {
+                    <li>
+                        <a href="/Information/ImportInformation">数据</a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="/Information/ImportInformationwithSpecificMember">数据</a>
+                    </li>
+                }
+
             </ul>
         </div>
     </div>

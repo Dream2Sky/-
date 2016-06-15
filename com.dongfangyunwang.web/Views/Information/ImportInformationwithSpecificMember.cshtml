@@ -1,0 +1,240 @@
+﻿
+@{
+    ViewBag.Title = "ImportInformationwithSpecificMember";
+    Layout = "~/Views/LayoutPage.cshtml";
+}
+
+@using com.dongfangyunwang.entity
+<style>
+    .td-btn {
+        text-align: right;
+    }
+
+    .div-single-data, .div-excel-data {
+        display: none;
+    }
+
+    .alert-active {
+        display: block;
+    }
+</style>
+
+<div class="alert alert-error div-single-data">
+    <a class="close" data-dismiss="alert">×</a>
+    <strong>添加此数据项失败! </strong>请联系管理员
+</div>
+<label>
+    数据单条录入
+</label>
+<form action="/Information/ImportDatawithSpecificMember" method="post">
+    <table class="table">
+        <tr>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">客户姓名</span>
+                    <input type="text" class="form-control" placeholder="客户姓名" name="customerName" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">性别</span>
+                    <input type="text" class="form-control" placeholder="性别" name="sex" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">年龄</span>
+                    <input type="text" class="form-control" placeholder="年龄" name="age" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">婚否</span>
+                    <input type="text" class="form-control" placeholder="婚否" name="ismarry" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">子女</span>
+                    <input type="text" class="form-control" placeholder="子女" name="children" aria-describedby="basic-addon1">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">地址省市</span>
+                    <input type="text" class="form-control" placeholder="地址省市" name="address" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">所属行业</span>
+                    <input type="text" class="form-control" placeholder="所属行业" name="industry" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">职业</span>
+                    <input type="text" class="form-control" placeholder="职业" name="occupation" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">年收入</span>
+                    <input type="text" class="form-control" placeholder="年收入" name="income" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">爱好</span>
+                    <input type="text" class="form-control" placeholder="爱好" name="hobby" aria-describedby="basic-addon1">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">客户电话</span>
+                    <input type="text" class="form-control" placeholder="客户电话" name="phone" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">QQ</span>
+                    <input type="text" class="form-control" placeholder="QQ" name="qq" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">微信号</span>
+                    <input type="text" class="form-control" placeholder="微信号" name="webcat" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">邮箱</span>
+                    <input type="text" class="form-control" placeholder="邮箱" name="email" aria-describedby="basic-addon1">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">是否有车</span>
+                    <input type="text" class="form-control" placeholder="是否有车" name="hascar" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">是否有房</span>
+                    <input type="text" class="form-control" placeholder="是否有房" name="hashouse" aria-describedby="basic-addon1">
+                </div>
+            </td>
+        </tr>
+        @for (int i = 0; i < (int)((ViewData["FollowItems"] as IEnumerable<Follow>).Count() / 3); i++)
+        {
+            <tr>
+                @for (int j = i * 3; j < 3 * (i + 1); j++)
+                {
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem)</span>
+                            <input type="text" class="form-control input-follow" placeholder="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem)" name="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem)" aria-describedby="basic-addon1">
+                        </div>
+                    </td>
+                }
+            </tr>
+        }
+        <tr>
+            @for (int i = 0; i < ((ViewData["FollowItems"] as IEnumerable<Follow>).Count() % 3); i++)
+            {
+                <td>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count) - i - 1).FollowItem)</span>
+                        <input type="text" class="form-control input-follow" placeholder="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count)-i-1).FollowItem)" name="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count)-i-1).FollowItem)" aria-describedby="basic-addon1">
+                    </div>
+                </td>
+            }
+        </tr>
+        <tr>
+            <td colspan="5" class="td-btn">
+                <button class="btn btn-primary" type="button" onclick="AddInformation();">录入</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<div class="alert alert-error div-excel-data">
+    <a class="close" data-dismiss="alert">×</a>
+    <strong>导入数据失败! </strong>请检查您的上传的excel表格格式是否正确
+</div>
+<form id="form-data">
+    <div class="form-group">
+        <label for="exampleInputFile">Excel数据文件导入</label>
+        <input type="file" name="fileCollection" accept=".xls,.xlsx">
+        <p class="help-block">请选择要导入的excel文件.</p>
+    </div>
+    <button class="btn btn-primary" type="button" onclick="UploadFile();">导入</button>
+</form>
+
+<script>
+    function AddInformation() {
+        var json = new Object();
+        json.customerName = $("input[name='customerName']").val();
+        json.sex = $("input[name='sex']").val();
+        json.age = $("input[name='age']").val();
+        json.ismarry = $("input[name='ismarry']").val();
+        json.children = $("input[name='children']").val();
+        json.address = $("input[name='address']").val();
+        json.industry = $("input[name='industry']").val();
+        json.occupation = $("input[name='occupation']").val();
+        json.income = $("input[name='income']").val();
+        json.hobby = $("input[name='hobby']").val();
+        json.phone = $("input[name='phone']").val();
+        json.qq = $("input[name='qq']").val();
+        json.webcat = $("input[name='webcat']").val();
+        json.email = $("input[name='email']").val();
+        json.hascar = $("input[name='hascar']").val();
+        json.hashouse = $("input[name='hashouse']").val();
+
+        var str = JSON.stringify(json);
+        $(".input-follow").each(function () {
+            str = str.replace("}", ",\"" + $(this).attr('name') + "\":" + "\"" + $(this).val() + "\"}");
+        });
+
+        console.log(str);
+        $.ajax({
+            url: "/Information/ImportDatawithSpecificMember",
+            type: "POST",
+            data: str,
+            success: function (data) {
+                if (data == "True") {
+                    window.location.href = "/Home/Index";
+                }
+                else {
+                    $('.div-single-data').addclass("alert-active");
+                }
+            }
+        });
+    }
+    function UploadFile() {
+        var formData = new FormData($("#form-data")[0]);
+        $.ajax({
+            url: '/Information/Upload',
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (returndata) {
+                alert("导入数据成功");
+                window.location.href = "/Home/Index";
+            },
+            error: function (returndata) {
+                $('.div-excel-data').addclass('alert-active');
+            }
+        });
+    }
+</script>

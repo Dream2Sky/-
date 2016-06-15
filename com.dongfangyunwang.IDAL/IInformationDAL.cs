@@ -15,5 +15,7 @@ namespace com.dongfangyunwang.IDAL
         IEnumerable<Information> SelectPartofSet(int count);
         IEnumerable<Information> SelectPartofSetwithSpecificMember(int count, Guid memberId);
         List<InformationNoEntity> SelectByAnythings(string sex, string min_age, string max_age, string ismarried, string children, string min_income, string max_income, string hascar, string hashouse, string insertTime);
+        List<InformationNoEntity> SelectByAnythingswithSpecificMember(Guid memberId, string sex, string min_age, string max_age, string ismarried, string children, string min_income, string max_income, string hascar, string hashouse, string insertTime);
+
     }
 }

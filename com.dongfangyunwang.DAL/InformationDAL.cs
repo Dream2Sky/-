@@ -65,6 +65,20 @@ namespace com.dongfangyunwang.DAL
             }
         }
 
+        /// <summary>
+        /// 额外条件查询
+        /// </summary>
+        /// <param name="sex"></param>
+        /// <param name="min_age"></param>
+        /// <param name="max_age"></param>
+        /// <param name="ismarried"></param>
+        /// <param name="children"></param>
+        /// <param name="min_income"></param>
+        /// <param name="max_income"></param>
+        /// <param name="hascar"></param>
+        /// <param name="hashouse"></param>
+        /// <param name="insertTime"></param>
+        /// <returns></returns>
         public List<InformationNoEntity> SelectByAnythings(string sex, string min_age, string max_age, string ismarried, string children, string min_income, string max_income, string hascar, string hashouse, string insertTime)
         {
             for (int i = 0; i < max_age.Length - min_age.Length; i++)
@@ -303,6 +317,179 @@ namespace com.dongfangyunwang.DAL
                 LogHelper.Log.Write(ex.Message);
                 LogHelper.Log.Write(ex.StackTrace);
 
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 带memberId验证的额外条件查询
+        /// </summary>
+        /// <param name="memberId"></param>
+        /// <param name="sex"></param>
+        /// <param name="min_age"></param>
+        /// <param name="max_age"></param>
+        /// <param name="ismarried"></param>
+        /// <param name="children"></param>
+        /// <param name="min_income"></param>
+        /// <param name="max_income"></param>
+        /// <param name="hascar"></param>
+        /// <param name="hashouse"></param>
+        /// <param name="insertTime"></param>
+        /// <returns></returns>
+        public List<InformationNoEntity> SelectByAnythingswithSpecificMember(Guid memberId, string sex, string min_age, string max_age, string ismarried, string children, string min_income, string max_income, string hascar, string hashouse, string insertTime)
+        {
+            for (int i = 0; i < max_age.Length - min_age.Length; i++)
+            {
+                min_age = "0" + min_age;
+            }
+            for (int i = 0; i < max_income.Length - min_income.Length; i++)
+            {
+                min_income = "0" + max_income;
+            }
+            try
+            {
+
+                var result = from info in db.InformationSet
+                             where info.Sex.Contains(sex) && info.IsMarry.Contains(ismarried) && info.Children.Contains(children) && info.HasCar.Contains(hascar) && info.HasHouse.Contains(hashouse) && info.InserTime.Contains(insertTime)
+                             where info.MemberId == memberId
+                             select new InformationNoEntity
+                             {
+                                 Id = info.Id,
+                                 Address = info.Address,
+                                 Age = info.Age,
+                                 Children = info.Children,
+                                 CustomerName = info.CustomerName,
+                                 Email = info.Email,
+                                 HasCar = info.HasCar,
+                                 HasHouse = info.HasHouse,
+                                 Hobby = info.Hobby,
+                                 Income = info.Income,
+                                 Industry = info.Industry,
+                                 InserTime = info.InserTime,
+                                 IsMarry = info.IsMarry,
+                                 MemberId = info.MemberId,
+                                 Occupation = info.Occupation,
+                                 Phone = info.Phone,
+                                 QQ = info.QQ,
+                                 Sex = info.Sex,
+                                 WebCat = info.WebCat
+                             };
+
+                if (!string.IsNullOrEmpty(min_age))
+                {
+                    result = from info in result
+                             where string.Compare(info.Age, min_age) >= 0
+                             select new InformationNoEntity
+                             {
+                                 Id = info.Id,
+                                 Address = info.Address,
+                                 Age = info.Age,
+                                 Children = info.Children,
+                                 CustomerName = info.CustomerName,
+                                 Email = info.Email,
+                                 HasCar = info.HasCar,
+                                 HasHouse = info.HasHouse,
+                                 Hobby = info.Hobby,
+                                 Income = info.Income,
+                                 Industry = info.Industry,
+                                 InserTime = info.InserTime,
+                                 IsMarry = info.IsMarry,
+                                 MemberId = info.MemberId,
+                                 Occupation = info.Occupation,
+                                 Phone = info.Phone,
+                                 QQ = info.QQ,
+                                 Sex = info.Sex,
+                                 WebCat = info.WebCat
+                             };
+                }
+                if (!string.IsNullOrEmpty(max_age))
+                {
+                    result = from info in result
+                             where string.Compare(info.Age, max_age) <= 0
+                             select new InformationNoEntity
+                             {
+                                 Id = info.Id,
+                                 Address = info.Address,
+                                 Age = info.Age,
+                                 Children = info.Children,
+                                 CustomerName = info.CustomerName,
+                                 Email = info.Email,
+                                 HasCar = info.HasCar,
+                                 HasHouse = info.HasHouse,
+                                 Hobby = info.Hobby,
+                                 Income = info.Income,
+                                 Industry = info.Industry,
+                                 InserTime = info.InserTime,
+                                 IsMarry = info.IsMarry,
+                                 MemberId = info.MemberId,
+                                 Occupation = info.Occupation,
+                                 Phone = info.Phone,
+                                 QQ = info.QQ,
+                                 Sex = info.Sex,
+                                 WebCat = info.WebCat
+                             };
+                }
+                if (!string.IsNullOrEmpty(min_income))
+                {
+                    result = from info in result
+                             where string.Compare(info.Income, min_income) >= 0
+                             select new InformationNoEntity
+                             {
+                                 Id = info.Id,
+                                 Address = info.Address,
+                                 Age = info.Age,
+                                 Children = info.Children,
+                                 CustomerName = info.CustomerName,
+                                 Email = info.Email,
+                                 HasCar = info.HasCar,
+                                 HasHouse = info.HasHouse,
+                                 Hobby = info.Hobby,
+                                 Income = info.Income,
+                                 Industry = info.Industry,
+                                 InserTime = info.InserTime,
+                                 IsMarry = info.IsMarry,
+                                 MemberId = info.MemberId,
+                                 Occupation = info.Occupation,
+                                 Phone = info.Phone,
+                                 QQ = info.QQ,
+                                 Sex = info.Sex,
+                                 WebCat = info.WebCat
+                             };
+                }
+                if (!string.IsNullOrEmpty(max_income))
+                {
+                    result = from info in result
+                             where string.Compare(info.Income, max_income) <= 0
+                             select new InformationNoEntity
+                             {
+                                 Id = info.Id,
+                                 Address = info.Address,
+                                 Age = info.Age,
+                                 Children = info.Children,
+                                 CustomerName = info.CustomerName,
+                                 Email = info.Email,
+                                 HasCar = info.HasCar,
+                                 HasHouse = info.HasHouse,
+                                 Hobby = info.Hobby,
+                                 Income = info.Income,
+                                 Industry = info.Industry,
+                                 InserTime = info.InserTime,
+                                 IsMarry = info.IsMarry,
+                                 MemberId = info.MemberId,
+                                 Occupation = info.Occupation,
+                                 Phone = info.Phone,
+                                 QQ = info.QQ,
+                                 Sex = info.Sex,
+                                 WebCat = info.WebCat
+                             };
+                }
+
+                return result.ToList();
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log.Write(ex.Message);
+                LogHelper.Log.Write(ex.StackTrace);
                 return null;
             }
         }

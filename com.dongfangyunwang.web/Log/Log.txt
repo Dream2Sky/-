@@ -629,3 +629,22 @@ Object reference not set to an instance of an object.
 6/14/2016 4:20:04 PM : 
    at com.dongfangyunwang.BLL.InformationBLL.GetInformationByAnythings(String sex, String min_age, String max_age, String ismarried, String children, String min_income, String max_income, String hascar, String hashouse, String insertTime) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.BLL\InformationBLL.cs:line 101
 ========================================================================
+6/15/2016 10:02:17 AM : 
+String reference not set to an instance of a String.
+Parameter name: s
+========================================================================
+6/15/2016 10:02:17 AM : 
+   at System.Text.Encoding.GetBytes(String s)
+   at com.jiechengbao.common.EncryptManager.SHA1(String str) in D:\documents\visual studio 2015\Projects\捷诚宝\com.jiechengbao.common\EncryptManager.cs:line 32
+   at com.dongfangyunwang.BLL.MemberBLL.Login(String account, String password, String isadmin) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.BLL\MemberBLL.cs:line 86
+========================================================================
+6/15/2016 10:02:17 AM : 
+String reference not set to an instance of a String.
+Parameter name: s
+========================================================================
+6/15/2016 10:02:17 AM : 
+   at System.Text.Encoding.GetBytes(String s)
+   at com.jiechengbao.common.EncryptManager.SHA1(String str) in D:\documents\visual studio 2015\Projects\捷诚宝\com.jiechengbao.common\EncryptManager.cs:line 32
+   at com.dongfangyunwang.BLL.MemberBLL.Login(String account, String password, String isadmin) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.BLL\MemberBLL.cs:line 99
+   at com.dongfangyunwang.web.Controllers.AccountController.Login(AccountModel model) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.web\Controllers\AccountController.cs:line 53
+========================================================================

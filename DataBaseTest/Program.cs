@@ -166,17 +166,20 @@ namespace DataBaseTest
             //Console.Read();
 
 
-            InformationDAL dal = new InformationDAL();
-            List<Information> inforList = dal.Test();
+            //InformationDAL dal = new InformationDAL();
+            //List<Information> inforList = dal.Test();
 
-            Console.WriteLine("Start");
+            //Console.WriteLine("Start");
 
-            foreach (var item in inforList)
-            {
-                Console.WriteLine(item.Sex);
-            }
+            //foreach (var item in inforList)
+            //{
+            //    Console.WriteLine(item.Sex);
+            //}
 
-            Console.WriteLine("Finish");
+            //Console.WriteLine("Finish");
+            //Console.Read();
+
+            Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd"));
             Console.Read();
         }
     }
