@@ -50,18 +50,22 @@ namespace com.dongfangyunwang.web.Controllers
                         return RedirectToAction("Login", "Account", new { msg = msg });
                     }
                 }
-                else
+                else if(model.isadmin == "n")
                 {
                     if (_memberBLL.Login(model.account, model.password, model.isadmin))
                     {
                         System.Web.HttpContext.Current.Session["member"] = model.account;
                         return RedirectToAction("Index", "Home");
                     }
-                    else
+                    else 
                     {
                         msg = "账号或密码错误";
                         return RedirectToAction("Login", "Account", new { msg = msg });
                     }
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Account", new { msg = "请选择登陆角色 [管理员] 还是 [一般用户]" });
                 }
             }
             catch (Exception ex)
