@@ -768,3 +768,49 @@ error:Validation failed for one or more entities. See 'EntityValidationErrors' p
    at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 144
    at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 66
 ========================================================================
+6/16/2016 10:48:18 AM : 
+Value cannot be null.
+Parameter name: input
+========================================================================
+6/16/2016 10:48:18 AM : 
+   at System.Guid.Parse(String input)
+   at com.dongfangyunwang.web.Controllers.InformationController.Update() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.web\Controllers\InformationController.cs:line 373
+========================================================================
+6/16/2016 10:49:25 AM : 
+Value cannot be null.
+Parameter name: input
+========================================================================
+6/16/2016 10:49:25 AM : 
+   at System.Guid.Parse(String input)
+   at com.dongfangyunwang.web.Controllers.InformationController.Update() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.web\Controllers\InformationController.cs:line 373
+========================================================================
+6/16/2016 10:52:37 AM : 
+error:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,
+========================================================================
+6/16/2016 10:52:37 AM : 
+error:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,
+========================================================================
+6/16/2016 10:52:37 AM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 144
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 66
+========================================================================
+6/16/2016 10:52:37 AM : 
+error:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,
+========================================================================
+6/16/2016 10:52:37 AM : 
+error:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,
+========================================================================
+6/16/2016 10:52:37 AM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 144
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Update(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 114
+========================================================================
+6/16/2016 10:52:38 AM : 
+error:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,
+========================================================================
+6/16/2016 10:52:38 AM : 
+error:Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,
+========================================================================
+6/16/2016 10:52:38 AM : 
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 144
+   at com.dongfangyunwang.DAL.DataBaseDAL`1.Update(T t) in D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:line 114
+========================================================================

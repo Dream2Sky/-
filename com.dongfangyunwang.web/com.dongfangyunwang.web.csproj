@@ -206,6 +206,7 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Information\ImportInformationwithSpecificMember.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Information\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

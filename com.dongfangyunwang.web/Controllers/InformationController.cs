@@ -31,6 +31,7 @@ namespace com.dongfangyunwang.web.Controllers
             _informationBLL = informationBLL;
         }
 
+        #region 导入数据  
         [IsAdmin]
         public ActionResult ImportInformation()
         {
@@ -99,10 +100,8 @@ namespace com.dongfangyunwang.web.Controllers
                     else
                     {
                         return Json("False", JsonRequestBehavior.AllowGet);
-
                     }
                     #endregion
-
                 }
                 catch (Exception ex)
                 {
@@ -115,7 +114,7 @@ namespace com.dongfangyunwang.web.Controllers
             else
             {
                 return Json("False", JsonRequestBehavior.AllowGet);
-            } 
+            }
         }
 
         #region 注释
@@ -336,6 +335,188 @@ namespace com.dongfangyunwang.web.Controllers
                 return Json("False", JsonRequestBehavior.AllowGet);
             }
         }
+
+        #endregion
+
+        #region 修改数据
+
+        /// <summary>
+        ///  修改information的页面
+        /// </summary>
+        /// <param name="informationId"></param>
+        /// <returns></returns>
+        public ActionResult Update(string informationId)
+        {
+            InformationModel model = GetInformationModel(informationId);
+            List<Follow> frList = _followBLL.GetAllFollow().ToList();
+            ViewData["FollowItems"] = frList;
+            ViewBag.Count = frList.Count();
+            return View(model);
+        }
+
+        /// <summary>
+        /// 更新 information 和 FollowRecord
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Update()
+        {
+            if (Request.IsAjaxRequest())
+            {
+                var stream = HttpContext.Request.InputStream;
+                string json = new StreamReader(stream).ReadToEnd();
+
+                try
+                {
+                    //JArray jarray = (JArray)JsonConvert.DeserializeObject(json);
+                    List<KeyValuePair<string, string>> kvList = JsonToList(json);
+                    Information infor = _informationBLL.GetInformationById(Guid.Parse(kvList.SingleOrDefault(n => n.Key == "id").Value));
+
+                    #region 给information赋值
+
+                    infor.Address = kvList.Where(n => n.Key == "address").SingleOrDefault().Value;
+                    infor.Age = kvList.SingleOrDefault(n => n.Key == "age").Value;
+                    infor.Children = kvList.SingleOrDefault(n => n.Key == "children").Value;
+
+                    infor.Email = kvList.SingleOrDefault(n => n.Key == "email").Value;
+                    infor.HasCar = kvList.SingleOrDefault(n => n.Key == "hascar").Value;
+                    infor.HasHouse = kvList.SingleOrDefault(n => n.Key == "hashouse").Value;
+                    infor.Hobby = kvList.SingleOrDefault(n => n.Key == "hobby").Value;
+
+                    infor.Income = kvList.SingleOrDefault(n => n.Key == "income").Value;
+                    infor.Industry = kvList.SingleOrDefault(n => n.Key == "industry").Value;
+
+                    infor.IsMarry = kvList.SingleOrDefault(n => n.Key == "ismarry").Value;
+
+                    infor.Occupation = kvList.SingleOrDefault(n => n.Key == "occupation").Value;
+                    infor.Phone = kvList.SingleOrDefault(n => n.Key == "phone").Value;
+                    infor.QQ = kvList.SingleOrDefault(n => n.Key == "qq").Value;
+                    infor.Sex = kvList.SingleOrDefault(n => n.Key == "sex").Value;
+                    infor.WebCat = kvList.SingleOrDefault(n => n.Key == "webcat").Value;
+
+                    #endregion
+
+                    #region 添加FollowRecord
+                    if (_informationBLL.Update(infor))
+                    {
+
+                        // 修改information 成功后
+                        // 获取当前FollowRecord中 inforid == 刚才的infor.id的 跟进项列表
+                        List<FollowRecord> frList = _followRecordBLL.GetFollowRecordByInformationId(infor.Id).ToList();
+
+                        // 获取当前所有的跟进项
+
+                        // 由于存在 跟进项表中新添加了跟进项 而 FollowRecord 中没有更新 这样的情况
+
+                        // 所以 有时 frList 的项 会比 followList 的项会少
+                        
+                        // 所以在更新followrecord时 要先判断 操作的 FollowRecord 是否为空
+
+                        // 如果为空则新添加 followrecord  如果不为空 则更新原来的数据
+
+                        List<Follow> followList = _followBLL.GetAllFollow().ToList();
+
+                        // 开始更新跟进项
+                        foreach (var item in followList)
+                        {
+                            // 这里 keyvaluepair<string,string> 的项数 一定是和 followList的项数相等的  
+                            // 所以不从这里判断是否有新的跟进项
+                            KeyValuePair<string, string> kvp = kvList.SingleOrDefault(n => n.Key == item.FollowItem);
+
+                            FollowRecord fr = frList.SingleOrDefault(n => n.FollowId == item.Id);
+
+                            if (fr == null)
+                            {
+                                fr = new FollowRecord();
+                                fr.Id = Guid.NewGuid();
+                                fr.FollowId = item.Id;
+                                fr.InforId = infor.Id;
+                                fr.FollowValue = kvp.Value;
+
+                                _followRecordBLL.Add(fr);
+                            }
+                            else
+                            {
+                                fr.FollowValue = kvp.Value;
+                                _followRecordBLL.Update(fr);
+                            }
+                        }
+
+                        return Json("True", JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json("False", JsonRequestBehavior.AllowGet);
+                    }
+                    #endregion
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.Log.Write(ex.Message);
+                    LogHelper.Log.Write(ex.StackTrace);
+
+                    return Json("False", JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json("False", JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        /// <summary>
+        /// 根据InformationID 获取 informationModel
+        /// </summary>
+        /// <param name="informationId"></param>
+        /// <returns></returns>
+        private InformationModel GetInformationModel(string informationId)
+        {
+            try
+            {
+                // 根据 InformationId 获取到一个 Infor
+                Information infor = _informationBLL.GetInformationById(Guid.Parse(informationId));
+
+                if (infor == null)
+                {
+                    return null;
+                }
+
+                // 开始构造 InformationModel
+
+                // 初始化
+                InformationModel model = new InformationModel(infor);
+
+                // 先根据informationId 找到这个id下面的FollowRecord List
+                List<FollowRecord> frList = _followRecordBLL.GetFollowRecordByInformationId(Guid.Parse(informationId)).ToList();
+
+                // 再构造 FollowModel List
+                List<FollowModel> fmList = new List<FollowModel>();
+                foreach (var item in frList)
+                {
+                    FollowModel fm = new FollowModel();
+                    fm.FollowName = _followBLL.GetFollow(item.FollowId).FollowItem;
+                    fm.FollowValue = item.FollowValue;
+
+                    fmList.Add(fm);
+                }
+
+                model.FollowList = fmList;
+
+                // 最后 获取到这个information的 Member 大功告成
+
+                model.MemberAccount = _memberBLL.GetMemberById(model.MemberId).Account;
+
+                return model;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log.Write(ex.Message);
+                LogHelper.Log.Write(ex.StackTrace);
+                return null;
+            }
+        }
+
+        #endregion
 
         #region 通用方法
 

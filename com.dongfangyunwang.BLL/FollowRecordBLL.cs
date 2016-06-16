@@ -26,5 +26,10 @@ namespace com.dongfangyunwang.BLL
         {
             return _followRecordDAL.SelectByInformationId(infoId);
         }
+
+        public bool Update(FollowRecord follow)
+        {
+            return _followRecordDAL.Update(follow);
+        }
     }
 }

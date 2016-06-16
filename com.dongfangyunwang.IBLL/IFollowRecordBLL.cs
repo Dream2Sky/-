@@ -11,5 +11,6 @@ namespace com.dongfangyunwang.IBLL
     {
         IEnumerable<FollowRecord> GetFollowRecordByInformationId(Guid infoId);
         bool Add(FollowRecord follow);
+        bool Update(FollowRecord follow);
     }
 }

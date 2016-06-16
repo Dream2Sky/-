@@ -264,6 +264,11 @@ namespace com.dongfangyunwang.BLL
             }
         }
 
+        public Information GetInformationById(Guid id)
+        {
+            return _informationDAL.SelectById(id);
+        }
+
         /// <summary>
         /// 返回information 前count项
         /// </summary>
@@ -298,6 +303,11 @@ namespace com.dongfangyunwang.BLL
             member = _memberDAL.SelectByAccount(memberAccount, false);
 
             return _informationDAL.SelectPartofSetwithSpecificMember(count, member.Id);
+        }
+
+        public bool Update(Information info)
+        {
+            return _informationDAL.Update(info);
         }
     }
 }
