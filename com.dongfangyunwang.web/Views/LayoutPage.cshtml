@@ -28,6 +28,10 @@
             padding-bottom: 20px;
         }
 
+        .active{
+            background:#EEEEEE;
+        }
+
         .footer {
             margin-top:100px;
             text-align: center;
@@ -49,31 +53,31 @@
             <ul class="nav navbar-nav">
                 @if (System.Web.HttpContext.Current.Session["admin"] == null)
                 {
-                    <li class="active">
+                    <li class="nav-li-home">
                         <a href="/Home/Index">首页</a>
                     </li>
-                    <li>
+                    <li class="nav-li-information">
                         <a href="/Information/ImportInformationwithSpecificMember">数据</a>
                     </li>
-                    <li>
+                    <li class="nav-li-account">
                         <a href="/Account/ResetPassword">账户</a>
                     </li>
                 }
                 else
                 {
-                    <li class="active">
+                    <li class="nav-li-admin">
                         <a href="/Admin/Index">首页</a>
                     </li>
-                    <li>
+                    <li class="nav-li-follow">
                         <a href="/Follow/Items">跟进设置</a>
                     </li>
-                    <li>
+                    <li class="nav-li-member">
                         <a href="/Member/List">添加新用户</a>
                     </li>
-                    <li>
-                        <a href="/Information/ImportInformation">数据</a>
+                    <li class="nav-li-information">
+                        <a href="/Information/ImportInformation">数据录入</a>
                     </li>
-                    <li>
+                    <li class="nav-li-account">
                         <a href="/Account/ResetPassword">账户</a>
                     </li>
                 }
@@ -88,11 +92,30 @@
     <div class="container">
         @RenderBody()
     </div>
-
     <div class="container-fluid footer">
         <hr />
-        <p><a href="#">app.szosi.com</a></p>
+        <p><a href="/数据模板.xls">数据模板下载</a></p>
+        <p><a href="#">东方云网</a></p>
     </div>
-
+    <script>
+        $(document).ready(function () {
+            var currentController = window.location.pathname.split("/", 2)[1];
+            if (currentController == "Admin") {
+                $('.nav-li-admin').addClass("active");
+            }
+            else if (currentController == "Account") {
+                $('.nav-li-account').addClass("active");
+            }
+            else if (currentController == "Member") {
+                $('.nav-li-member').addClass("active");
+            }
+            else if (currentController == "Information") {
+                $('.nav-li-information').addClass("active");
+            }
+            else if (currentController == "Follow") {
+                $('.nav-li-follow').addClass("active");
+            }
+        });
+    </script>
 </body>
 </html>

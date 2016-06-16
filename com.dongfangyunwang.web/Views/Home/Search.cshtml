@@ -71,6 +71,18 @@
                         <h5><strong>客户邮箱</strong></h5>
                         <small>@item.Email</small>
                     </td>
+                    <td colspan="2">
+                        <h5><strong>备注1</strong></h5>
+                        <small>@item.Note1</small>
+                    </td>
+                    <td colspan="2">
+                        <h5><strong>备注2</strong></h5>
+                        <small>@item.Note2</small>
+                    </td>
+                    <td colspan="2">
+                        <h5><strong>备注3</strong></h5>
+                        <small>@item.Note3</small>
+                    </td>
                     @for (int i = 0; i < (ViewData["TableHeaderItem"] as List<string>).Count; i++)
                     {
                         foreach (var fr in item.FollowList)

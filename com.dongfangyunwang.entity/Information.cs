@@ -63,6 +63,21 @@ namespace com.dongfangyunwang.entity
         /// </summary>
         [MaxLength(4)]
         public string HasHouse { get; set; }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        [MaxLength(255)]
+        public string Note1 { get; set; }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        [MaxLength(255)]
+        public string Note2 { get; set; }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        [MaxLength(255)]
+        public string Note3 { get; set; }
     }
 
 }

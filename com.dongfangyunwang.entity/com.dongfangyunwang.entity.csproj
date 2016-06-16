@@ -87,6 +87,10 @@
     <Compile Include="Migrations\201606120911145_DropColumn_Follow_FollowName.Designer.cs">
       <DependentUpon>201606120911145_DropColumn_Follow_FollowName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606160417492_AddColumns_Information.cs" />
+    <Compile Include="Migrations\201606160417492_AddColumns_Information.Designer.cs">
+      <DependentUpon>201606160417492_AddColumns_Information.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606120911145_DropColumn_Follow_FollowName.resx">
       <DependentUpon>201606120911145_DropColumn_Follow_FollowName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606160417492_AddColumns_Information.resx">
+      <DependentUpon>201606160417492_AddColumns_Information.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

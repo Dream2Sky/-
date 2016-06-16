@@ -45,6 +45,18 @@ namespace com.dongfangyunwang.IDAL
         /// 是否有房
         /// </summary>
         public string HasHouse { get; set; }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        public string Note1 { get; set; }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        public string Note2 { get; set; }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        public string Note3 { get; set; }
 
     }
 }

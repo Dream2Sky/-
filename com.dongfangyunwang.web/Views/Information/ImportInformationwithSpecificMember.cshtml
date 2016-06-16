@@ -146,6 +146,24 @@
                     </select>
                 </div>
             </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">备注1</span>
+                    <input type="text" class="form-control" placeholder="备注1" name="note1" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">备注2</span>
+                    <input type="text" class="form-control" placeholder="备注2" name="note2" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">备注3</span>
+                    <input type="text" class="form-control" placeholder="备注3" name="note3" aria-describedby="basic-addon1">
+                </div>
+            </td>
         </tr>
         @for (int i = 0; i < (int)((ViewData["FollowItems"] as IEnumerable<Follow>).Count() / 3); i++)
         {
@@ -253,6 +271,9 @@
             json.email = $("input[name='email']").val();
             json.hascar = $("select[name='hascar']").val();
             json.hashouse = $("select[name='hashouse']").val();
+            json.note1 = $("input[name='note1']").val();
+            json.note2 = $("input[name='note2']").val();
+            json.note3 = $("input[name='note3']").val();
 
             var str = JSON.stringify(json);
             $(".input-follow").each(function () {

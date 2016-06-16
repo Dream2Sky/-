@@ -77,7 +77,9 @@ namespace com.dongfangyunwang.web.Controllers
                     infor.QQ = kvList.SingleOrDefault(n => n.Key == "qq").Value;
                     infor.Sex = kvList.SingleOrDefault(n => n.Key == "sex").Value;
                     infor.WebCat = kvList.SingleOrDefault(n => n.Key == "webcat").Value;
-
+                    infor.Note1 = kvList.SingleOrDefault(n => n.Key == "note1").Value;
+                    infor.Note2 = kvList.SingleOrDefault(n => n.Key == "note2").Value;
+                    infor.Note3 = kvList.SingleOrDefault(n => n.Key == "note3").Value;
                     #endregion
 
                     #region 添加FollowRecord
@@ -294,7 +296,9 @@ namespace com.dongfangyunwang.web.Controllers
                     infor.QQ = kvList.SingleOrDefault(n => n.Key == "qq").Value;
                     infor.Sex = kvList.SingleOrDefault(n => n.Key == "sex").Value;
                     infor.WebCat = kvList.SingleOrDefault(n => n.Key == "webcat").Value;
-
+                    infor.Note1 = kvList.SingleOrDefault(n => n.Key == "note1").Value;
+                    infor.Note2 = kvList.SingleOrDefault(n => n.Key == "note2").Value;
+                    infor.Note3 = kvList.SingleOrDefault(n => n.Key == "note3").Value;
                     #endregion
 
                     #region 添加FollowRecord
@@ -393,7 +397,9 @@ namespace com.dongfangyunwang.web.Controllers
                     infor.QQ = kvList.SingleOrDefault(n => n.Key == "qq").Value;
                     infor.Sex = kvList.SingleOrDefault(n => n.Key == "sex").Value;
                     infor.WebCat = kvList.SingleOrDefault(n => n.Key == "webcat").Value;
-
+                    infor.Note1 = kvList.SingleOrDefault(n => n.Key == "note1").Value;
+                    infor.Note2 = kvList.SingleOrDefault(n => n.Key == "note2").Value;
+                    infor.Note3 = kvList.SingleOrDefault(n => n.Key == "note3").Value;
                     #endregion
 
                     #region 添加FollowRecord

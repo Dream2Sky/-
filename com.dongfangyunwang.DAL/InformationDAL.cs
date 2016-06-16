@@ -29,7 +29,7 @@ namespace com.dongfangyunwang.DAL
                               where info.CustomerName.Contains(conditions) || info.Hobby.Contains(conditions)
                                     || info.Address.Contains(conditions) || info.Email.Contains(conditions)
                                     || info.Industry.Contains(conditions) || info.Occupation.Contains(conditions)
-                                    || info.WebCat.Contains(conditions)
+                                    || info.WebCat.Contains(conditions) || info.Note1.Contains(conditions) || info.Note2.Contains(conditions) || info.Note3.Contains(conditions)
                                     || fr.FollowValue.Contains(conditions)
                               select new InformationNoEntity
                               {
@@ -51,7 +51,10 @@ namespace com.dongfangyunwang.DAL
                                   Phone = info.Phone,
                                   QQ = info.QQ,
                                   Sex = info.Sex,
-                                  WebCat = info.WebCat
+                                  WebCat = info.WebCat,
+                                  Note1 = info.Note1,
+                                  Note2 = info.Note2,
+                                  Note3 = info.Note3
                               }).Distinct();
 
                 return result.ToList();
@@ -114,7 +117,10 @@ namespace com.dongfangyunwang.DAL
                                  Phone = info.Phone,
                                  QQ = info.QQ,
                                  Sex = info.Sex,
-                                 WebCat = info.WebCat
+                                 WebCat = info.WebCat,
+                                 Note1 = info.Note1,
+                                 Note2 = info.Note2,
+                                 Note3 = info.Note3
                              };
 
                 if (!string.IsNullOrEmpty(min_age))
@@ -141,13 +147,16 @@ namespace com.dongfangyunwang.DAL
                                  Phone = info.Phone,
                                  QQ = info.QQ,
                                  Sex = info.Sex,
-                                 WebCat = info.WebCat
+                                 WebCat = info.WebCat,
+                                 Note1 = info.Note1,
+                                 Note2 = info.Note2,
+                                 Note3 = info.Note3
                              };
                 }
                 if (!string.IsNullOrEmpty(max_age))
                 {
                     result = from info in result
-                             where string.Compare(info.Age,max_age)<=0
+                             where string.Compare(info.Age, max_age) <= 0
                              select new InformationNoEntity
                              {
                                  Id = info.Id,
@@ -168,13 +177,16 @@ namespace com.dongfangyunwang.DAL
                                  Phone = info.Phone,
                                  QQ = info.QQ,
                                  Sex = info.Sex,
-                                 WebCat = info.WebCat
+                                 WebCat = info.WebCat,
+                                 Note1 = info.Note1,
+                                 Note2 = info.Note2,
+                                 Note3 = info.Note3
                              };
                 }
                 if (!string.IsNullOrEmpty(min_income))
                 {
                     result = from info in result
-                             where string.Compare(info.Income,min_income) >=0
+                             where string.Compare(info.Income, min_income) >= 0
                              select new InformationNoEntity
                              {
                                  Id = info.Id,
@@ -195,13 +207,16 @@ namespace com.dongfangyunwang.DAL
                                  Phone = info.Phone,
                                  QQ = info.QQ,
                                  Sex = info.Sex,
-                                 WebCat = info.WebCat
+                                 WebCat = info.WebCat,
+                                 Note1 = info.Note1,
+                                 Note2 = info.Note2,
+                                 Note3 = info.Note3
                              };
                 }
                 if (!string.IsNullOrEmpty(max_income))
                 {
                     result = from info in result
-                             where string.Compare(info.Income, max_income) <=0
+                             where string.Compare(info.Income, max_income) <= 0
                              select new InformationNoEntity
                              {
                                  Id = info.Id,
@@ -222,7 +237,10 @@ namespace com.dongfangyunwang.DAL
                                  Phone = info.Phone,
                                  QQ = info.QQ,
                                  Sex = info.Sex,
-                                 WebCat = info.WebCat
+                                 WebCat = info.WebCat,
+                                 Note1 = info.Note1,
+                                 Note2 = info.Note2,
+                                 Note3 = info.Note3
                              };
                 }
 
@@ -284,7 +302,7 @@ namespace com.dongfangyunwang.DAL
                               where info.CustomerName.Contains(conditions) || info.Hobby.Contains(conditions)
                                     || info.Address.Contains(conditions) || info.Email.Contains(conditions)
                                     || info.Industry.Contains(conditions) || info.Occupation.Contains(conditions)
-                                    || info.WebCat.Contains(conditions)
+                                    || info.WebCat.Contains(conditions) || info.Note1.Contains(conditions) || info.Note2.Contains(conditions) || info.Note3.Contains(conditions)
                                     || fr.FollowValue.Contains(conditions)
                               select new InformationNoEntity
                               {
@@ -307,7 +325,10 @@ namespace com.dongfangyunwang.DAL
                                   Phone = info.Phone,
                                   QQ = info.QQ,
                                   Sex = info.Sex,
-                                  WebCat = info.WebCat
+                                  WebCat = info.WebCat,
+                                  Note1 = info.Note1,
+                                  Note2 = info.Note2,
+                                  Note3 = info.Note3
                               }).Distinct();
 
                 return result.ToList();
@@ -372,7 +393,10 @@ namespace com.dongfangyunwang.DAL
                                  Phone = info.Phone,
                                  QQ = info.QQ,
                                  Sex = info.Sex,
-                                 WebCat = info.WebCat
+                                 WebCat = info.WebCat,
+                                 Note1 = info.Note1,
+                                 Note2 = info.Note2,
+                                 Note3 = info.Note3
                              };
 
                 if (!string.IsNullOrEmpty(min_age))
@@ -399,7 +423,10 @@ namespace com.dongfangyunwang.DAL
                                  Phone = info.Phone,
                                  QQ = info.QQ,
                                  Sex = info.Sex,
-                                 WebCat = info.WebCat
+                                 WebCat = info.WebCat,
+                                 Note1 = info.Note1,
+                                 Note2 = info.Note2,
+                                 Note3 = info.Note3
                              };
                 }
                 if (!string.IsNullOrEmpty(max_age))
@@ -426,7 +453,10 @@ namespace com.dongfangyunwang.DAL
                                  Phone = info.Phone,
                                  QQ = info.QQ,
                                  Sex = info.Sex,
-                                 WebCat = info.WebCat
+                                 WebCat = info.WebCat,
+                                 Note1 = info.Note1,
+                                 Note2 = info.Note2,
+                                 Note3 = info.Note3
                              };
                 }
                 if (!string.IsNullOrEmpty(min_income))
@@ -453,7 +483,10 @@ namespace com.dongfangyunwang.DAL
                                  Phone = info.Phone,
                                  QQ = info.QQ,
                                  Sex = info.Sex,
-                                 WebCat = info.WebCat
+                                 WebCat = info.WebCat,
+                                 Note1 = info.Note1,
+                                 Note2 = info.Note2,
+                                 Note3 = info.Note3
                              };
                 }
                 if (!string.IsNullOrEmpty(max_income))
@@ -480,7 +513,10 @@ namespace com.dongfangyunwang.DAL
                                  Phone = info.Phone,
                                  QQ = info.QQ,
                                  Sex = info.Sex,
-                                 WebCat = info.WebCat
+                                 WebCat = info.WebCat,
+                                 Note1 = info.Note1,
+                                 Note2 = info.Note2,
+                                 Note3 = info.Note3
                              };
                 }
 

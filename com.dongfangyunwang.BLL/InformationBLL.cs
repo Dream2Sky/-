@@ -75,7 +75,9 @@ namespace com.dongfangyunwang.BLL
                     info.QQ = item.QQ;
                     info.Sex = item.Sex;
                     info.WebCat = item.WebCat;
-
+                    info.Note1 = item.Note1;
+                    info.Note2 = item.Note2;
+                    info.Note3 = item.Note3;
                     InforList.Add(info);
                 }
 
@@ -120,7 +122,9 @@ namespace com.dongfangyunwang.BLL
                     info.QQ = item.QQ;
                     info.Sex = item.Sex;
                     info.WebCat = item.WebCat;
-
+                    info.Note1 = item.Note1;
+                    info.Note2 = item.Note2;
+                    info.Note3 = item.Note3;
                     InforList.Add(info);
                 }
 
@@ -172,6 +176,11 @@ namespace com.dongfangyunwang.BLL
                     info.QQ = item.QQ;
                     info.Sex = item.Sex;
                     info.WebCat = item.WebCat;
+
+                    // 修改需求 information 新添加 note1 note2 note3三列
+                    info.Note1 = item.Note1;
+                    info.Note2 = item.Note2;
+                    info.Note3 = item.Note3;
 
                     InforList.Add(info);
                 }
@@ -250,6 +259,9 @@ namespace com.dongfangyunwang.BLL
                     info.QQ = item.QQ;
                     info.Sex = item.Sex;
                     info.WebCat = item.WebCat;
+                    info.Note1 = item.Note1;
+                    info.Note2 = item.Note2;
+                    info.Note3 = item.Note3;
 
                     informationList.Add(info);
                 }
