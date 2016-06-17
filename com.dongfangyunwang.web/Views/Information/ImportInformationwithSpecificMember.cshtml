@@ -198,15 +198,16 @@
     </table>
 </form>
 
-<div class="alert alert-error div-excel-data">
-    <a class="close" data-dismiss="alert">×</a>
-    <strong>导入数据失败! </strong>请检查您的上传的excel表格格式是否正确
-</div>
+
 <form id="form-data">
     <div class="form-group">
         <label for="exampleInputFile">Excel数据文件导入</label>
         <input type="file" name="fileCollection" accept=".xls,.xlsx">
         <p class="help-block">请选择要导入的excel文件.</p>
+    </div>
+    <div class="alert alert-error div-excel-data">
+        <a class="close" data-dismiss="alert">×</a>
+        <strong>导入数据失败! </strong>请检查您的上传的excel表格格式是否正确
     </div>
     <button class="btn btn-primary" type="button" onclick="UploadFile();">导入</button>
 </form>
@@ -290,7 +291,7 @@
                         window.location.href = "/Home/Index";
                     }
                     else {
-                        $('.div-single-data').addclass("alert-active");
+                        $('.div-single-data').addClass("alert-active");
                     }
                 }
             });
@@ -307,11 +308,17 @@
             contentType: false,
             processData: false,
             success: function (returndata) {
-                alert("导入数据成功");
-                window.location.href = "/Home/Index";
+                if (returndate) {
+                    alert("导入数据成功");
+                    window.location.href = "/Home/Index";
+                }
+                else {
+                    $('.div-excel-data').addClass('alert-active');
+                }
+
             },
             error: function (returndata) {
-                $('.div-excel-data').addclass('alert-active');
+                $('.div-excel-data').addClass('alert-active');
             }
         });
     }
