@@ -104,7 +104,7 @@ namespace com.dongfangyunwang.web.Global
                 IRow firstRow = _currentSheet.GetRow(0);
 
                 // 判断数据表的第一行数据是不是为空
-                
+
                 // 如果为空 则跳出循环
 
                 // 如果不为空 则加载数据
@@ -112,7 +112,7 @@ namespace com.dongfangyunwang.web.Global
                 {
                     break;
                 }
-                
+
 
                 // 总列数
                 int columnCount = firstRow.LastCellNum;
@@ -120,7 +120,7 @@ namespace com.dongfangyunwang.web.Global
                 // 获取当前的跟进项列表
                 List<Follow> currentFollowList = _followBLL.GetAllFollow().ToList();
 
-                for (int k = 18; k < columnCount; k++)
+                for (int k = 21; k < columnCount; k++)
                 {
                     if (currentFollowList.SingleOrDefault(n => n.FollowItem == firstRow.GetCell(k).StringCellValue) == null)
                     {
@@ -137,9 +137,9 @@ namespace com.dongfangyunwang.web.Global
 
                 // 先处理前18列  前18列是固定列
                 // 时间 收集员 客户姓名 性别 年龄 婚否 子女 电话 qq 微信 邮箱 地址省市 所有行业 职业 年收入 爱好 是否有车 是否有房
-                for (int j = 1; j < _currentSheet.LastRowNum; j++)
+                for (int j = 1; j < _currentSheet.LastRowNum + 1; j++)
                 {
-                    
+
                     Information infor = new Information();
                     IRow _row = _currentSheet.GetRow(j);
                     if (string.IsNullOrEmpty(_row.GetCell(1).StringCellValue.ToString()))
@@ -150,7 +150,16 @@ namespace com.dongfangyunwang.web.Global
                     #region 构造Information
                     infor.Id = Guid.NewGuid();
                     infor.InserTime = DateTime.Parse(_row.GetCell(0).DateCellValue.ToString()).ToString("yyyy-mm-dd");
-                    infor.MemberId = Guid.Parse(_memberBLL.GetMemberByAccount(_row.GetCell(1).StringCellValue).Id.ToString());
+
+                    Member member = _memberBLL.GetMemberByAccount(_row.GetCell(1).StringCellValue);
+                    if (member == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        infor.MemberId = Guid.Parse(member.Id.ToString());
+                    }
                     infor.CustomerName = _row.GetCell(2).StringCellValue;
                     infor.Sex = _row.GetCell(3).StringCellValue;
                     infor.Age = _row.GetCell(4).NumericCellValue.ToString();
@@ -167,6 +176,9 @@ namespace com.dongfangyunwang.web.Global
                     infor.Hobby = _row.GetCell(15).StringCellValue;
                     infor.HasCar = _row.GetCell(16).StringCellValue;
                     infor.HasHouse = _row.GetCell(17).StringCellValue;
+                    infor.Note1 = _row.GetCell(18).StringCellValue;
+                    infor.Note2 = _row.GetCell(19).StringCellValue;
+                    infor.Note3 = _row.GetCell(20).StringCellValue;
                     #endregion
 
                     // 添加Information
@@ -175,7 +187,7 @@ namespace com.dongfangyunwang.web.Global
                     if (_informationBLL.Add(infor))
                     {
                         // 添加成功
-                        for (int k = 18; k < columnCount; k++)
+                        for (int k = 21; k < columnCount; k++)
                         {
                             // 循环剩下的跟进项列
                             // 构造每个FollowRecord
@@ -207,7 +219,7 @@ namespace com.dongfangyunwang.web.Global
                         #region 失败后的代码
 
                         // 释放内存
-                        fs.Dispose(); 
+                        fs.Dispose();
 
                         return false;
                         #endregion
@@ -252,18 +264,21 @@ namespace com.dongfangyunwang.web.Global
             firstRow.CreateCell(15).SetCellValue("爱好");
             firstRow.CreateCell(16).SetCellValue("是否有车");
             firstRow.CreateCell(17).SetCellValue("是否有房");
+            firstRow.CreateCell(18).SetCellValue("备注1");
+            firstRow.CreateCell(19).SetCellValue("备注2");
+            firstRow.CreateCell(20).SetCellValue("备注3");
 
             List<Follow> followList = _followBLL.GetAllFollow().ToList();
 
             for (int i = 0; i < followList.Count; i++)
             {
-                firstRow.CreateCell(18 + i).SetCellValue(followList[i].FollowItem);
+                firstRow.CreateCell(21 + i).SetCellValue(followList[i].FollowItem);
             }
             #endregion
 
             // 遍历数据列表
             #region 填表
-            
+
             for (int i = 0; i < informationList.Count; i++)
             {
                 IRow row = _currentSheet.CreateRow(i + 1);
@@ -286,17 +301,20 @@ namespace com.dongfangyunwang.web.Global
                 row.CreateCell(15).SetCellValue(informationList[i].Hobby);
                 row.CreateCell(16).SetCellValue(informationList[i].HasCar);
                 row.CreateCell(17).SetCellValue(informationList[i].HasHouse);
+                row.CreateCell(18).SetCellValue(informationList[i].Hobby);
+                row.CreateCell(19).SetCellValue(informationList[i].HasCar);
+                row.CreateCell(20).SetCellValue(informationList[i].HasHouse);
 
                 for (int j = 0; j < followList.Count; j++)
                 {
                     FollowModel fm = informationList[i].FollowList.Where(n => n.FollowName == followList[j].FollowItem).SingleOrDefault();
-                    if (fm ==null)
+                    if (fm == null)
                     {
-                        row.CreateCell(18 + j).SetCellValue("");
+                        row.CreateCell(21 + j).SetCellValue("");
                     }
                     else
                     {
-                        row.CreateCell(18 + j).SetCellValue(fm.FollowValue);
+                        row.CreateCell(21 + j).SetCellValue(fm.FollowValue);
                     }
                 }
             }

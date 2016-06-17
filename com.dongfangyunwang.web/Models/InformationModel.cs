@@ -31,6 +31,9 @@ namespace com.dongfangyunwang.web.Models
             this.Children = info.Children;
             this.Age = info.Age;
             this.Address = info.Address;
+            this.Note1 = info.Note1;
+            this.Note2 = info.Note2;
+            this.Note3 = info.Note3;
         }
         public string MemberAccount { get; set; }
         public IEnumerable<FollowModel> FollowList { get; set; }
