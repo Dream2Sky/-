@@ -4,6 +4,7 @@ using com.dongfangyunwang.web.Global;
 using com.dongfangyunwang.web.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -218,6 +219,17 @@ namespace com.dongfangyunwang.web.Controllers
             }
 
             return InformationModelList;
+        }
+
+        /// <summary>
+        /// 导出数据到Excel表 导出的excel表为 .xls 格式 
+        /// </summary>
+        /// <returns></returns>
+        public FileResult ExportData()
+        {
+            ExcelManager em = new ExcelManager(_memberBLL, _informationBLL, _followBLL, _followRecordBLL);
+            MemoryStream ms = em.DataToExcel(System.Web.HttpContext.Current.Session["InformationList"] as List<InformationModel>);
+            return File(ms, "application/vnd.ms-excel", Guid.NewGuid().ToString() + ".xls");
         }
     }
 }

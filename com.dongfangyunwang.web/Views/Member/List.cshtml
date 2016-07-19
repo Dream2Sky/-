@@ -31,29 +31,39 @@
                     width: 200px;
                 }
 </style>
-<label>
-    用户列表
-</label>
-<div class="container-fluid container-btn">
-    <div class="row">
-        @foreach (var item in ViewData["MemberList"] as IEnumerable<Member>)
-        {
-            <button class="btn btn-default col-xs-2">@item.Account</button>
-        }
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="/">管理后台</a></li>
+            <li class="active">员工管理</li>
+        </ol>
+    </div>
+    <div class="container">
+        <label>
+            用户列表
+        </label>
+        <div class="container container-btn">
+            <div class="row">
+                @foreach (var item in ViewData["MemberList"] as IEnumerable<Member>)
+            {
+                    <button class="btn btn-default col-xs-2">@item.Account</button>
+                }
+            </div>
+        </div>
+        <hr />
+        <label>添加新用户</label>
+        <div class="container container-add-followitem">
+            <form method="post" action="/Member/Add" id="member-form">
+                <div class="form-group">
+                    <input type="text" name="memberName" class="form-control" required data-bv-notempty-message="用户名不能为空">
+                </div>
+                <button type="submit" class="btn btn-primary">添加</button>
+            </form>
+        </div>
     </div>
 </div>
-<hr />
-<label>添加新用户</label>
-<div class="container container-add-followitem">
-    <form method="post" action="/Member/Add" id="member-form">
-        <div class="form-group">
-            <input type="text" name="memberName" class="form-control" required data-bv-notempty-message="用户名不能为空">
-        </div>
-        <button type="submit" class="btn btn-primary">添加</button>
-    </form>
-</div>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#member-form').bootstrapValidator();
     });
 </script>

@@ -10,29 +10,18 @@
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/base.css" rel="stylesheet" />
     <link href="~/Content/css/bootstrapValidator.min.css" rel="stylesheet" />
+
     <style>
-        html body{
-             font-family:'Microsoft YaHei';
+        .form-horizontal {
+            max-width: 350px;
+            padding: 15px;
+            margin: 0 auto;
         }
-        html body a{
-            color:#000;
+        label{
+            margin-bottom:10px;
         }
-        .div-panel{
-            margin:0px,auto;
-            height:250px;
-            width:300px;
-        }
-        .page-header{
-            margin:0px;
-        }
-        .header{
-            padding-bottom:20px;
-        }
-        .footer{
-            text-align:center;
-            margin-top:100px;
-        }      
         .alert-error {
             background-color: #F2DEDE;
             border-width: 1px;
@@ -40,48 +29,61 @@
             border-style: solid;
             border-color: #EED3D7;
             color: #B94A48;
-        }  
+        }
     </style>
 </head>
 <body>
-    <div class="container-fluid header">
-        <div class="page-header">
-            <h2><strong>东方云网</strong> <small>数据收集系统</small></h2>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">东方云网信息收集系统</a>
+            </div>
         </div>
     </div>
-    <div class="container-fluid div-panel"> 
-            @if (!string.IsNullOrEmpty(ViewBag.msg))
-            {
-                <div class="alert alert-error">
-                    <a class="close" data-dismiss="alert">×</a>
-                    <strong>登陆失败! </strong>@ViewBag.msg
-                </div>
-            }
-            <form action="/Account/Login" method="post" id="login-form">
-                <div class="form-group">
-                    <label for="input_account">用户名</label>
-                    <input type="text" class="form-control" id="input_account" name="account" placeholder="用户名" required data-bv-notempty-message="用户名不能为空">
-                </div>
-                <div class="form-group">
-                    <label for="input_password">密码</label>
-                    <input type="password" class="form-control" id="input_password" name="password" placeholder="密码" required data-bv-notempty-message="密码不能为空">
-                </div>
-                <div class="form-group">
-                    <label class="radio-inline">
-                        <input type="radio" name="isadmin" id="inlineRadio1" value="y"> 管理员
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" checked="checked" name="isadmin" id="inlineRadio2" value="n"> 普通用户
-                    </label>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-default">登陆</button>
-                </div>
-            </form>
-    </div>
-    <div class="container-fluid footer">
+
+    <div class="container body-content">
+        <div style="min-height:650px;">
+            <div class="row">
+                <form action="/Account/Login" class="form-horizontal" method="post" id="login-form">
+                    @if (!string.IsNullOrEmpty(ViewBag.msg))
+                    {
+                        <div class="alert alert-error">
+                            <a class="close" data-dismiss="alert">×</a>
+                            <strong>登陆失败! </strong>@ViewBag.msg
+                        </div>
+                    }
+                    <div class="form-group">
+                        <label for="input_account">用户名</label>
+                        <input type="text" class="form-control" id="input_account" name="account" placeholder="用户名" required data-bv-notempty-message="用户名不能为空">
+                    </div>
+                    <div class="form-group">
+                        <label for="input_password">密码</label>
+                        <input type="password" class="form-control" id="input_password" name="password" placeholder="密码" required data-bv-notempty-message="密码不能为空">
+                    </div>
+                    <div class="form-group">
+                        <label class="radio-inline">
+                            <input type="radio" name="isadmin" id="inlineRadio1" value="y"> 管理员
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" checked="checked" name="isadmin" id="inlineRadio2" value="n"> 普通用户
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">登陆</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <hr />
-        <p><a href="#">app.szosi.com</a></p>
+        <footer class="footer text-muted">
+            <p><a href="/数据模板.xls">数据模板下载</a></p>
+            <p>&copy; @DateTime.Now.Year 东方云网 版权所有</p>
+        </footer>
     </div>
     <script src="~/Content/js/jquery.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>

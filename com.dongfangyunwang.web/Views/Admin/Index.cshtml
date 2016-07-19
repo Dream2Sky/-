@@ -6,7 +6,7 @@
 @using com.dongfangyunwang.web.Models
 
 
-<style>
+@*<style>
     .navbar-right li button {
         margin-bottom: 5px;
         margin-top: 5px;
@@ -58,95 +58,185 @@
             border-style: solid;
             border-width: 1px;
         }
+</style>*@
+
+<style>
+    .form-inline {
+        margin-top: 20px;
+    }
+
+        .form-inline .form-group {
+            margin-right: 40px;
+        }
+
+    .form-group button {
+        width: 10%;
+    }
+
+    .form-button {
+        text-align: right;
+        margin-top: 20px;
+    }
 </style>
 
-@* 条件搜索框 *@
-<div class="navbar navbar-options">
-    <div class="container">
-        <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-                <input type="text" name="condition" class="form-control" placeholder="搜索">
-            </div>
-            <button type="button" class="btn btn-default" onclick="submitCodition();">搜索</button>
-        </form>
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <button class="btn btn-default" onclick="javascript:window.location.href='/Admin/ExportData'">导出当前数据</button>
-            </li>
-        </ul>
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="/">管理后台</a></li>
+            <li class="active">首页</li>
+        </ol>
     </div>
-</div>
-@* 额外条件搜索 *@
-<div class="navbar navbar-condition">
     <div class="container">
-        <form class="navbar-form">
-            <div class="form-group">
-                <label>性别</label>
-                <label>男</label>
-                <input type="checkbox" name="man" value="男" />
-                <label>女</label>
-                <input type="checkbox" name="woman" value="女" />
+        <div class="navbar">
+            <div class="container">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" name="condition" class="form-control" placeholder="搜索">
+                    </div>
+                    <button type="button" class="btn btn-default" onclick="submitCodition();">搜索</button>
+                </form>
+                <form action="/" method="post" class="navbar-form navbar-left">
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        按条件搜索
+                    </button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button class="btn btn-default" onclick="javascript: window.location.href = '/Admin/ExportData'">导出当前数据</button>
+                    </li>
+                </ul>
             </div>
-            <div class="form-group div-agebox">
-                <label>年龄</label>
-                <input type="text" name="min_age" />~
-                <input type="text" name="max_age" />
-            </div>
-            <div class="form-group">
-                <label>已婚</label>
-                <input type="checkbox" name="married" value="是" />
-                <label>未婚</label>
-                <input type="checkbox" name="nomarried" value="否" />
-            </div>
-            <div class="form-group">
-                <label>子女</label>
-                <label>有</label>
-                <input type="checkbox" name="haschildren" value="有" />
-                <label>无</label>
-                <input type="checkbox" name="nochildren" value="无" />
-            </div>
-            <div class="form-group div-incomebox">
-                <label>年收入</label>
-                <input type="text" name="min_income" />~
-                <input type="text" name="max_income" />
-            </div>
-            <div class="form-group">
-                <label>有车</label>
-                <input type="checkbox" name="hascar" value="是" />
-                <label>无车</label>
-                <input type="checkbox" name="nocar" value="否" />
-            </div>
-            <div class="form-group">
-                <label>有房</label>
-                <input type="checkbox" name="hashouse" value="是" />
-                <label>无房</label>
-                <input type="checkbox" name="nohouse" value="否" />
-            </div>
-            <div class="form-group">
-                <div class="input-append date form-datetime">
-                    <label>时间</label>
-                    <input type="date" name="insertTime" />
+            <div class="collapse" id="collapseExample">
+                <div class="well">
+                    <div class="container">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label>性别</label>
+                                <label>男</label>
+                                <input type="checkbox" name="man" value="男" />
+                                <label>女</label>
+                                <input type="checkbox" name="woman" value="女" />
+                            </div>
+                            <div class="form-group">
+                                <label>已婚</label>
+                                <input type="checkbox" name="married" value="是" />
+                                <label>未婚</label>
+                                <input type="checkbox" name="nomarried" value="否" />
+                            </div>
+                            <div class="form-group">
+                                <label>子女</label>
+                                <label>有</label>
+                                <input type="checkbox" name="haschildren" value="有" />
+                                <label>无</label>
+                                <input type="checkbox" name="nochildren" value="无" />
+                            </div>
+                            <div class="form-group">
+                                <label>有车</label>
+                                <input type="checkbox" name="hascar" value="是" />
+                                <label>无车</label>
+                                <input type="checkbox" name="nocar" value="否" />
+                            </div>
+                            <div class="form-group">
+                                <label>有房</label>
+                                <input type="checkbox" name="hashouse" value="是" />
+                                <label>无房</label>
+                                <input type="checkbox" name="nohouse" value="否" />
+                            </div>
+                        </form>
+                        <form class="form-inline">
+                            <div class="form-group div-agebox">
+                                <label>年龄</label>
+                                <input type="text" class="form-control" name="min_age" />~
+                                <input type="text" class="form-control" name="max_age" />
+                            </div>
+                            <div class="form-group div-incomebox">
+                                <label>年收入</label>
+                                <input type="text" class="form-control" name="min_income" />~
+                                <input type="text" class="form-control" name="max_income" />
+                            </div>
+                        </form>
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="input-append date form-datetime">
+                                    <label>时间</label>
+                                    <input type="date" class="form-control" name="insertTime" />
+                                </div>
+                            </div>
+                        </form>
+                        <div class="form-group form-button">
+                            <button class="form-control btn-primary" type="button" onclick="submitAdditionalCondition();">搜索</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <button class="form-control" type="button" onclick="submitAdditionalCondition();">搜索</button>
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-<hr />
-<div class="div-table">
-</div>
+    <div class="div-table">
+    </div>
 
-<script>
-    //$(".form-datetime").datetimepicker({
-    //    format: "yyyy-mm-dd",
-    //    autoclose: true,
-    //    minView: "month",
-    //    maxView: "decade",
-    //    todayBtn: true
-    //});
+    @*@* 额外条件搜索 *@
+    @*<div class="navbar navbar-condition">
+        <div class="container">
+            <form class="navbar-form">
+                <div class="form-group">
+                    <label>性别</label>
+                    <label>男</label>
+                    <input type="checkbox" name="man" value="男" />
+                    <label>女</label>
+                    <input type="checkbox" name="woman" value="女" />
+                </div>
+                <div class="form-group div-agebox">
+                    <label>年龄</label>
+                    <input type="text" name="min_age" />~
+                    <input type="text" name="max_age" />
+                </div>
+                <div class="form-group">
+                    <label>已婚</label>
+                    <input type="checkbox" name="married" value="是" />
+                    <label>未婚</label>
+                    <input type="checkbox" name="nomarried" value="否" />
+                </div>
+                <div class="form-group">
+                    <label>子女</label>
+                    <label>有</label>
+                    <input type="checkbox" name="haschildren" value="有" />
+                    <label>无</label>
+                    <input type="checkbox" name="nochildren" value="无" />
+                </div>
+                <div class="form-group div-incomebox">
+                    <label>年收入</label>
+                    <input type="text" name="min_income" />~
+                    <input type="text" name="max_income" />
+                </div>
+                <div class="form-group">
+                    <label>有车</label>
+                    <input type="checkbox" name="hascar" value="是" />
+                    <label>无车</label>
+                    <input type="checkbox" name="nocar" value="否" />
+                </div>
+                <div class="form-group">
+                    <label>有房</label>
+                    <input type="checkbox" name="hashouse" value="是" />
+                    <label>无房</label>
+                    <input type="checkbox" name="nohouse" value="否" />
+                </div>
+                <div class="form-group">
+                    <div class="input-append date form-datetime">
+                        <label>时间</label>
+                        <input type="date" name="insertTime" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="form-control" type="button" onclick="submitAdditionalCondition();">搜索</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr />
+    <div class="div-table">
+    </div>*@
 
+    <script>
     function submitCodition() {
         $.ajax({
             url: "/Admin/Search",
@@ -240,4 +330,4 @@
             }
         });
     })
-</script>
+    </script>

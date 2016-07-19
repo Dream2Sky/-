@@ -20,228 +20,239 @@
     }
 </style>
 
-<div class="alert alert-error div-single-data">
-    <a class="close" data-dismiss="alert">×</a>
-    <strong>修改此条数据失败! </strong>请联系管理员
-</div>
-<label>
-    数据修改
-</label>
-<form id="singleInformation-form">
-    <table class="table">
-        <tr>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">客户姓名</span>
-                    <input type="text" class="form-control" placeholder="客户姓名" name="customerName" aria-describedby="basic-addon1" value="@Model.CustomerName" disabled="disabled">
-                    <input type="hidden" name="informationId" value="@Model.Id"/>
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">性别</span>
-                    <select name="sex" class="form-control">
-                        @if (Model.Sex == "男")
-                        {
-                            <option selected="selected">男</option>
-                            <option>女</option>
-                        }
-                        else
-                        {
-                            <option>男</option>
-                            <option selected="selected">女</option>
-                        }
-                    </select>
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">年龄</span>
-                    <input type="text" class="form-control" placeholder="年龄" name="age" aria-describedby="basic-addon1" value="@Model.Age">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">婚否</span>
-                    <select name="ismarry" class="form-control">
-                        @if (Model.IsMarry == "是")
-                        {
-                            <option selected="selected">是</option>
-                            <option>否</option>
-                        }
-                        else
-                        {
-                            <option>是</option>
-                            <option selected="selected">否</option>
-                        }
-                    </select>
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">子女</span>
-                    <select name="children" class="form-control">
-                        @if (Model.Children == "有")
-                        {
-                            <option selected="selected">有</option>
-                            <option>无</option>
-                        }
-                        else
-                        {
-                            <option>有</option>
-                            <option selected="selected">无</option>
-                        }
-                    </select>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">地址省市</span>
-                    <input type="text" class="form-control" placeholder="地址省市" name="address" aria-describedby="basic-addon1" value="@Model.Address">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">所属行业</span>
-                    <input type="text" class="form-control" placeholder="所属行业" name="industry" aria-describedby="basic-addon1" value="@Model.Industry">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">职业</span>
-                    <input type="text" class="form-control" placeholder="职业" name="occupation" aria-describedby="basic-addon1" value="@Model.Occupation">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">年收入</span>
-                    <input type="text" class="form-control" placeholder="年收入" name="income" aria-describedby="basic-addon1" value="@Model.Income">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">爱好</span>
-                    <input type="text" class="form-control" placeholder="爱好" name="hobby" aria-describedby="basic-addon1" value="@Model.Hobby">
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">客户电话</span>
-                    <input type="text" class="form-control" placeholder="客户电话" name="phone" aria-describedby="basic-addon1" value="@Model.Phone">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">QQ</span>
-                    <input type="text" class="form-control" placeholder="QQ" name="qq" aria-describedby="basic-addon1" value="@Model.QQ">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">微信号</span>
-                    <input type="text" class="form-control" placeholder="微信号" name="webcat" aria-describedby="basic-addon1" value="@Model.WebCat">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">邮箱</span>
-                    <input type="email" class="form-control" placeholder="邮箱" name="email" aria-describedby="basic-addon1" value="@Model.Email">
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">是否有车</span>
-                    <select name="hascar" class="form-control">
-                        @if (Model.HasCar == "是")
-                        {
-                            <option selected="selected">是</option>
-                            <option>否</option>
-                        }
-                        else
-                        {
-                            <option>是</option>
-                            <option selected="selected">否</option>
-                        }
-                    </select>
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">是否有房</span>
-                    <select name="hashouse" class="form-control">
-                        @if (Model.HasHouse == "否")
-                        {
-                            <option selected="selected">是</option>
-                            <option>否</option>
-                        }
-                        else
-                        {
-                            <option>是</option>
-                            <option selected="selected">否</option>
-                        }
-                    </select>
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">备注1</span>
-                    <input type="text" class="form-control" placeholder="备注1" name="note1" aria-describedby="basic-addon1" value="@Model.Note1">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">备注2</span>
-                    <input type="text" class="form-control" placeholder="备注2" name="note2" aria-describedby="basic-addon1" value="@Model.Note2">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">备注3</span>
-                    <input type="text" class="form-control" placeholder="备注3" name="note3" aria-describedby="basic-addon1" value="@Model.Note3">
-                </div>
-            </td>
-        </tr>
-        @for (int i = 0; i < (int)((ViewData["FollowItems"] as IEnumerable<Follow>).Count() / 3); i++)
-        {
-            <tr>
-                @for (int j = i * 3; j < 3 * (i + 1); j++)
-                {
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="/">管理后台</a></li>
+            <li class="active">数据修改</li>
+        </ol>
+    </div>
+    <div class="container">
+
+
+        <div class="alert alert-error div-single-data">
+            <a class="close" data-dismiss="alert">×</a>
+            <strong>修改此条数据失败! </strong>请联系管理员
+        </div>
+        <label>
+            数据修改
+        </label>
+        <form id="singleInformation-form">
+            <table class="table">
+                <tr>
                     <td>
                         <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1">@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem)</span>
-                            <input type="text" class="form-control input-follow" placeholder="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem)" name="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem)" aria-describedby="basic-addon1"
-                                value="@((Model.FollowList.Where(n=>n.FollowName==(ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem).SingleOrDefault()!=null)?Model.FollowList.Where(n=>n.FollowName==(ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem).SingleOrDefault().FollowValue:"")">
+                            <span class="input-group-addon" id="basic-addon1">客户姓名</span>
+                            <input type="text" class="form-control" placeholder="客户姓名" name="customerName" aria-describedby="basic-addon1" value="@Model.CustomerName" disabled="disabled">
+                            <input type="hidden" name="informationId" value="@Model.Id" />
                         </div>
                     </td>
-                }
-            </tr>
-        }
-        <tr>
-            @for (int i = 0; i < ((ViewData["FollowItems"] as IEnumerable<Follow>).Count() % 3); i++)
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">性别</span>
+                            <select name="sex" class="form-control">
+                                @if (Model.Sex == "男")
+                                {
+                                    <option selected="selected">男</option>
+                                    <option>女</option>
+                                }
+                                else
+                                {
+                                    <option>男</option>
+                                    <option selected="selected">女</option>
+                                }
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">年龄</span>
+                            <input type="text" class="form-control" placeholder="年龄" name="age" aria-describedby="basic-addon1" value="@Model.Age">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">婚否</span>
+                            <select name="ismarry" class="form-control">
+                                @if (Model.IsMarry == "是")
+                                {
+                                    <option selected="selected">是</option>
+                                    <option>否</option>
+                                }
+                                else
+                                {
+                                    <option>是</option>
+                                    <option selected="selected">否</option>
+                                }
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">子女</span>
+                            <select name="children" class="form-control">
+                                @if (Model.Children == "有")
+                                {
+                                    <option selected="selected">有</option>
+                                    <option>无</option>
+                                }
+                                else
+                                {
+                                    <option>有</option>
+                                    <option selected="selected">无</option>
+                                }
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">地址省市</span>
+                            <input type="text" class="form-control" placeholder="地址省市" name="address" aria-describedby="basic-addon1" value="@Model.Address">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">所属行业</span>
+                            <input type="text" class="form-control" placeholder="所属行业" name="industry" aria-describedby="basic-addon1" value="@Model.Industry">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">职业</span>
+                            <input type="text" class="form-control" placeholder="职业" name="occupation" aria-describedby="basic-addon1" value="@Model.Occupation">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">年收入</span>
+                            <input type="text" class="form-control" placeholder="年收入" name="income" aria-describedby="basic-addon1" value="@Model.Income">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">爱好</span>
+                            <input type="text" class="form-control" placeholder="爱好" name="hobby" aria-describedby="basic-addon1" value="@Model.Hobby">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">客户电话</span>
+                            <input type="text" class="form-control" placeholder="客户电话" name="phone" aria-describedby="basic-addon1" value="@Model.Phone">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">QQ</span>
+                            <input type="text" class="form-control" placeholder="QQ" name="qq" aria-describedby="basic-addon1" value="@Model.QQ">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">微信号</span>
+                            <input type="text" class="form-control" placeholder="微信号" name="webcat" aria-describedby="basic-addon1" value="@Model.WebCat">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">邮箱</span>
+                            <input type="email" class="form-control" placeholder="邮箱" name="email" aria-describedby="basic-addon1" value="@Model.Email">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">是否有车</span>
+                            <select name="hascar" class="form-control">
+                                @if (Model.HasCar == "是")
+                                {
+                                    <option selected="selected">是</option>
+                                    <option>否</option>
+                                }
+                                else
+                                {
+                                    <option>是</option>
+                                    <option selected="selected">否</option>
+                                }
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">是否有房</span>
+                            <select name="hashouse" class="form-control">
+                                @if (Model.HasHouse == "否")
+                                {
+                                    <option selected="selected">是</option>
+                                    <option>否</option>
+                                }
+                                else
+                                {
+                                    <option>是</option>
+                                    <option selected="selected">否</option>
+                                }
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">备注1</span>
+                            <input type="text" class="form-control" placeholder="备注1" name="note1" aria-describedby="basic-addon1" value="@Model.Note1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">备注2</span>
+                            <input type="text" class="form-control" placeholder="备注2" name="note2" aria-describedby="basic-addon1" value="@Model.Note2">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">备注3</span>
+                            <input type="text" class="form-control" placeholder="备注3" name="note3" aria-describedby="basic-addon1" value="@Model.Note3">
+                        </div>
+                    </td>
+                </tr>
+                @for (int i = 0; i < (int)((ViewData["FollowItems"] as IEnumerable<Follow>).Count() / 3); i++)
             {
-                <td>
-                    <div class="input-group">
-                        <span class="input-group-addon" id="basic-addon1">@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count) - i - 1).FollowItem)</span>
-                        <input type="text" class="form-control input-follow" placeholder="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count)-i-1).FollowItem)" name="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count)-i-1).FollowItem)" aria-describedby="basic-addon1"
-                               value="@((Model.FollowList.Where(n=>n.FollowName == (ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count)-i-1).FollowItem).SingleOrDefault()!=null)?Model.FollowList.Where(n=>n.FollowName == (ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count)-i-1).FollowItem).SingleOrDefault().FollowValue:"")">
-                    </div>
-                </td>
-            }
-        </tr>
-        <tr>
-            <td colspan="5" class="td-btn">
-                <button class="btn btn-primary" type="button" onclick="Update();">提交修改</button>
-            </td>
-        </tr>
-    </table>
-</form>
-
+                    <tr>
+                        @for (int j = i * 3; j < 3 * (i + 1); j++)
+                {
+                            <td>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem)</span>
+                                    <input type="text" class="form-control input-follow" placeholder="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem)" name="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem)" aria-describedby="basic-addon1"
+                                           value="@((Model.FollowList.Where(n=>n.FollowName==(ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem).SingleOrDefault()!=null)?Model.FollowList.Where(n=>n.FollowName==(ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem).SingleOrDefault().FollowValue:"")">
+                                </div>
+                            </td>
+                        }
+                    </tr>
+                }
+                <tr>
+                    @for (int i = 0; i < ((ViewData["FollowItems"] as IEnumerable<Follow>).Count() % 3); i++)
+            {
+                        <td>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count) - i - 1).FollowItem)</span>
+                                <input type="text" class="form-control input-follow" placeholder="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count)-i-1).FollowItem)" name="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count)-i-1).FollowItem)" aria-describedby="basic-addon1"
+                                       value="@((Model.FollowList.Where(n=>n.FollowName == (ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count)-i-1).FollowItem).SingleOrDefault()!=null)?Model.FollowList.Where(n=>n.FollowName == (ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count)-i-1).FollowItem).SingleOrDefault().FollowValue:"")">
+                            </div>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    <td colspan="5" class="td-btn">
+                        <button class="btn btn-primary" type="button" onclick="Update();">提交修改</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
 <script src="~/Content/js/bootstrapValidator.min.js"></script>
 <script>
     function Update() {

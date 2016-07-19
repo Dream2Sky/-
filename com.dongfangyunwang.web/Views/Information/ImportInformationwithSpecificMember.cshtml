@@ -19,199 +19,207 @@
     }
 </style>
 
-<div class="alert alert-error div-single-data">
-    <a class="close" data-dismiss="alert">×</a>
-    <strong>添加此数据项失败! </strong>请联系管理员
-</div>
-<label>
-    数据单条录入
-</label>
-<form action="/Information/ImportDatawithSpecificMember" method="post">
-    <table class="table">
-        <tr>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">客户姓名</span>
-                    <input type="text" class="form-control" placeholder="客户姓名" name="customerName" aria-describedby="basic-addon1">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">性别</span>
-                    <select name="sex" class="form-control">
-                        <option selected="selected">男</option>
-                        <option>女</option>
-                    </select>
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">年龄</span>
-                    <input type="text" class="form-control" placeholder="年龄" name="age" aria-describedby="basic-addon1">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">婚否</span>
-                    <select name="ismarry" class="form-control">
-                        <option selected="selected">是</option>
-                        <option>否</option>
-                    </select>
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">子女</span>
-                    <select name="children" class="form-control">
-                        <option selected="selected">有</option>
-                        <option>无</option>
-                    </select>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">地址省市</span>
-                    <input type="text" class="form-control" placeholder="地址省市" name="address" aria-describedby="basic-addon1">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">所属行业</span>
-                    <input type="text" class="form-control" placeholder="所属行业" name="industry" aria-describedby="basic-addon1">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">职业</span>
-                    <input type="text" class="form-control" placeholder="职业" name="occupation" aria-describedby="basic-addon1">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">年收入</span>
-                    <input type="text" class="form-control" placeholder="年收入" name="income" aria-describedby="basic-addon1">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">爱好</span>
-                    <input type="text" class="form-control" placeholder="爱好" name="hobby" aria-describedby="basic-addon1">
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">客户电话</span>
-                    <input type="text" class="form-control" placeholder="客户电话" name="phone" aria-describedby="basic-addon1">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">QQ</span>
-                    <input type="text" class="form-control" placeholder="QQ" name="qq" aria-describedby="basic-addon1">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">微信号</span>
-                    <input type="text" class="form-control" placeholder="微信号" name="webcat" aria-describedby="basic-addon1">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">邮箱</span>
-                    <input type="text" class="form-control" placeholder="邮箱" name="email" aria-describedby="basic-addon1">
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">是否有车</span>
-                    <select name="hascar" class="form-control">
-                        <option selected="selected">是</option>
-                        <option>否</option>
-                    </select>
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">是否有房</span>
-                    <select name="hashouse" class="form-control">
-                        <option selected="selected">是</option>
-                        <option>否</option>
-                    </select>
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">备注1</span>
-                    <input type="text" class="form-control" placeholder="备注1" name="note1" aria-describedby="basic-addon1">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">备注2</span>
-                    <input type="text" class="form-control" placeholder="备注2" name="note2" aria-describedby="basic-addon1">
-                </div>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">备注3</span>
-                    <input type="text" class="form-control" placeholder="备注3" name="note3" aria-describedby="basic-addon1">
-                </div>
-            </td>
-        </tr>
-        @for (int i = 0; i < (int)((ViewData["FollowItems"] as IEnumerable<Follow>).Count() / 3); i++)
-        {
-            <tr>
-                @for (int j = i * 3; j < 3 * (i + 1); j++)
-                {
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="/">管理后台</a></li>
+            <li class="active">数据导入</li>
+        </ol>
+    </div>
+    <div class="container">
+
+        <div class="alert alert-error div-single-data">
+            <a class="close" data-dismiss="alert">×</a>
+            <strong>添加此数据项失败! </strong>请联系管理员
+        </div>
+        <label>
+            数据单条录入
+        </label>
+        <form action="/Information/ImportDatawithSpecificMember" method="post">
+            <table class="table">
+                <tr>
                     <td>
                         <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1">@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem)</span>
-                            <input type="text" class="form-control input-follow" placeholder="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem)" name="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem)" aria-describedby="basic-addon1">
+                            <span class="input-group-addon" id="basic-addon1">客户姓名</span>
+                            <input type="text" class="form-control" placeholder="客户姓名" name="customerName" aria-describedby="basic-addon1">
                         </div>
                     </td>
-                }
-            </tr>
-        }
-        <tr>
-            @for (int i = 0; i < ((ViewData["FollowItems"] as IEnumerable<Follow>).Count() % 3); i++)
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">性别</span>
+                            <select name="sex" class="form-control">
+                                <option selected="selected">男</option>
+                                <option>女</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">年龄</span>
+                            <input type="text" class="form-control" placeholder="年龄" name="age" aria-describedby="basic-addon1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">婚否</span>
+                            <select name="ismarry" class="form-control">
+                                <option selected="selected">是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">子女</span>
+                            <select name="children" class="form-control">
+                                <option selected="selected">有</option>
+                                <option>无</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">地址省市</span>
+                            <input type="text" class="form-control" placeholder="地址省市" name="address" aria-describedby="basic-addon1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">所属行业</span>
+                            <input type="text" class="form-control" placeholder="所属行业" name="industry" aria-describedby="basic-addon1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">职业</span>
+                            <input type="text" class="form-control" placeholder="职业" name="occupation" aria-describedby="basic-addon1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">年收入</span>
+                            <input type="text" class="form-control" placeholder="年收入" name="income" aria-describedby="basic-addon1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">爱好</span>
+                            <input type="text" class="form-control" placeholder="爱好" name="hobby" aria-describedby="basic-addon1">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">客户电话</span>
+                            <input type="text" class="form-control" placeholder="客户电话" name="phone" aria-describedby="basic-addon1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">QQ</span>
+                            <input type="text" class="form-control" placeholder="QQ" name="qq" aria-describedby="basic-addon1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">微信号</span>
+                            <input type="text" class="form-control" placeholder="微信号" name="webcat" aria-describedby="basic-addon1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">邮箱</span>
+                            <input type="text" class="form-control" placeholder="邮箱" name="email" aria-describedby="basic-addon1">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">是否有车</span>
+                            <select name="hascar" class="form-control">
+                                <option selected="selected">是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">是否有房</span>
+                            <select name="hashouse" class="form-control">
+                                <option selected="selected">是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">备注1</span>
+                            <input type="text" class="form-control" placeholder="备注1" name="note1" aria-describedby="basic-addon1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">备注2</span>
+                            <input type="text" class="form-control" placeholder="备注2" name="note2" aria-describedby="basic-addon1">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">备注3</span>
+                            <input type="text" class="form-control" placeholder="备注3" name="note3" aria-describedby="basic-addon1">
+                        </div>
+                    </td>
+                </tr>
+                @for (int i = 0; i < (int)((ViewData["FollowItems"] as IEnumerable<Follow>).Count() / 3); i++)
             {
-                <td>
-                    <div class="input-group">
-                        <span class="input-group-addon" id="basic-addon1">@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count) - i - 1).FollowItem)</span>
-                        <input type="text" class="form-control input-follow" placeholder="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count)-i-1).FollowItem)" name="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count)-i-1).FollowItem)" aria-describedby="basic-addon1">
-                    </div>
-                </td>
-            }
-        </tr>
-        <tr>
-            <td colspan="5" class="td-btn">
-                <button class="btn btn-primary" type="button" onclick="AddInformation();">录入</button>
-            </td>
-        </tr>
-    </table>
-</form>
-
-
-<form id="form-data">
-    <div class="form-group">
-        <label for="exampleInputFile">Excel数据文件导入</label>
-        <input type="file" name="fileCollection" accept=".xls,.xlsx">
-        <p class="help-block">请选择要导入的excel文件.</p>
+                    <tr>
+                        @for (int j = i * 3; j < 3 * (i + 1); j++)
+                {
+                            <td>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem)</span>
+                                    <input type="text" class="form-control input-follow" placeholder="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem)" name="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt(j).FollowItem)" aria-describedby="basic-addon1">
+                                </div>
+                            </td>
+                        }
+                    </tr>
+                }
+                <tr>
+                    @for (int i = 0; i < ((ViewData["FollowItems"] as IEnumerable<Follow>).Count() % 3); i++)
+            {
+                        <td>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count) - i - 1).FollowItem)</span>
+                                <input type="text" class="form-control input-follow" placeholder="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count)-i-1).FollowItem)" name="@((ViewData["FollowItems"] as IEnumerable<Follow>).ElementAt((int)(ViewBag.Count)-i-1).FollowItem)" aria-describedby="basic-addon1">
+                            </div>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    <td colspan="5" class="td-btn">
+                        <button class="btn btn-primary" type="button" onclick="AddInformation();">录入</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <form id="form-data">
+            <div class="form-group">
+                <label for="exampleInputFile">Excel数据文件导入</label>
+                <input type="file" name="fileCollection" accept=".xls,.xlsx">
+                <p class="help-block">请选择要导入的excel文件.</p>
+            </div>
+            <div class="alert alert-error div-excel-data">
+                <a class="close" data-dismiss="alert">×</a>
+                <strong>导入数据失败! </strong>请检查您的上传的excel表格格式是否正确
+            </div>
+            <button class="btn btn-primary" type="button" onclick="UploadFile();">导入</button>
+        </form>
     </div>
-    <div class="alert alert-error div-excel-data">
-        <a class="close" data-dismiss="alert">×</a>
-        <strong>导入数据失败! </strong>请检查您的上传的excel表格格式是否正确
-    </div>
-    <button class="btn btn-primary" type="button" onclick="UploadFile();">导入</button>
-</form>
-
+</div>
 <script>
     function AddInformation() {
 

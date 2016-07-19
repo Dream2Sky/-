@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ImportInformation</title>
+	<link rel="stylesheet" href="css/bootstrap.css" />
+	<link rel="stylesheet" href="css/fontawesome.css" />
+	<link rel="stylesheet" href="css/index.css" />
+
+	<script src="js/jquery-1.8.3.js"></script>
+	<script src="js/index.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="logo icon-cloud-upload">
+			东方云网
+			<span>数据收集系统</span>
+		</div>
+		<a href="#">
+			<div class="exi icon-signout">
+				退出登录
+			</div>
+		</a>
+	</div>
+	
+	<div class="content">
+		<div class="menu">
+			<div class="lis search-form">
+				<form action="#" method="post">
+					<input type="text" name="" placeholder="搜索词条···" />
+					<button class="icon-search" type="submit">&nbsp;</button>
+				</form>
+			</div>
+			<a href="index.html">
+				<div class="lis">
+					首页
+				</div>
+			</a>
+			<a href="setting.html">
+				<div class="lis">
+					跟进设置
+				</div>
+			</a>
+			<a href="adduser.html">
+				<div class="lis">
+					添加新用户
+				</div>
+			</a>
+			<a href="load.html">
+				<div class="lis">
+					数据录入
+				</div>
+			</a>
+			<a href="user.html">
+				<div class="lis">
+					账户
+				</div>
+			</a>
+		</div>
+		<div class="main">
+			<div class="container">
+        
+
+<style>
+    .td-btn {
+        text-align: right;
+    }
+    .div-single-data,.div-excel-data{
+        display:none;
+    }
+
+    .alert-active{
+        display:block;
+    }
+</style>
+
+<div class="alert alert-error div-single-data">
+    <a class="close" data-dismiss="alert">×</a>
+    <strong>添加此条数据失败! </strong>请联系管理员
+</div>
+<label>
+    数据单条录入
+</label>
+<form action="/Information/ImportData" method="post" id="singleInformation-form">
+    <table class="table">
+        <tbody><tr>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">客户姓名</span>
+                    <input type="text" class="form-control" placeholder="客户姓名" name="customerName" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">性别</span>
+                    <select name="sex" class="form-control">
+                        <option selected="selected">男</option>
+                        <option>女</option>
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">年龄</span>
+                    <input type="text" class="form-control" placeholder="年龄" name="age" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">婚否</span>
+                    <select name="ismarry" class="form-control">
+                        <option selected="selected">是</option>
+                        <option>否</option>
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">子女</span>
+                    <select name="children" class="form-control">
+                        <option selected="selected">有</option>
+                        <option>无</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">地址省市</span>
+                    <input type="text" class="form-control" placeholder="地址省市" name="address" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">所属行业</span>
+                    <input type="text" class="form-control" placeholder="所属行业" name="industry" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">职业</span>
+                    <input type="text" class="form-control" placeholder="职业" name="occupation" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">年收入</span>
+                    <input type="text" class="form-control" placeholder="年收入" name="income" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">爱好</span>
+                    <input type="text" class="form-control" placeholder="爱好" name="hobby" aria-describedby="basic-addon1">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">客户电话</span>
+                    <input type="text" class="form-control" placeholder="客户电话" name="phone" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">QQ</span>
+                    <input type="text" class="form-control" placeholder="QQ" name="qq" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">微信号</span>
+                    <input type="text" class="form-control" placeholder="微信号" name="webcat" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">邮箱</span>
+                    <input type="email" class="form-control" placeholder="邮箱" name="email" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">是否有车</span>
+                    <select name="hascar" class="form-control">
+                        <option selected="selected">是</option>
+                        <option>否</option>
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">是否有房</span>
+                    <select name="hashouse" class="form-control">
+                        <option selected="selected">是</option>
+                        <option>否</option>
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">备注1</span>
+                    <input type="text" class="form-control" placeholder="备注1" name="note1" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">备注2</span>
+                    <input type="text" class="form-control" placeholder="备注2" name="note2" aria-describedby="basic-addon1">
+                </div>
+            </td>
+            <td>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">备注3</span>
+                    <input type="text" class="form-control" placeholder="备注3" name="note3" aria-describedby="basic-addon1">
+                </div>
+            </td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+            <td colspan="5" class="td-btn">
+                <button class="btn btn-primary" type="button" onclick="AddInformation();">录入</button>
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+
+
+<form id="form-data" action="Information/Import" method="post">
+    <div class="form-group">
+        <label for="exampleInputFile">Excel数据文件导入</label>
+        <input type="file" name="fileCollection" accept=".xls,.xlsx">
+        <p class="help-block">请选择要导入的excel文件.</p>
+    </div>
+    <div class="alert alert-error div-excel-data">
+        <a class="close" data-dismiss="alert">×</a>
+        <strong>导入数据失败! </strong>请检查您的上传的excel表格格式是否正确
+    </div>
+    <button class="btn btn-primary" type="button" onclick="UploadFile();">导入</button>
+</form>
+<script src="/Content/js/bootstrapValidator.min.js"></script>
+<script>
+    function AddInformation() {
+
+        var msg = "";
+        var customerName = $("input[name='customerName']").val();
+        var age = $("input[name='age']").val();
+        var income = $("input[name='income']").val();
+        if (customerName==null || customerName == "") {
+            msg += "客户名称不能为空\n";
+        }
+
+        if (age == null || age == "") {
+
+        }
+        else {
+            if (isNaN(age)) {
+                msg += "年龄必须是数字\n";
+            }
+            else {
+                if (!(age >= 0 && age <= 150)) {
+                    msg += "年龄超出合法范围 [0-150]";
+                }
+            }
+        }
+        
+        if (income == "" || income == null) {
+
+        }
+        else {
+            if (isNaN(income)) {
+                msg += "收入必须是数字\n";
+            }
+            else {
+                if (income <0) {
+                    msg += "收入必须大于0";
+                }
+            }
+        }
+
+        if (msg != "") {
+            alert(msg);
+        }
+        else {
+            var json = new Object();
+            json.customerName = customerName;
+            json.sex = $("select[name='sex']").val();
+            json.age = age;
+            json.ismarry = $("select[name='ismarry']").val();
+            json.children = $("select[name='children']").val();
+            json.address = $("input[name='address']").val();
+            json.industry = $("input[name='industry']").val();
+            json.occupation = $("input[name='occupation']").val();
+            json.income = income;
+            json.hobby = $("input[name='hobby']").val();
+            json.phone = $("input[name='phone']").val();
+            json.qq = $("input[name='qq']").val();
+            json.webcat = $("input[name='webcat']").val();
+            json.email = $("input[name='email']").val();
+            json.hascar = $("select[name='hascar']").val();
+            json.hashouse = $("select[name='hashouse']").val();
+            json.note1 = $("input[name='note1']").val();
+            json.note2 = $("input[name='note2']").val();
+            json.note3 = $("input[name='note3']").val();
+
+            var str = JSON.stringify(json);
+            $(".input-follow").each(function () {
+                str = str.replace("}", ",\"" + $(this).attr('name') + "\":" + "\"" + $(this).val() + "\"}");
+            });
+            $.ajax({
+                url: "/Information/ImportData",
+                type: "POST",
+                data: str,
+                success: function (data) {
+                    if (data == "True") {
+                        window.location.href = "/Admin/Index";
+                    }
+                    else {
+                        $('.div-single-data').addClass("alert-active");
+                    }
+                }
+            });
+        }
+    }
+    function UploadFile() {
+        var formData = new FormData($("#form-data")[0]);
+        $.ajax({
+            url: '/Information/Upload',
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (returndata) {
+                if (returndata == "True") {
+                    alert("导入数据成功");
+                    window.location.href = "/Admin/Index";
+                }
+                else {
+                    $('.div-excel-data').addClass('alert-active');
+                }
+            },
+            error: function (returndata) {
+                alert("导入失败");
+            }
+        });
+    }
+</script>
+    </div>
+		</div>
+	</div>
+</body>
+</html>

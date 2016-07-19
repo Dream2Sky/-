@@ -16,44 +16,52 @@ namespace DataBaseTest
             Console.WriteLine("Now inserting some data...");
             #region  添加用户账号  和 Follow
 
+            Member admin = new Member();
+            admin.Account = "Admin";
+            admin.Password = EncryptManager.SHA1("admin");
+            admin.IsAdmin = true;
 
-            //Member member = new Member();
-            //member.Account = "account1";
-            //member.Password = EncryptManager.SHA1("asdf1234");
-            //member.IsAdmin = false;
+            Member member = new Member();
+            member.Account = "account1";
+            member.Password = EncryptManager.SHA1("asdf1234");
+            member.IsAdmin = false;
 
-            //Member m1 = new Member();
-            //m1.Account = "account2";
-            //m1.Password = EncryptManager.SHA1("asdf1234");
-            //m1.IsAdmin = false;
-
-
-            //Follow follow = new Follow();
-            //follow.FollowItem = "跟进1";
-
-            //Follow f1 = new Follow();
-            //f1.FollowItem = "跟进2";
-
-            //try
-            //{
-            //    Console.WriteLine("tring...");
-            //    MemberDAL dal = new MemberDAL();
-            //    dal.Insert(member);
-            //    dal.Insert(m1);
-
-            //    FollowDAL fdal = new FollowDAL();
-            //    fdal.Insert(f1);
-            //    fdal.Insert(follow);
+            Member m1 = new Member();
+            m1.Account = "account2";
+            m1.Password = EncryptManager.SHA1("asdf1234");
+            m1.IsAdmin = false;
 
 
-            //    Console.WriteLine("Ok");
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine("Insert data failed,something wrong");
-            //    Console.WriteLine(ex.Message);
-            //    Console.WriteLine(ex.StackTrace);
-            //}
+
+
+            Follow follow = new Follow();
+            follow.FollowItem = "跟进1";
+
+            Follow f1 = new Follow();
+            f1.FollowItem = "跟进2";
+
+            try
+            {
+                Console.WriteLine("tring...");
+                MemberDAL dal = new MemberDAL();
+
+                dal.Insert(admin);
+                dal.Insert(member);
+                dal.Insert(m1);
+
+                FollowDAL fdal = new FollowDAL();
+                fdal.Insert(f1);
+                fdal.Insert(follow);
+
+
+                Console.WriteLine("Ok");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Insert data failed,something wrong");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
             #endregion
 
             #region 添加Information

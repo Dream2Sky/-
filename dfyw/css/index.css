@@ -1,0 +1,212 @@
+body{
+	padding: 0px;
+	margin: 0px;
+	background: #e7e8eb;
+}
+.header{
+	padding: 12px 12%;
+	background: #fff;
+	box-shadow: 0px 2px 3px #ddd;
+	overflow: hidden;
+}
+.logo{
+	font-size: 40px;
+	/*font-family: "黑体";*/
+}
+.logo span{
+	font-size: 24px;
+	color: #888;
+}
+.exi{
+	float: right;
+	font-size: 24px;
+	padding: 8px 50px 0px 0px;
+}
+.exi:hover{
+	color: green;
+}
+.header a{
+	color: #222;
+	text-decoration: none;
+}
+.content{
+	max-width: 1200px;
+	margin: 30px auto;
+	border: 1px solid #e7e7eb;
+	overflow: hidden;
+	background: #fff;
+}
+.menu{
+	width: 18%;
+	border-right: 1px solid #ddd;
+	/*padding: 10px;*/
+	background: #fff;
+	float: left;
+}
+.menu a{
+	text-decoration: none;
+}
+.lis{
+	width: 100%;
+	padding: 15px 0px 15px 50px;
+	font-size: 16px;
+	color: #222;
+	border-bottom: 1px solid #e7e7eb;
+	font-family: "微软雅黑";
+}
+.lis:hover{
+	background: #f4f5f9;
+	color: red;
+}
+.search-form {
+	padding: 15px 5px;
+	/*background: url("../images/back.png");*/
+}
+.lis form input{
+	width: 180px;
+	height: 32px;
+	border-radius: 16px;
+	border: 1px solid #e7e7eb;
+	padding-left: 10px;
+}
+.lis form button{
+	border: 1px solid #c1c2c7;
+	height: 32px;
+	position: absolute;
+	border-radius: 0px 16px 16px 0px;
+	margin-left: -32px;
+}
+.main{
+	padding: 10px;
+	width: 80%;
+	float: right;
+}
+.search-part{
+	/*border: 1px solid #e7e7eb;*/
+	overflow: hidden;
+}
+.search-part .btn{
+	float: right;
+	color: #fff;
+	background: green;
+	/*letter-spacing: 1px;*/
+	font-size: 16px;
+	/*font-weight: 600;*/
+	font-family: "黑体";
+}
+.info{
+	margin: 60px 10px;
+	border: 1px solid #e7e7eb;
+	overflow: hidden;
+	/*padding: 3px;*/
+	border-radius: 5px;
+	overflow: hidden;
+	box-shadow: 2px 2px 3px #ddd;
+}
+.info .navbar-form .form-group{
+	width: 50%;
+	float: left;
+	padding: 5px 0px;
+}
+.form-group .form-control{
+	background: green;
+	color: #fff;
+	font-size: 16px;
+	/*font-family: "黑体";*/
+	letter-spacing: 5px;
+	padding: 8px 30px;
+	font-weight: 600;
+	margin: 8px;
+}
+.info .navbar-form .form-group:last-child{
+	width: 100%;
+	text-align: center;
+	border-top: 1px dotted #e7e7eb;
+	margin-top: 10px;
+
+}
+.info-show{
+	padding: 10px;
+}
+
+.main .col-list{
+	width: 100%;
+	font-family: "黑体";
+	font-size: 16px;
+	padding: 10px;
+	border-bottom: 1px solid #e7e7eb;
+	overflow: hidden;
+}
+.main .add-col{
+	padding: 10px;
+}
+.main .add-col p{
+	font-family: "黑体";
+	font-size: 16px;
+}
+.main .add-col input{
+	border-radius: 5px;
+	height: 32px;
+	border: 1px solid #c1c2c7;
+	width: 250px;
+}
+.main .add-col button{
+	padding: 5px 10px;
+	font-size: 16px;
+	color: white;
+	background: #2A58DA;
+	border: none;
+	border-radius: 4px;
+}
+.user-list{
+	width: 200px;
+	/*float: left;*/
+	border-radius: 3px;
+	border: 1px solid #c1c2c7;
+	font-size: 16px;
+	padding: 8px;
+	text-align: center;
+	background: #fff;
+}
+.user-list:hover{
+	background: #eee;
+}
+.container{
+	width: 960px;
+}
+.info .div-table table tr td{
+	border: 1px solid #e7e7eb;
+	max-width: 100px;
+	text-align: center;
+}
+.info .div-table table tr td:hover{
+	background: #e7e7eb;
+	color: #111;
+}
+#singleInformation-form tr td{
+padding: 12px 5px;
+}
+.info .div-table table tr th{
+	border: none;
+	text-align: center;
+	font-family: "黑体";
+}
+#singleInformation-form tr td div span{
+	color: white;
+	background: orange;
+	font-size: 15px;
+	font-family: "微软雅黑";
+	padding: 8px 10px;
+}
+.lis form button{
+	color: green;
+}
+.search-part .info{
+	margin-bottom: 0px;
+}
+.table{
+	margin-bottom: 0px;
+}
+.menu .lis form input{
+	color: #222;
+}

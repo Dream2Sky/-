@@ -7,104 +7,77 @@
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="~/Content/css/bootstrapValidator.min.css" rel="stylesheet" />
+    <link href="~/Content/css/base.css" rel="stylesheet" />
+
     <script src="~/Content/js/jquery.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
     <script src="~/Content/js/bootstrap-datetimepicker.min.js"></script>
     <script src="~/Content/js/bootstrapValidator.min.js"></script>
     <style>
-        html body {
-            font-family: 'Microsoft YaHei';
-        }
 
-            html body a {
-                color: #000;
-            }
-
-        .page-header {
-            margin: 0px;
-        }
-
-        .header {
-            padding-bottom: 20px;
-        }
-
-        .active {
-            background: #EEEEEE;
-        }
-
-        .footer {
-            margin-top: 100px;
-            text-align: center;
-        }
-
-        .navbar {
-            margin-bottom: 10px;
-        }
-
-        .alert-error {
-            background-color: #F2DEDE;
-            border-width: 1px;
-            border-radius: 3px;
-            border-style: solid;
-            border-color: #EED3D7;
-            color: #B94A48;
-        }
     </style>
 </head>
 <body>
-    <div class="container-fluid header">
-        <div class="page-header">
-            <h2><strong>东方云网</strong> <small>数据收集系统</small></h2>
-        </div>
-    </div>
-    <div class="navbar">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
-            <ul class="nav navbar-nav">
-                @if (System.Web.HttpContext.Current.Session["admin"] == null)
-                {
-                    <li class="nav-li-home">
-                        <a href="/Home/Index">首页</a>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">东方云网信息收集系统</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (System.Web.HttpContext.Current.Session["admin"] == null)
+                    {
+                        <li class="nav-li-home">
+                            <a href="/Home/Index">首页</a>
+                        </li>
+                        <li class="nav-li-information">
+                            <a href="/Information/ImportInformationwithSpecificMember">数据</a>
+                        </li>
+                        <li class="nav-li-account">
+                            <a href="/Account/ResetPassword">账户</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-li-admin">
+                            <a href="/Admin/Index">首页</a>
+                        </li>
+                        <li class="nav-li-follow">
+                            <a href="/Follow/Items">跟进设置</a>
+                        </li>
+                        <li class="nav-li-member">
+                            <a href="/Member/List">添加新用户</a>
+                        </li>
+                        <li class="nav-li-information">
+                            <a href="/Information/ImportInformation">数据录入</a>
+                        </li>
+                        <li class="nav-li-account">
+                            <a href="/Account/ResetPassword">账户</a>
+                        </li>
+                    }
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/Account/Logout">退出登录</a>
                     </li>
-                    <li class="nav-li-information">
-                        <a href="/Information/ImportInformationwithSpecificMember">数据</a>
-                    </li>
-                    <li class="nav-li-account">
-                        <a href="/Account/ResetPassword">账户</a>
-                    </li>
-                }
-                else
-                {
-                    <li class="nav-li-admin">
-                        <a href="/Admin/Index">首页</a>
-                    </li>
-                    <li class="nav-li-follow">
-                        <a href="/Follow/Items">跟进设置</a>
-                    </li>
-                    <li class="nav-li-member">
-                        <a href="/Member/List">添加新用户</a>
-                    </li>
-                    <li class="nav-li-information">
-                        <a href="/Information/ImportInformation">数据录入</a>
-                    </li>
-                    <li class="nav-li-account">
-                        <a href="/Account/ResetPassword">账户</a>
-                    </li>
-                }
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="/Account/Logout">退出登录</a>
-                </li>
-            </ul>
+                </ul>
+            </div>
         </div>
     </div>
-    <div class="container">
-        @RenderBody()
-    </div>
-    <div class="container-fluid footer">
+    <div class="container body-content">
+        <div style="min-height:650px;">
+            @RenderBody()
+        </div>
         <hr />
-        <p><a href="/数据模板.xls">数据模板下载</a></p>
-        <p><a href="#">东方云网</a></p>
+        <footer class="footer text-muted">
+            <p><a href="/数据模板.xls">数据模板下载</a></p>
+            <p>&copy; @DateTime.Now.Year 东方云网 版权所有</p>
+        </footer>
     </div>
     <script>
         $(document).ready(function () {
