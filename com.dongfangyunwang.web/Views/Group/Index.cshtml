@@ -1,8 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "东方云网 管理员首页";
+    ViewBag.Title = "东方云网 组长首页";
     Layout = "~/Views/LayoutPage.cshtml";
 }
+
 @using com.dongfangyunwang.web.Models
 
 <style>
@@ -47,7 +48,7 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <button class="btn btn-success" onclick="javascript: window.location.href = '/Admin/ExportData'">导出当前数据</button>
+                        <button class="btn btn-success" onclick="javascript: window.location.href = '/Group/ExportData'">导出当前数据</button>
                     </li>
                 </ul>
             </div>
@@ -121,7 +122,7 @@
     <script>
     function submitCodition() {
         $.ajax({
-            url: "/Admin/Search",
+            url: "/Group/Search",
             type: "Get",
             data: { condition: $("input[name='condition']").val() },
             success: function (data) {
@@ -179,7 +180,7 @@
             hashouse = $("input[name='hashouse']").is(':checked') ? $("input[name='hashouse']").val() : $("input[name='nohouse']").val();
         }
         $.ajax({
-            url: "/Admin/Search",
+            url: "/Group/Search",
             type: "POST",
             data: {
                 sex: sex,
@@ -204,7 +205,7 @@
     }
     $(document).ready(function () {
         $.ajax({
-            url: "/Admin/Search",
+            url: "/Group/Search",
             type: "GET",
             data: { condition: "" },
             success: function (data) {

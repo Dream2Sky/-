@@ -11,6 +11,25 @@ namespace com.dongfangyunwang.DAL
     public class MemberDAL : DataBaseDAL<Member>, IMemberDAL
     {
         /// <summary>
+        /// 找管理员
+        /// </summary>
+        /// <param name="isAdmin"></param>
+        /// <returns></returns>
+        public Member SelectAdmin()
+        {
+            try
+            {
+                return db.Set<Member>().SingleOrDefault(n => n.IsAdmin == 1);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log.Write(ex.Message);
+                LogHelper.Log.Write(ex.StackTrace);
+                throw;
+            }
+        }
+
+        /// <summary>
         ///  单纯的根据账号获得member
         /// </summary>
         /// <param name="account"></param>
@@ -35,7 +54,7 @@ namespace com.dongfangyunwang.DAL
         /// <param name="account"></param>
         /// <param name="isadmin"></param>
         /// <returns></returns>
-        public Member SelectByAccount(string account, bool isadmin)
+        public Member SelectByAccount(string account, int isadmin)
         {
             try
             {

@@ -34,6 +34,7 @@ namespace com.dongfangyunwang.web.Models
             this.Note1 = info.Note1;
             this.Note2 = info.Note2;
             this.Note3 = info.Note3;
+            this.Approval = info.Approval;
         }
         public string MemberAccount { get; set; }
         public IEnumerable<FollowModel> FollowList { get; set; }

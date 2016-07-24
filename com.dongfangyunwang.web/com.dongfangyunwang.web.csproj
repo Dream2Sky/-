@@ -179,6 +179,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\FollowController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformationController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
@@ -187,6 +188,7 @@
     </Compile>
     <Compile Include="Global\ExcelManager.cs" />
     <Compile Include="Global\IsAdminAttribute.cs" />
+    <Compile Include="Global\IsGroupAttribute.cs" />
     <Compile Include="Global\IsLoginAttribute.cs" />
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\AdditionalConditionModel.cs" />
@@ -211,6 +213,9 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Information\Update.cshtml" />
     <None Include="Properties\PublishProfiles\com.dongfangbaoyuan.web.pubxml" />
+    <Content Include="Views\Group\Index.cshtml" />
+    <Content Include="Views\Group\Search.cshtml" />
+    <Content Include="Views\Information\ImportInformationwithGroupLeader.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

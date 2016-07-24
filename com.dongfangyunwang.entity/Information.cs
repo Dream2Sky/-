@@ -78,6 +78,11 @@ namespace com.dongfangyunwang.entity
         /// </summary>
         [MaxLength(255)]
         public string Note3 { get; set; }
+        /// <summary>
+        /// 客户资料的审批状态
+        /// </summary>
+        [Required]
+        public bool Approval { get; set; } = false;
     }
 
 }

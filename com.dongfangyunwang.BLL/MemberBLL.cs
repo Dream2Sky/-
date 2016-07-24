@@ -23,6 +23,11 @@ namespace com.dongfangyunwang.BLL
             return _memberDAL.Insert(member);
         }
 
+        public Member GetAdmin()
+        {
+            return _memberDAL.SelectAdmin();
+        }
+         
         public IEnumerable<Member> GetAllMembers()
         {
             return _memberDAL.SelectAll();
@@ -38,7 +43,7 @@ namespace com.dongfangyunwang.BLL
             return _memberDAL.SelectByAccount(name);
         }
 
-        public Member GetMemberByAccount(string name, bool isadmin)
+        public Member GetMemberByAccount(string name, int isadmin)
         {
             return _memberDAL.SelectByAccount(name, isadmin);
         }
@@ -71,7 +76,21 @@ namespace com.dongfangyunwang.BLL
         {
             try
             {
-                bool _isadmin = (isadmin == "y") ? true : false;
+                int _isadmin = 0;
+                switch (isadmin)
+                {
+                    case "y":
+                        _isadmin = 1;
+                        break;
+                    case "n":
+                        _isadmin = 0;
+                        break;
+                    case "g":
+                        _isadmin = 2;
+                        break;
+                    default:
+                        break;
+                }
                 if (string.IsNullOrEmpty(account))
                 {
                     return false;

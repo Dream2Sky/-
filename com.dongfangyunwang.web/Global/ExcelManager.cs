@@ -149,8 +149,16 @@ namespace com.dongfangyunwang.web.Global
                     // 构造Information
                     #region 构造Information
                     infor.Id = Guid.NewGuid();
-                    infor.InserTime = DateTime.Parse(_row.GetCell(0).DateCellValue.ToString()).ToString("yyyy-mm-dd");
-
+                    try
+                    {
+                        infor.InserTime = DateTime.Parse(_row.GetCell(0).DateCellValue.ToString()).ToString("yyyy-mm-dd");
+                    }
+                    catch (Exception)
+                    {
+                        infor.InserTime = DateTime.Parse(_row.GetCell(0).StringCellValue.ToString()).ToString("yyyy-mm-dd");
+                    }
+                    
+                    
                     Member member = _memberBLL.GetMemberByAccount(_row.GetCell(1).StringCellValue);
                     if (member == null)
                     {
@@ -162,17 +170,42 @@ namespace com.dongfangyunwang.web.Global
                     }
                     infor.CustomerName = _row.GetCell(2).StringCellValue;
                     infor.Sex = _row.GetCell(3).StringCellValue;
-                    infor.Age = _row.GetCell(4).NumericCellValue.ToString();
+                    try
+                    {
+                        infor.Age = _row.GetCell(4).NumericCellValue.ToString();
+                    }
+                    catch (Exception)
+                    {
+                        infor.Age = _row.GetCell(4).StringCellValue.ToString();
+                    }
+                    
                     infor.IsMarry = _row.GetCell(5).StringCellValue;
                     infor.Children = _row.GetCell(6).StringCellValue;
                     infor.Phone = _row.GetCell(7).StringCellValue;
-                    infor.QQ = _row.GetCell(8).NumericCellValue.ToString();
+                    try
+                    {
+                        infor.QQ = _row.GetCell(8).NumericCellValue.ToString();
+                    }
+                    catch (Exception)
+                    {
+                        infor.QQ = _row.GetCell(8).StringCellValue.ToString();
+                    }
+                    
                     infor.WebCat = _row.GetCell(9).StringCellValue;
                     infor.Email = _row.GetCell(10).StringCellValue;
                     infor.Address = _row.GetCell(11).StringCellValue;
                     infor.Industry = _row.GetCell(12).StringCellValue;
                     infor.Occupation = _row.GetCell(13).StringCellValue;
-                    infor.Income = _row.GetCell(14).NumericCellValue.ToString();
+
+                    try
+                    {
+                        infor.Income = _row.GetCell(14).NumericCellValue.ToString();
+                    }
+                    catch (Exception)
+                    {
+                        infor.Income = _row.GetCell(14).StringCellValue.ToString();
+                    }
+                    
                     infor.Hobby = _row.GetCell(15).StringCellValue;
                     infor.HasCar = _row.GetCell(16).StringCellValue;
                     infor.HasHouse = _row.GetCell(17).StringCellValue;

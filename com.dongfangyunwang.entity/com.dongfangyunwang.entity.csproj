@@ -91,6 +91,14 @@
     <Compile Include="Migrations\201606160417492_AddColumns_Information.Designer.cs">
       <DependentUpon>201606160417492_AddColumns_Information.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607220752205_AddColumn_Information_Approval.cs" />
+    <Compile Include="Migrations\201607220752205_AddColumn_Information_Approval.Designer.cs">
+      <DependentUpon>201607220752205_AddColumn_Information_Approval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607220811274_AlterColumn_Member_IsAdmin.cs" />
+    <Compile Include="Migrations\201607220811274_AlterColumn_Member_IsAdmin.Designer.cs">
+      <DependentUpon>201607220811274_AlterColumn_Member_IsAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -121,6 +129,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606160417492_AddColumns_Information.resx">
       <DependentUpon>201606160417492_AddColumns_Information.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607220752205_AddColumn_Information_Approval.resx">
+      <DependentUpon>201607220752205_AddColumn_Information_Approval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607220811274_AlterColumn_Member_IsAdmin.resx">
+      <DependentUpon>201607220811274_AlterColumn_Member_IsAdmin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

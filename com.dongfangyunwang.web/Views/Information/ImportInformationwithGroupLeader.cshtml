@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "ImportInformation";
+    ViewBag.Title = "ImportInformationwithGroupLeader";
     Layout = "~/Views/LayoutPage.cshtml";
 }
 @using com.dongfangyunwang.entity
@@ -33,7 +33,7 @@
         <label>
             数据单条录入
         </label>
-        <form action="/Information/ImportData" method="post" id="singleInformation-form">
+        <form action="/Information/ImportDatawithGroupLeader" method="post" id="singleInformation-form">
             <table class="table">
                 <tr>
                     <td>
@@ -290,12 +290,12 @@
                 str = str.replace("}", ",\"" + $(this).attr('name') + "\":" + "\"" + $(this).val() + "\"}");
             });
             $.ajax({
-                url: "/Information/ImportData",
+                url: "/Information/ImportDatawithGroupLeader",
                 type: "POST",
                 data: str,
                 success: function (data) {
                     if (data == "True") {
-                        window.location.href = "/Admin/Index";
+                        window.location.href = "/Group/Index";
                     }
                     else {
                         $('.div-single-data').addClass("alert-active");
@@ -317,7 +317,7 @@
             success: function (returndata) {
                 if (returndata == "True") {
                     alert("导入数据成功");
-                    window.location.href = "/Admin/Index";
+                    window.location.href = "/Group/Index";
                 }
                 else {
                     $('.div-excel-data').addClass('alert-active');

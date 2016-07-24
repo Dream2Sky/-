@@ -57,6 +57,7 @@ namespace com.dongfangyunwang.IDAL
         /// 备注
         /// </summary>
         public string Note3 { get; set; }
+        public bool Approval { get; set; }
 
     }
 }

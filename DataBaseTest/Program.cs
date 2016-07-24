@@ -16,22 +16,25 @@ namespace DataBaseTest
             Console.WriteLine("Now inserting some data...");
             #region  添加用户账号  和 Follow
 
-            Member admin = new Member();
-            admin.Account = "Admin";
-            admin.Password = EncryptManager.SHA1("admin");
-            admin.IsAdmin = true;
+            //Member admin = new Member();
+            //admin.Account = "Admin";
+            //admin.Password = EncryptManager.SHA1("admin");
+            //admin.IsAdmin = 1;
 
-            Member member = new Member();
-            member.Account = "account1";
-            member.Password = EncryptManager.SHA1("asdf1234");
-            member.IsAdmin = false;
+            //Member member = new Member();
+            //member.Account = "account1";
+            //member.Password = EncryptManager.SHA1("asdf1234");
+            //member.IsAdmin = 0;
 
-            Member m1 = new Member();
-            m1.Account = "account2";
-            m1.Password = EncryptManager.SHA1("asdf1234");
-            m1.IsAdmin = false;
+            //Member m1 = new Member();
+            //m1.Account = "account2";
+            //m1.Password = EncryptManager.SHA1("asdf1234");
+            //m1.IsAdmin = 0;
 
-
+            Member group = new Member();
+            group.Account = "group";
+            group.Password = EncryptManager.SHA1("asdf1234");
+            group.IsAdmin = 2;
 
 
             Follow follow = new Follow();
@@ -45,14 +48,15 @@ namespace DataBaseTest
                 Console.WriteLine("tring...");
                 MemberDAL dal = new MemberDAL();
 
-                dal.Insert(admin);
-                dal.Insert(member);
-                dal.Insert(m1);
+                //dal.Insert(admin);
+                //dal.Insert(member);
+                //dal.Insert(m1);
 
-                FollowDAL fdal = new FollowDAL();
-                fdal.Insert(f1);
-                fdal.Insert(follow);
+                //FollowDAL fdal = new FollowDAL();
+                //fdal.Insert(f1);
+                //fdal.Insert(follow);
 
+                dal.Insert(group);
 
                 Console.WriteLine("Ok");
             }

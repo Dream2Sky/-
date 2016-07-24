@@ -14,7 +14,6 @@
     <script src="~/Content/js/bootstrap-datetimepicker.min.js"></script>
     <script src="~/Content/js/bootstrapValidator.min.js"></script>
     <style>
-
     </style>
 </head>
 <body>
@@ -26,17 +25,40 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand">东方云网信息收集系统</a>
+                @if (System.Web.HttpContext.Current.Session["member"] != null)
+                {
+                    <a href="/Home/Index" class="navbar-brand">东方云网信息收集系统</a>
+                }
+                else if (System.Web.HttpContext.Current.Session["group"] != null)
+                {
+                    <a href="/Group/Index" class="navbar-brand">东方云网信息收集系统</a>
+                }
+                else
+                {
+                    <a href="/Admin/Index" class="navbar-brand">东方云网信息收集系统</a>
+                }
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @if (System.Web.HttpContext.Current.Session["admin"] == null)
+                    @if (System.Web.HttpContext.Current.Session["member"] != null)
                     {
                         <li class="nav-li-home">
                             <a href="/Home/Index">首页</a>
                         </li>
                         <li class="nav-li-information">
                             <a href="/Information/ImportInformationwithSpecificMember">数据</a>
+                        </li>
+                        <li class="nav-li-account">
+                            <a href="/Account/ResetPassword">账户</a>
+                        </li>
+                    }
+                    else if (System.Web.HttpContext.Current.Session["group"] != null)
+                    {
+                        <li class="nav-li-group">
+                            <a href="/Group/Index">首页</a>
+                        </li>
+                        <li class="nav-li-information">
+                            <a href="/Information/ImportInformationwithGroupLeader">数据</a>
                         </li>
                         <li class="nav-li-account">
                             <a href="/Account/ResetPassword">账户</a>
@@ -87,6 +109,9 @@
             }
             else if (currentController == "Account") {
                 $('.nav-li-account').addClass("active");
+            }
+            else if (currentController == "Group") {
+                $('.nav-li-group').addClass("active");
             }
             else if (currentController == "Member") {
                 $('.nav-li-member').addClass("active");

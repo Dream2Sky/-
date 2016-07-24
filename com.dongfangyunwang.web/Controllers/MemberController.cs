@@ -32,7 +32,7 @@ namespace com.dongfangyunwang.web.Controllers
             member.Id = Guid.NewGuid();
             member.Account = memberName;
             member.Password = EncryptManager.SHA1("123456");
-            member.IsAdmin = false;
+            member.IsAdmin = 0;
 
             if (_memberBLL.IsExist(member))
             {

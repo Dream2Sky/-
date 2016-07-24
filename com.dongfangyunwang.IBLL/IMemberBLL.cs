@@ -11,11 +11,12 @@ namespace com.dongfangyunwang.IBLL
     {
         bool Login(string account, string password, string isadmin);
         Member GetMemberById(Guid id);
-        Member GetMemberByAccount(string name,bool isadmin);
+        Member GetMemberByAccount(string name,int isadmin);
         Member GetMemberByAccount(string name);
         IEnumerable<Member> GetAllMembers();
         bool IsExist(Member member);
         bool Add(Member member);
         bool Update(Member member);
+        Member GetAdmin();
     }
 }

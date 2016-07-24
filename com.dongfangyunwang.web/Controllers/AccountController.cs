@@ -50,14 +50,27 @@ namespace com.dongfangyunwang.web.Controllers
                         return RedirectToAction("Login", "Account", new { msg = msg });
                     }
                 }
-                else if(model.isadmin == "n")
+                else if (model.isadmin == "n")
                 {
                     if (_memberBLL.Login(model.account, model.password, model.isadmin))
                     {
                         System.Web.HttpContext.Current.Session["member"] = model.account;
                         return RedirectToAction("Index", "Home");
                     }
-                    else 
+                    else
+                    {
+                        msg = "账号或密码错误";
+                        return RedirectToAction("Login", "Account", new { msg = msg });
+                    }
+                }
+                else if (model.isadmin == "g")
+                {
+                    if (_memberBLL.Login(model.account,model.password, model.isadmin))
+                    {
+                        System.Web.HttpContext.Current.Session["group"] = model.account;
+                        return RedirectToAction("Index", "Group");
+                    }
+                    else
                     {
                         msg = "账号或密码错误";
                         return RedirectToAction("Login", "Account", new { msg = msg });
@@ -65,7 +78,7 @@ namespace com.dongfangyunwang.web.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Login", "Account", new { msg = "请选择登陆角色 [管理员] 还是 [一般用户]" });
+                    return RedirectToAction("Login", "Account", new { msg = "请选择登陆角色 [管理员]，[一般用户]，[组长]" });
                 }
             }
             catch (Exception ex)
@@ -86,7 +99,7 @@ namespace com.dongfangyunwang.web.Controllers
         public ActionResult ResetPassword()
         {
             // 判断是否有用户角色权限
-            if (System.Web.HttpContext.Current.Session["admin"] == null && System.Web.HttpContext.Current.Session["member"] == null)
+            if (System.Web.HttpContext.Current.Session["admin"] == null && System.Web.HttpContext.Current.Session["member"] == null && System.Web.HttpContext.Current.Session["group"] == null)
             {
                 return RedirectToAction("Login", "Account");
             }
@@ -108,9 +121,32 @@ namespace com.dongfangyunwang.web.Controllers
         [HttpPost]
         public ActionResult ResetPassword(PasswordModel model)
         {
-
             // 单独判断这个方法是否有权限访问
-            string username = (System.Web.HttpContext.Current.Session["admin"] == null) ? (System.Web.HttpContext.Current.Session["member"] == null ? "" : System.Web.HttpContext.Current.Session["member"].ToString()) : System.Web.HttpContext.Current.Session["admin"].ToString();
+            string username = string.Empty;
+
+            if (System.Web.HttpContext.Current.Session["admin"] == null)
+            {
+                if (System.Web.HttpContext.Current.Session["member"] == null)
+                {
+                    if (System.Web.HttpContext.Current.Session["group"] == null)
+                    {
+                        username = "";
+                    }
+                    else
+                    {
+                        username = System.Web.HttpContext.Current.Session["group"].ToString();
+                    }
+                }
+                else
+                {
+                    username = System.Web.HttpContext.Current.Session["member"].ToString();
+                }
+            }
+            else
+            {
+                username = System.Web.HttpContext.Current.Session["admin"].ToString();
+            }
+
 
             if (string.IsNullOrEmpty(username))
             {
@@ -160,6 +196,11 @@ namespace com.dongfangyunwang.web.Controllers
             if (System.Web.HttpContext.Current.Session["member"] != null)
             {
                 System.Web.HttpContext.Current.Session["member"] = null;
+            }
+
+            if (System.Web.HttpContext.Current.Session["group"] != null)
+            {
+                System.Web.HttpContext.Current.Session["group"] = null;
             }
 
             return RedirectToAction("Login");

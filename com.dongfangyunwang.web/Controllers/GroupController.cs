@@ -11,19 +11,20 @@ using System.Web.Mvc;
 
 namespace com.dongfangyunwang.web.Controllers
 {
-    [IsAdmin]
-    public class AdminController : Controller
+    public class GroupController:Controller
     {
         private IMemberBLL _memberBLL;
+        private IInformationBLL _informationBLL;
         private IFollowBLL _followBLL;
         private IFollowRecordBLL _followRecordBLL;
-        private IInformationBLL _informationBLL;
-        public AdminController(IMemberBLL memberBLL, IFollowBLL followBLL, IFollowRecordBLL followRecordBLL, IInformationBLL informationBLL)
+        public GroupController(IMemberBLL memberBLL, 
+            IInformationBLL informationBLL, IFollowBLL followBLL,
+            IFollowRecordBLL followRecordBLL)
         {
             _memberBLL = memberBLL;
+            _informationBLL = informationBLL;
             _followBLL = followBLL;
             _followRecordBLL = followRecordBLL;
-            _informationBLL = informationBLL;
         }
 
         public ActionResult Index()
@@ -31,70 +32,47 @@ namespace com.dongfangyunwang.web.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Index(string condition)
-        //{
-        //    ViewData["TableHeaderItem"] = GetFollowHeader();
-        //    ViewData["InformationList"] = GetInformation(condition);
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public ActionResult Index(AdditionalConditionModel additionalCondition)
-        //{
-        //    ViewData["TableHeaderItem"] = GetFollowHeader();
-        //    ViewData["InformationList"] = GetInformation(additionalCondition);
-        //    return View();
-        //}
-
-        /// <summary>
-        /// 按条件搜索  string
-        /// </summary>
-        /// <param name="condition"></param>
-        /// <returns></returns>
         [HttpGet]
         public PartialViewResult Search(string condition)
         {
+            Member admin = _memberBLL.GetAdmin();
             ViewData["TableHeaderItem"] = GetFollowHeader();
 
-            Member admin = _memberBLL.GetMemberByAccount(System.Web.HttpContext.Current.Session["admin"].ToString(), 1);
+            List<InformationModel> infoList = GetInformation(condition, admin.Id);
+            ViewData["InformationList"] = infoList;
 
-            List<InformationModel> informationList = GetInformation(condition, admin.Id);
-            ViewData["InformationList"] = informationList;
-
-            System.Web.HttpContext.Current.Session["InformationList"] = informationList; // 存储查询结果  当作缓存数据  当导出数据时 可以用
+            System.Web.HttpContext.Current.Session["InformationList"] = infoList; // 存储查询结果  当作缓存数据  当导出数据时 可以用
 
             return PartialView();
         }
 
-        /// <summary>
-        ///  按条件搜索 AdditionalConditionModel
-        /// </summary>
-        /// <param name="additionalCondition"></param>
-        /// <returns></returns>
         [HttpPost]
-        public PartialViewResult Search(AdditionalConditionModel additionalCondition)
+        public PartialViewResult Search(AdditionalConditionModel additionalConditionModel)
         {
             ViewData["TableHeaderItem"] = GetFollowHeader();
-            Member admin = _memberBLL.GetMemberByAccount(System.Web.HttpContext.Current.Session["admin"].ToString(),1);
-            List<InformationModel> informationList = GetInformation(additionalCondition, admin.Id);
+            Member admin = _memberBLL.GetAdmin();
+
+            List<InformationModel> informationList = GetInformation(additionalConditionModel, admin.Id);
             ViewData["InformationList"] = informationList;
 
             System.Web.HttpContext.Current.Session["InformationList"] = informationList;
+
             return PartialView();
         }
 
         /// <summary>
-        /// 管理员 审批
+        /// 组长 审批
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
+        [HttpPost]
         public ActionResult Approval(Guid Id)
         {
             if (Id == null)
             {
                 return Json("False", JsonRequestBehavior.AllowGet);
             }
+            // 更新 客户资料的状态
             Information infor = _informationBLL.GetInformationById(Id);
             infor.Approval = true;
 
@@ -109,7 +87,141 @@ namespace com.dongfangyunwang.web.Controllers
         }
 
         /// <summary>
-        /// 构造跟进项表头
+        /// 组长获取客户资料
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <param name="adminId"></param>
+        /// <returns></returns>
+        [NonAction]
+        public List<InformationModel> GetInformation(string condition, Guid adminId)
+        {
+            // InformationModel List 最终提交到页面的数据集
+            // InformationModel 继承至 Information
+            // 目的是为了包含FollowModel List
+            List<InformationModel> InformationModelList = new List<InformationModel>();
+            List<Information> InformationList = new List<Information>();
+
+            if (string.IsNullOrEmpty(condition))
+            {
+                // 如果condition没有值
+                // 首先获取前50条数据记录到 InformationList
+                InformationList = _informationBLL.GetInformationByAnythingswithGroupLeader(50, adminId).ToList();
+            }
+            else
+            {
+                // 如果condition有值 就按条件查询
+                InformationList = _informationBLL.GetInformationByAnythingswithGroupLeader(condition, adminId).ToList();
+            }
+
+            List<Information> InfoList = new List<Information>();
+            InfoList = InformationList.ToList();
+
+            // 然后循环InformationList
+
+            // 构造 InformationModelList
+
+            foreach (Information item in InformationList)
+            {
+                InformationModel info = new InformationModel(item);
+
+                List<FollowModel> followModelList = new List<FollowModel>();
+
+                List<FollowRecord> followRecordList = new List<FollowRecord>();
+                followRecordList = _followRecordBLL.GetFollowRecordByInformationId(info.Id).ToList();
+
+                foreach (FollowRecord fr in followRecordList)
+                {
+                    FollowModel fm = new FollowModel();
+                    fm.FollowName = _followBLL.GetFollow(fr.FollowId).FollowItem;
+                    fm.FollowValue = fr.FollowValue;
+
+                    followModelList.Add(fm);
+                }
+
+                info.FollowList = followModelList.AsEnumerable();
+                // 获取收集员的账号
+                info.MemberAccount = _memberBLL.GetMemberById(info.MemberId).Account;
+                InformationModelList.Add(info);
+            }
+
+            return InformationModelList;
+        }
+
+        /// <summary>
+        /// 组长 按条件 查询客户资料
+        /// </summary>
+        /// <param name="additionalCondition"></param>
+        /// <param name="adminId"></param>
+        /// <returns></returns>
+        [NonAction]
+        public List<InformationModel> GetInformation(AdditionalConditionModel additionalCondition, Guid adminId)
+        {
+            // InformationModel List 最终提交到页面的数据集
+            // InformationModel 继承至 Information
+            // 目的是为了包含FollowModel List
+            List<InformationModel> InformationModelList = new List<InformationModel>();
+            List<Information> InformationList = new List<Information>();
+
+            if (additionalCondition == null)
+            {
+                // 如果condition没有值
+                // 首先获取前50条数据记录到 InformationList
+                InformationList = _informationBLL.GetInformationByAnythingswithGroupLeader(50,adminId).ToList();
+            }
+            else
+            {
+                // 如果condition有值 就按条件查询
+
+                string sex = additionalCondition.sex == null ? "" : additionalCondition.sex;
+                string minage = additionalCondition.min_age == null ? "" : additionalCondition.min_age;
+                string maxage = additionalCondition.max_age == null ? "" : additionalCondition.max_age;
+                string ismarried = additionalCondition.ismarried == null ? "" : additionalCondition.ismarried;
+                string children = additionalCondition.children == null ? "" : additionalCondition.children;
+                string minincome = additionalCondition.min_income == null ? "" : additionalCondition.min_income;
+                string maxincome = additionalCondition.max_income == null ? "" : additionalCondition.max_income;
+                string hascar = additionalCondition.hascar == null ? "" : additionalCondition.hascar;
+                string hashouse = additionalCondition.hashouse == null ? "" : additionalCondition.hashouse;
+                string insertTime = additionalCondition.insertTime == null ? "" : additionalCondition.insertTime;
+
+                InformationList = _informationBLL.GetInformationByAnythingswithGroupLeader(adminId,sex, minage, maxage, ismarried, children, minincome, maxincome, hascar, hashouse, insertTime).ToList();
+            }
+
+            List<Information> InfoList = new List<Information>();
+            InfoList = InformationList.ToList();
+
+            // 然后循环InformationList
+
+            // 构造 InformationModelList
+
+            foreach (Information item in InformationList)
+            {
+                InformationModel info = new InformationModel(item);
+
+                List<FollowModel> followModelList = new List<FollowModel>();
+
+                List<FollowRecord> followRecordList = new List<FollowRecord>();
+                followRecordList = _followRecordBLL.GetFollowRecordByInformationId(info.Id).ToList();
+
+                foreach (FollowRecord fr in followRecordList)
+                {
+                    FollowModel fm = new FollowModel();
+                    fm.FollowName = _followBLL.GetFollow(fr.FollowId).FollowItem;
+                    fm.FollowValue = fr.FollowValue;
+
+                    followModelList.Add(fm);
+                }
+
+                info.FollowList = followModelList.AsEnumerable();
+                // 获取收集员的账号
+                info.MemberAccount = _memberBLL.GetMemberById(info.MemberId).Account;
+                InformationModelList.Add(info);
+            }
+
+            return InformationModelList;
+        }
+
+        /// <summary>
+        /// 获取跟进项表头
         /// </summary>
         /// <returns></returns>
         [NonAction]
@@ -128,146 +240,14 @@ namespace com.dongfangyunwang.web.Controllers
         }
 
         /// <summary>
-        /// 获取Information
-        /// </summary>
-        /// <param name="condition"></param>
-        /// <returns></returns>
-        [NonAction]
-        public List<InformationModel> GetInformation(string condition, Guid adminId)
-        {
-            // InformationModel List 最终提交到页面的数据集
-            // InformationModel 继承至 Information
-            // 目的是为了包含FollowModel List
-            List<InformationModel> InformationModelList = new List<InformationModel>();
-            List<Information> InformationList = new List<Information>();
-
-            if (string.IsNullOrEmpty(condition))
-            {
-                // 如果condition没有值
-                // 首先获取前50条数据记录到 InformationList
-                InformationList = _informationBLL.GetInformationLimited(50,adminId).ToList();
-            }
-            else
-            {
-                // 如果condition有值 就按条件查询
-                InformationList = _informationBLL.GetInformationByAnythings(condition, adminId).ToList();
-            }
-
-            List<Information> InfoList = new List<Information>();
-            InfoList = InformationList.ToList();
-
-            // 然后循环InformationList
-
-            // 构造 InformationModelList
-
-            foreach (Information item in InformationList)
-            {
-                InformationModel info = new InformationModel(item);
-
-                List<FollowModel> followModelList = new List<FollowModel>();
-
-                List<FollowRecord> followRecordList = new List<FollowRecord>();
-                followRecordList = _followRecordBLL.GetFollowRecordByInformationId(info.Id).ToList();
-
-                foreach (FollowRecord fr in followRecordList)
-                {
-                    FollowModel fm = new FollowModel();
-                    fm.FollowName = _followBLL.GetFollow(fr.FollowId).FollowItem;
-                    fm.FollowValue = fr.FollowValue;
-
-                    followModelList.Add(fm);
-                }
-
-                info.FollowList = followModelList.AsEnumerable();
-                // 获取收集员的账号
-                info.MemberAccount = _memberBLL.GetMemberById(info.MemberId).Account;
-                InformationModelList.Add(info);
-            }
-
-            return InformationModelList;
-        }
-
-        /// <summary>
-        ///  根据额外的 AdditionalConditionModel 获取InformationList
-        /// </summary>
-        /// <param name="additionalCondition"></param>
-        /// <returns></returns>
-        [NonAction]
-        public List<InformationModel> GetInformation(AdditionalConditionModel additionalCondition, Guid adminId)
-        {
-            // InformationModel List 最终提交到页面的数据集
-            // InformationModel 继承至 Information
-            // 目的是为了包含FollowModel List
-            List<InformationModel> InformationModelList = new List<InformationModel>();
-            List<Information> InformationList = new List<Information>();
-
-            if (additionalCondition == null)
-            {
-                // 如果condition没有值
-                // 首先获取前50条数据记录到 InformationList
-                InformationList = _informationBLL.GetInformationLimited(50,adminId).ToList();
-            }
-            else
-            {
-                // 如果condition有值 就按条件查询
-
-                string sex = additionalCondition.sex == null ? "" : additionalCondition.sex;
-                string minage = additionalCondition.min_age == null ? "" : additionalCondition.min_age;
-                string maxage = additionalCondition.max_age == null ? "" : additionalCondition.max_age;
-                string ismarried = additionalCondition.ismarried == null ? "" : additionalCondition.ismarried;
-                string children = additionalCondition.children == null ? "" : additionalCondition.children;
-                string minincome = additionalCondition.min_income == null ? "" : additionalCondition.min_income;
-                string maxincome = additionalCondition.max_income == null ? "" : additionalCondition.max_income;
-                string hascar = additionalCondition.hascar == null ? "" : additionalCondition.hascar;
-                string hashouse = additionalCondition.hashouse == null ? "" : additionalCondition.hashouse;
-                string insertTime = additionalCondition.insertTime == null ? "" : additionalCondition.insertTime;
-
-                InformationList = _informationBLL.GetInformationByAnythings(adminId,sex, minage, maxage, ismarried, children, minincome, maxincome, hascar, hashouse, insertTime).ToList();
-            }
-
-            List<Information> InfoList = new List<Information>();
-            InfoList = InformationList.ToList();
-
-            // 然后循环InformationList
-
-            // 构造 InformationModelList
-
-            foreach (Information item in InformationList)
-            {
-                InformationModel info = new InformationModel(item);
-
-                List<FollowModel> followModelList = new List<FollowModel>();
-
-                List<FollowRecord> followRecordList = new List<FollowRecord>();
-                followRecordList = _followRecordBLL.GetFollowRecordByInformationId(info.Id).ToList();
-
-                foreach (FollowRecord fr in followRecordList)
-                {
-                    FollowModel fm = new FollowModel();
-                    fm.FollowName = _followBLL.GetFollow(fr.FollowId).FollowItem;
-                    fm.FollowValue = fr.FollowValue;
-
-                    followModelList.Add(fm);
-                }
-
-                info.FollowList = followModelList.AsEnumerable();
-                // 获取收集员的账号
-                info.MemberAccount = _memberBLL.GetMemberById(info.MemberId).Account;
-                InformationModelList.Add(info);
-            }
-
-            return InformationModelList;
-        }
-
-        /// <summary>
         /// 导出数据到Excel表 导出的excel表为 .xls 格式 
         /// </summary>
         /// <returns></returns>
         public FileResult ExportData()
         {
-            ExcelManager em = new ExcelManager(_memberBLL,_informationBLL,_followBLL,_followRecordBLL);
+            ExcelManager em = new ExcelManager(_memberBLL, _informationBLL, _followBLL, _followRecordBLL);
             MemoryStream ms = em.DataToExcel(System.Web.HttpContext.Current.Session["InformationList"] as List<InformationModel>);
-            return File(ms,"application/vnd.ms-excel",Guid.NewGuid().ToString()+".xls");
+            return File(ms, "application/vnd.ms-excel", Guid.NewGuid().ToString() + ".xls");
         }
     }
 }

@@ -71,7 +71,7 @@ namespace com.dongfangyunwang.web.Controllers
                     infor.Industry = kvList.SingleOrDefault(n => n.Key == "industry").Value;
                     infor.InserTime = DateTime.Now.ToString("yyyy-MM-dd");
                     infor.IsMarry = kvList.SingleOrDefault(n => n.Key == "ismarry").Value;
-                    infor.MemberId = _memberBLL.GetMemberByAccount(System.Web.HttpContext.Current.Session["Admin"].ToString(), true).Id;
+                    infor.MemberId = _memberBLL.GetMemberByAccount(System.Web.HttpContext.Current.Session["Admin"].ToString(), 1).Id;
                     infor.Occupation = kvList.SingleOrDefault(n => n.Key == "occupation").Value;
                     infor.Phone = kvList.SingleOrDefault(n => n.Key == "phone").Value;
                     infor.QQ = kvList.SingleOrDefault(n => n.Key == "qq").Value;
@@ -290,7 +290,7 @@ namespace com.dongfangyunwang.web.Controllers
                     infor.Industry = kvList.SingleOrDefault(n => n.Key == "industry").Value;
                     infor.InserTime = DateTime.Now.ToString("yyyy-MM-dd");
                     infor.IsMarry = kvList.SingleOrDefault(n => n.Key == "ismarry").Value;
-                    infor.MemberId = _memberBLL.GetMemberByAccount(System.Web.HttpContext.Current.Session["member"].ToString(), false).Id;
+                    infor.MemberId = _memberBLL.GetMemberByAccount(System.Web.HttpContext.Current.Session["member"].ToString(), 0).Id;
                     infor.Occupation = kvList.SingleOrDefault(n => n.Key == "occupation").Value;
                     infor.Phone = kvList.SingleOrDefault(n => n.Key == "phone").Value;
                     infor.QQ = kvList.SingleOrDefault(n => n.Key == "qq").Value;
@@ -341,6 +341,94 @@ namespace com.dongfangyunwang.web.Controllers
         }
 
         #endregion
+        [IsGroup]
+        public ActionResult ImportInformationwithGroupLeader()
+        {
+            List<Follow> FollowList = _followBLL.GetAllFollow().ToList();
+            ViewData["FollowItems"] = FollowList;
+            ViewBag.Count = FollowList.Count;
+
+            return View();
+        }
+
+        [HttpPost]
+        [IsGroup]
+        public ActionResult ImportDatawithGroupLeader()
+        {
+            if (Request.IsAjaxRequest())
+            {
+                var stream = HttpContext.Request.InputStream;
+                string json = new StreamReader(stream).ReadToEnd();
+
+                try
+                {
+                    //JArray jarray = (JArray)JsonConvert.DeserializeObject(json);
+                    List<KeyValuePair<string, string>> kvList = JsonToList(json);
+                    Information infor = new Information();
+
+                    #region 给information赋值
+
+                    infor.Address = kvList.Where(n => n.Key == "address").SingleOrDefault().Value;
+                    infor.Age = kvList.SingleOrDefault(n => n.Key == "age").Value;
+                    infor.Children = kvList.SingleOrDefault(n => n.Key == "children").Value;
+                    infor.CustomerName = kvList.SingleOrDefault(n => n.Key == "customerName").Value;
+                    infor.Email = kvList.SingleOrDefault(n => n.Key == "email").Value;
+                    infor.HasCar = kvList.SingleOrDefault(n => n.Key == "hascar").Value;
+                    infor.HasHouse = kvList.SingleOrDefault(n => n.Key == "hashouse").Value;
+                    infor.Hobby = kvList.SingleOrDefault(n => n.Key == "hobby").Value;
+                    infor.Id = Guid.NewGuid();
+                    infor.Income = kvList.SingleOrDefault(n => n.Key == "income").Value;
+                    infor.Industry = kvList.SingleOrDefault(n => n.Key == "industry").Value;
+                    infor.InserTime = DateTime.Now.ToString("yyyy-MM-dd");
+                    infor.IsMarry = kvList.SingleOrDefault(n => n.Key == "ismarry").Value;
+                    infor.MemberId = _memberBLL.GetMemberByAccount(System.Web.HttpContext.Current.Session["group"].ToString(), 2).Id;
+                    infor.Occupation = kvList.SingleOrDefault(n => n.Key == "occupation").Value;
+                    infor.Phone = kvList.SingleOrDefault(n => n.Key == "phone").Value;
+                    infor.QQ = kvList.SingleOrDefault(n => n.Key == "qq").Value;
+                    infor.Sex = kvList.SingleOrDefault(n => n.Key == "sex").Value;
+                    infor.WebCat = kvList.SingleOrDefault(n => n.Key == "webcat").Value;
+                    infor.Note1 = kvList.SingleOrDefault(n => n.Key == "note1").Value;
+                    infor.Note2 = kvList.SingleOrDefault(n => n.Key == "note2").Value;
+                    infor.Note3 = kvList.SingleOrDefault(n => n.Key == "note3").Value;
+                    #endregion
+
+                    #region 添加FollowRecord
+                    if (_informationBLL.Add(infor))
+                    {
+                        List<Follow> followList = _followBLL.GetAllFollow().ToList();
+                        foreach (var item in followList)
+                        {
+                            FollowRecord fr = new FollowRecord();
+                            fr.FollowId = _followBLL.GetFollow(item.FollowItem).Id;
+                            fr.InforId = infor.Id;
+                            fr.Id = Guid.NewGuid();
+                            fr.FollowValue = kvList.SingleOrDefault(n => n.Key == item.FollowItem).Value;
+
+                            _followRecordBLL.Add(fr);
+                        }
+
+                        return Json("True", JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json("False", JsonRequestBehavior.AllowGet);
+                    }
+                    #endregion
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.Log.Write(ex.Message);
+                    LogHelper.Log.Write(ex.StackTrace);
+
+                    return Json("False", JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json("False", JsonRequestBehavior.AllowGet);
+            }
+        }
+
 
         #region 修改数据
 
@@ -415,7 +503,7 @@ namespace com.dongfangyunwang.web.Controllers
                         // 由于存在 跟进项表中新添加了跟进项 而 FollowRecord 中没有更新 这样的情况
 
                         // 所以 有时 frList 的项 会比 followList 的项会少
-                        
+
                         // 所以在更新followrecord时 要先判断 操作的 FollowRecord 是否为空
 
                         // 如果为空则新添加 followrecord  如果不为空 则更新原来的数据
