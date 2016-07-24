@@ -16,20 +16,20 @@ namespace DataBaseTest
             Console.WriteLine("Now inserting some data...");
             #region  添加用户账号  和 Follow
 
-            //Member admin = new Member();
-            //admin.Account = "Admin";
-            //admin.Password = EncryptManager.SHA1("admin");
-            //admin.IsAdmin = 1;
+            Member admin = new Member();
+            admin.Account = "Admin";
+            admin.Password = EncryptManager.SHA1("admin");
+            admin.IsAdmin = 1;
 
-            //Member member = new Member();
-            //member.Account = "account1";
-            //member.Password = EncryptManager.SHA1("asdf1234");
-            //member.IsAdmin = 0;
+            Member member = new Member();
+            member.Account = "account1";
+            member.Password = EncryptManager.SHA1("asdf1234");
+            member.IsAdmin = 0;
 
-            //Member m1 = new Member();
-            //m1.Account = "account2";
-            //m1.Password = EncryptManager.SHA1("asdf1234");
-            //m1.IsAdmin = 0;
+            Member m1 = new Member();
+            m1.Account = "account2";
+            m1.Password = EncryptManager.SHA1("asdf1234");
+            m1.IsAdmin = 0;
 
             Member group = new Member();
             group.Account = "group";
@@ -37,20 +37,20 @@ namespace DataBaseTest
             group.IsAdmin = 2;
 
 
-            Follow follow = new Follow();
-            follow.FollowItem = "跟进1";
+            //Follow follow = new Follow();
+            //follow.FollowItem = "跟进1";
 
-            Follow f1 = new Follow();
-            f1.FollowItem = "跟进2";
+            //Follow f1 = new Follow();
+            //f1.FollowItem = "跟进2";
 
             try
             {
                 Console.WriteLine("tring...");
                 MemberDAL dal = new MemberDAL();
 
-                //dal.Insert(admin);
-                //dal.Insert(member);
-                //dal.Insert(m1);
+                dal.Insert(admin);
+                dal.Insert(member);
+                dal.Insert(m1);
 
                 //FollowDAL fdal = new FollowDAL();
                 //fdal.Insert(f1);

@@ -27,8 +27,14 @@
                 margin-bottom: 5px;
             }
 
-                .container-add-followitem form .form-group input {
+                .container-add-followitem form .form-group input{
                     width: 200px;
+                }
+                .radio-inline{
+                    text-align:left;
+                }
+                .radio-inline input{
+                    width:20px !important;
                 }
 </style>
 <div class="row">
@@ -45,8 +51,20 @@
         <div class="container container-btn">
             <div class="row">
                 @foreach (var item in ViewData["MemberList"] as IEnumerable<Member>)
-            {
-                    <button class="btn btn-default col-xs-2">@item.Account</button>
+                {
+                    if (item.IsAdmin == 1)
+                    {
+                        <button class="btn btn-danger col-xs-2">@item.Account</button>
+                    }
+                    else if (item.IsAdmin == 2)
+                    {
+                        <button class="btn btn-warning col-xs-2">@item.Account</button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-default col-xs-2">@item.Account</button>
+                    }
+
                 }
             </div>
         </div>
@@ -56,6 +74,14 @@
             <form method="post" action="/Member/Add" id="member-form">
                 <div class="form-group">
                     <input type="text" name="memberName" class="form-control" required data-bv-notempty-message="用户名不能为空">
+                </div>
+                <div class="form-group">
+                    <label class="radio-inline">
+                        <input type="radio" name="isadmin" id="inlineRadio13" value="g"> 组长
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" checked="checked" name="isadmin" id="inlineRadio2" value="n"> 普通用户
+                    </label>
                 </div>
                 <button type="submit" class="btn btn-primary">添加</button>
             </form>

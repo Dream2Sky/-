@@ -21,19 +21,25 @@ namespace com.dongfangyunwang.web.Controllers
 
         public ActionResult List()
         {
-            ViewData["MemberList"] = _memberBLL.GetAllMembers();
+            ViewData["MemberList"] = _memberBLL.GetAllMembers().OrderBy(n=>n.IsAdmin);
             return View();
         }
 
         [HttpPost]
-        public ActionResult Add(string memberName)
+        public ActionResult Add(string memberName, string isadmin)
         {
             Member member = new Member();
             member.Id = Guid.NewGuid();
             member.Account = memberName;
             member.Password = EncryptManager.SHA1("123456");
-            member.IsAdmin = 0;
-
+            if (isadmin == "g")
+            {
+                member.IsAdmin = 2;
+            }
+            else
+            {
+                member.IsAdmin = 0;
+            }
             if (_memberBLL.IsExist(member))
             {
                 return View();
