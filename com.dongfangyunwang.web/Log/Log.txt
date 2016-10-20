@@ -880,3 +880,98 @@ error:Validation failed for one or more entities. See 'EntityValidationErrors' p
    在 com.dongfangyunwang.DAL.DataBaseDAL`1.SaveChanges() 位置 D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:行号 144
    在 com.dongfangyunwang.DAL.DataBaseDAL`1.Insert(T t) 位置 D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\DataBaseDAL.cs:行号 66
 ========================================================================
+2016/7/28 16:34:27 : 
+The provider did not return a ProviderManifestToken string.
+========================================================================
+2016/7/28 16:34:27 : 
+   在 System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   在 MySql.Data.Entity.MySqlManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   在 System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   在 System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   在 System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   在 System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   在 System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   在 System.Data.Entity.Internal.InternalContext.Initialize()
+   在 System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   在 System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   在 System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   在 System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   在 System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   在 com.dongfangyunwang.DAL.MemberDAL.SelectByAccount(String account, Int32 isadmin) 位置 D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\MemberDAL.cs:行号 61
+========================================================================
+2016/7/28 16:34:34 : 
+The provider did not return a ProviderManifestToken string.
+========================================================================
+2016/7/28 16:34:34 : 
+   在 System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   在 MySql.Data.Entity.MySqlManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   在 System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   在 System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   在 System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   在 System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   在 System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   在 System.Data.Entity.Internal.InternalContext.Initialize()
+   在 System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   在 System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   在 System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   在 System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   在 System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   在 com.dongfangyunwang.DAL.MemberDAL.SelectByAccount(String account, Int32 isadmin) 位置 D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\MemberDAL.cs:行号 61
+========================================================================
+2016/7/28 16:34:49 : 
+The provider did not return a ProviderManifestToken string.
+========================================================================
+2016/7/28 16:34:49 : 
+   在 System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   在 MySql.Data.Entity.MySqlManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   在 System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   在 System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   在 System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   在 System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   在 System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   在 System.Data.Entity.Internal.InternalContext.Initialize()
+   在 System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   在 System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   在 System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   在 System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   在 System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   在 com.dongfangyunwang.DAL.MemberDAL.SelectByAccount(String account, Int32 isadmin) 位置 D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\MemberDAL.cs:行号 61
+========================================================================
+2016/7/28 16:34:58 : 
+The provider did not return a ProviderManifestToken string.
+========================================================================
+2016/7/28 16:34:58 : 
+   在 System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   在 MySql.Data.Entity.MySqlManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   在 System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   在 System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   在 System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   在 System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   在 System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   在 System.Data.Entity.Internal.InternalContext.Initialize()
+   在 System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   在 System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   在 System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   在 System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   在 System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   在 com.dongfangyunwang.DAL.MemberDAL.SelectByAccount(String account, Int32 isadmin) 位置 D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\MemberDAL.cs:行号 61
+========================================================================
+2016/7/28 16:35:11 : 
+The provider did not return a ProviderManifestToken string.
+========================================================================
+2016/7/28 16:35:11 : 
+   在 System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   在 MySql.Data.Entity.MySqlManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   在 System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   在 System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   在 System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   在 System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   在 System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   在 System.Data.Entity.Internal.InternalContext.Initialize()
+   在 System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   在 System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   在 System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   在 System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   在 System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
+   在 com.dongfangyunwang.DAL.MemberDAL.SelectByAccount(String account, Int32 isadmin) 位置 D:\documents\visual studio 2015\Projects\东方云网数据收集系统\com.dongfangyunwang.DAL\MemberDAL.cs:行号 61
+========================================================================

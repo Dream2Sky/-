@@ -22,6 +22,9 @@
         text-align: right;
         margin-top: 20px;
     }
+    .btn-warning {
+        margin-left:20px;
+    }
 </style>
 
 <div class="row">
@@ -44,6 +47,7 @@
                     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         按条件搜索
                     </button>
+                    <a class="btn btn-warning btn-import" href="/Information/ImportInformation">数据录入</a>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -212,4 +216,7 @@
             }
         });
     })
+    //$(".btn-import").on("click", function() {
+    //    window.location.href = "/Information/ImportInformation";
+    //})
     </script>

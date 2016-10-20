@@ -23,6 +23,10 @@
         text-align: right;
         margin-top: 20px;
     }
+
+    .btn-warning {
+        margin-left: 20px;
+    }
 </style>
 
 <div class="row">
@@ -45,6 +49,7 @@
                     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         按条件搜索
                     </button>
+                    <a class="btn btn-warning" href="/Information/ImportInformationwithGroupLeader">数据录入</a>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -120,97 +125,97 @@
     <div class="div-table">
     </div>
     <script>
-    function submitCodition() {
-        $.ajax({
-            url: "/Group/Search",
-            type: "Get",
-            data: { condition: $("input[name='condition']").val() },
-            success: function (data) {
-                $('.div-table').html(data);
+        function submitCodition() {
+            $.ajax({
+                url: "/Group/Search",
+                type: "Get",
+                data: { condition: $("input[name='condition']").val() },
+                success: function (data) {
+                    $('.div-table').html(data);
+                }
+            });
+        }
+        function submitAdditionalCondition() {
+            var sex = "";
+            var ismarried = "";
+            var children = "";
+            var hascar = "";
+            var hashouse = "";
+
+            // 获取性别
+            if (($("input[name='man']").is(':checked') && $("input[name='woman']").is(':checked')) || (!$("input[name='man']").is(':checked') && !$("input[name='woman']").is(':checked'))) {
+                sex = "";
             }
-        });
-    }
-    function submitAdditionalCondition() {
-        var sex = "";
-        var ismarried = "";
-        var children = "";
-        var hascar = "";
-        var hashouse = "";
-
-        // 获取性别
-        if (($("input[name='man']").is(':checked') && $("input[name='woman']").is(':checked')) || (!$("input[name='man']").is(':checked') && !$("input[name='woman']").is(':checked'))) {
-            sex = "";
-        }
-        else {
-            sex = $("input[name='man']").is(':checked') ? $("input[name='man']").val() : $("input[name='woman']").val();
-            console.log(sex);
-        }
-
-        // 获取婚否
-        if (($("input[name='married']").is(':checked') && $("input[name='nomarried']").is(':checked')) || (!$("input[name='married']").is(':checked') && !$("input[name='nomarried']").is(':checked'))) {
-            ismarried = "";
-        }
-        else {
-            ismarried = $("input[name='married']").is(':checked') ? $("input[name='married']").val() : $("input[name='nomarried']").val();
-            console.log(ismarried);
-        }
-
-        // 子女
-        if (($("input[name='haschildren']").is(':checked') && $("input[name='nochildren']").is(':checked')) || (!$("input[name='haschildren']").is(':checked') && !$("input[name='nochildren']").is(':checked'))) {
-            children = "";
-        }
-        else {
-            children = $("input[name='haschildren']").is(':checked') ? $("input[name='haschildren']").val() : $("input[name='nochildren']").val();
-            console.log(children);
-        }
-
-        // 是否有车
-        if (($("input[name='hascar']").is(':checked') && $("input[name='nocar']").is(':checked')) || (!$("input[name='hascar']").is(':checked') && !$("input[name='nocar']").is(':checked'))) {
-            hascar = "";
-        }
-        else {
-            hascar = $("input[name='hascar']").is(':checked') ? $("input[name='hascar']").val() : $("input[name='nocar']").val();
-        }
-
-        // 是否有房
-        if (($("input[name='hashouse']").is(':checked') && $("input[name='nohouse']").is(':checked')) || (!$("input[name='hashouse']").is(':checked') && !$("input[name='nohouse']").is(':checked'))) {
-            hashouse = "";
-        }
-        else {
-            hashouse = $("input[name='hashouse']").is(':checked') ? $("input[name='hashouse']").val() : $("input[name='nohouse']").val();
-        }
-        $.ajax({
-            url: "/Group/Search",
-            type: "POST",
-            data: {
-                sex: sex,
-                min_age: $("input[name='min_age']").val(),
-                max_age: $("input[name='max_age']").val(),
-                ismarried: ismarried,
-                children: children,
-                hascar: hascar,
-                hashouse: hashouse,
-                min_Income: $("input[name='min_income']").val(),
-                max_Income: $("input[name='max_income']").val(),
-                insertTime: $("input[name='insertTime']").val()
-            },
-            success: function (data) {
-                $('.div-table').html(data);
-            },
-            error: function () {
-                alert("查询失败");
+            else {
+                sex = $("input[name='man']").is(':checked') ? $("input[name='man']").val() : $("input[name='woman']").val();
+                console.log(sex);
             }
 
-        });
-    }
-    $(document).ready(function () {
-        $.ajax({
-            url: "/Group/Search",
-            type: "GET",
-            data: { condition: "" },
-            success: function (data) {
-                $('.div-table').html(data);
+            // 获取婚否
+            if (($("input[name='married']").is(':checked') && $("input[name='nomarried']").is(':checked')) || (!$("input[name='married']").is(':checked') && !$("input[name='nomarried']").is(':checked'))) {
+                ismarried = "";
             }
-        });
-    })
+            else {
+                ismarried = $("input[name='married']").is(':checked') ? $("input[name='married']").val() : $("input[name='nomarried']").val();
+                console.log(ismarried);
+            }
+
+            // 子女
+            if (($("input[name='haschildren']").is(':checked') && $("input[name='nochildren']").is(':checked')) || (!$("input[name='haschildren']").is(':checked') && !$("input[name='nochildren']").is(':checked'))) {
+                children = "";
+            }
+            else {
+                children = $("input[name='haschildren']").is(':checked') ? $("input[name='haschildren']").val() : $("input[name='nochildren']").val();
+                console.log(children);
+            }
+
+            // 是否有车
+            if (($("input[name='hascar']").is(':checked') && $("input[name='nocar']").is(':checked')) || (!$("input[name='hascar']").is(':checked') && !$("input[name='nocar']").is(':checked'))) {
+                hascar = "";
+            }
+            else {
+                hascar = $("input[name='hascar']").is(':checked') ? $("input[name='hascar']").val() : $("input[name='nocar']").val();
+            }
+
+            // 是否有房
+            if (($("input[name='hashouse']").is(':checked') && $("input[name='nohouse']").is(':checked')) || (!$("input[name='hashouse']").is(':checked') && !$("input[name='nohouse']").is(':checked'))) {
+                hashouse = "";
+            }
+            else {
+                hashouse = $("input[name='hashouse']").is(':checked') ? $("input[name='hashouse']").val() : $("input[name='nohouse']").val();
+            }
+            $.ajax({
+                url: "/Group/Search",
+                type: "POST",
+                data: {
+                    sex: sex,
+                    min_age: $("input[name='min_age']").val(),
+                    max_age: $("input[name='max_age']").val(),
+                    ismarried: ismarried,
+                    children: children,
+                    hascar: hascar,
+                    hashouse: hashouse,
+                    min_Income: $("input[name='min_income']").val(),
+                    max_Income: $("input[name='max_income']").val(),
+                    insertTime: $("input[name='insertTime']").val()
+                },
+                success: function (data) {
+                    $('.div-table').html(data);
+                },
+                error: function () {
+                    alert("查询失败");
+                }
+
+            });
+        }
+        $(document).ready(function () {
+            $.ajax({
+                url: "/Group/Search",
+                type: "GET",
+                data: { condition: "" },
+                success: function (data) {
+                    $('.div-table').html(data);
+                }
+            });
+        })
     </script>
