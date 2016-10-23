@@ -11,7 +11,7 @@ using System.Web.Mvc;
 namespace com.dongfangyunwang.web.Controllers
 {
     [IsAdmin]
-    public class MemberController:Controller
+    public class MemberController : Controller
     {
         private IMemberBLL _memberBLL;
         public MemberController(IMemberBLL memberBLL)
@@ -21,7 +21,7 @@ namespace com.dongfangyunwang.web.Controllers
 
         public ActionResult List()
         {
-            ViewData["MemberList"] = _memberBLL.GetAllMembers().OrderBy(n=>n.IsAdmin);
+            ViewData["MemberList"] = _memberBLL.GetAllMembers().OrderBy(n => n.IsAdmin);
             return View();
         }
 
@@ -50,6 +50,99 @@ namespace com.dongfangyunwang.web.Controllers
             }
 
             return RedirectToAction("List");
+        }
+
+        [HttpPost]
+        public ActionResult Update(string memberId, string memberName, string isAdmin)
+        {
+            bool res = false;
+
+            Member member = new Member();
+            member = _memberBLL.GetMemberById(Guid.Parse(memberId));
+
+            member.Account = memberName;
+            member.IsAdmin = isAdmin == "g" ? 2 : 0;
+
+            using (DFYW_DbContext db = new DFYW_DbContext())
+            {
+                using (var trans = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        db.Set<Member>().Attach(member);
+                        db.Entry(member).State = System.Data.Entity.EntityState.Modified;
+
+                        db.SaveChanges();
+
+                        trans.Commit();
+
+                        res = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        LogHelper.Log.Write(ex.Message);
+                        LogHelper.Log.Write(ex.StackTrace);
+
+                        trans.Rollback();
+
+                        res = false;
+                    }
+                }
+            }
+
+            var obj = new
+            {
+                res = res,
+                member = new
+                {
+                    memberId = memberId,
+                    memberName = memberName,
+                    isadmin = isAdmin
+                }
+            };
+
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(string memberId)
+        {
+            bool res = false;
+            Member member = new Member();
+            member = _memberBLL.GetMemberById(Guid.Parse(memberId));
+            
+            using (DFYW_DbContext db = new DFYW_DbContext())
+            {
+                using (var trans = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        db.Set<Member>().Attach(member);
+                        db.Entry(member).State = System.Data.Entity.EntityState.Deleted;
+
+                        db.SaveChanges();
+
+                        trans.Commit();
+                        res = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        LogHelper.Log.Write(ex.Message);
+                        LogHelper.Log.Write(ex.StackTrace);
+
+                        trans.Rollback();
+
+                        res = false;
+                    }
+                }
+            }
+
+            var obj = new
+            {
+                res = res
+            };
+
+            return Json(obj, JsonRequestBehavior.AllowGet);
         }
     }
 }
