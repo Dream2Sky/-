@@ -51,10 +51,27 @@
         </label>
         <div class="container container-btn">
             <div class="row">
-                @foreach (var item in ViewData["Follow"] as IEnumerable<Follow>)
-                {
-                    <button class="btn btn-default col-xs-2">@item.FollowItem</button>
-                }
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>跟进项</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewData["Follow"] as IEnumerable<Follow>)
+                        {
+                            <tr id="@item.Id">
+                                <td>@item.FollowItem</td>
+                                <td>
+                                    <button class="btn btn-primary btn-update">修改</button>
+                                    <button class="btn btn-danger btn-delete">删除</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
         <hr />
@@ -66,6 +83,48 @@
                 </div>
                 <button type="submit" class="btn btn-primary">添加</button>
             </form>
+        </div>
+
+        <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">修改跟进项</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="update-form">
+                            <div class="form-group">
+                                <input type="hidden" class="followId" name="id" value="" />
+                                <input type="text" name="followName" value="" class="form-control followName" required data-bv-notempty-message="跟进项名不能为空" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary btn-save">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">删除跟进项</h4>
+                    </div>
+                    <div class="modal-body">
+                        是否确定删除该跟进项？
+                        <input type="hidden" name="followId" value="" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger btn-confirm">删除</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -79,4 +138,63 @@
             }
         });
     });
+
+    $(".btn-update").on("click", function () {
+        $("#updateModal").modal();
+        $(".update-form .followId").val($(this).parent().parent().attr("id"));
+        $(".update-form .followName").val($(this).parent().parent().children().eq(0).text());
+    });
+
+    $(".btn-save").on("click", function () {
+        $(".update-form").bootstrapValidator();
+
+        $.ajax({
+            url: "/Follow/Update",
+            type: "POST",
+            data: {
+                followId: $(".update-form .followId").val(),
+                followName: $(".update-form .followName").val()
+            },
+            success: function (data) {
+                if (data.res) {
+                    $("table tbody").children("#" + data.follow.Id).children().eq(0).text(data.follow.Name);
+                    $("#updateModal").modal("hide");
+                }
+                else {
+                    alert("修改跟进项失败");
+                }
+            },
+            error: function () {
+                alert("系统错误，修改跟进项失败");
+            }
+        });
+    });
+
+    $(".btn-delete").on("click", function () {
+        $("#deleteModal").modal();
+        $("#deleteModal input[name='followId']").val($(this).parent().parent().attr("id"));
+    });
+
+    $(".btn-confirm").on("click", function () {
+        $.ajax({
+            url: "/Follow/Delete",
+            type: "POST",
+            data: {
+                followId:$("#deleteModal input[name='followId']").val()
+            },
+            success: function (data) {
+                if (data.res) {
+                    $("table tbody").children("#" + $("input[name='followId']").val()).remove();
+                    $("#deleteModal").modal("hide");
+                }
+                else {
+                    alert("删除失败");
+                }
+            },
+            error: function() {
+                alert("系统错误，删除失败");
+            }
+        })
+    })
+   
 </script>

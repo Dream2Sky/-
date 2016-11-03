@@ -21,7 +21,7 @@ namespace com.dongfangyunwang.web.Controllers
 
         public ActionResult List()
         {
-            ViewData["MemberList"] = _memberBLL.GetAllMembers().OrderBy(n => n.IsAdmin);
+            ViewData["MemberList"] = _memberBLL.GetAllMembers().Where(n=>n.IsAdmin != 1).OrderBy(n => n.IsAdmin);
             return View();
         }
 

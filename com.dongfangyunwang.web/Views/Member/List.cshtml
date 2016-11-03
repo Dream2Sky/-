@@ -111,7 +111,7 @@
         <div class="container container-add-followitem">
             <form method="post" action="/Member/Add" id="member-form">
                 <div class="form-group">
-                    <input type="text" name="memberName" class="form-control" required data-bv-notempty-message="用户名不能为空">
+                    <input type="text" name="memberName" class="form-control" required data-bv-notempty-message="用户名不能为空" pattern="^[A-Za-z0-9]+$" data-bv-regexp-message="用户名必须由数字和26个英文字母组成">
                 </div>
                 <div class="form-group">
                     <label class="radio-inline">
@@ -136,7 +136,7 @@
                     <form class="update-form">
                         <div class="form-group">
                             <input type="hidden" class="memberId" name="id" value="" />
-                            <input type="text" name="memberName" value="" class="form-control memberName" required data-bv-notempty-message="用户名不能为空" />
+                            <input type="text" name="memberName" value="" class="form-control memberName" required data-bv-notempty-message="用户名不能为空" pattern="^[A-Za-z0-9]+$" data-bv-regexp-message="用户名必须由数字和26个英文字母组成"/>
                         </div>
                         <div class="form-group">
                             <label class="radio-inline">
@@ -244,7 +244,7 @@
         });
     });
 
-    $(".btn-confirm").on("click", function() {
+    $(".btn-confirm").on("click", function () {
         $.ajax({
             url: "/Member/Delete",
             type: "POST",
@@ -252,8 +252,7 @@
                 memberId: $("input[name='memberId']").val()
             },
             success: function (data) {
-                if (data.res)
-                {
+                if (data.res) {
                     $("table tbody").children("#" + $("input[name='memberId']").val()).remove();
                     $("#deleteModal").modal('hide');
                 }
@@ -261,9 +260,9 @@
                     alert("删除失败");
                 }
             },
-            error: function() {
+            error: function () {
                 alert("系统错误，删除失败");
             }
         })
-    })
+    });
 </script>
